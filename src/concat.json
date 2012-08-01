@@ -1,11 +1,11 @@
 {
 
     "urbandaddy/main.all.js": {
-        "dest": "<%= meta.dirs.dest %>/com/urbandaddy/main.all.js",
+        "dest": "<%= meta.dirs.dest %>/com/urbandaddy/site/main.all.js",
         "src": [
             "<%= meta.dirs.lib %>/espresso-js/espresso.js",
             "<%= meta.dirs.lib %>/jquery/jquery.js",
-            "<%= meta.dirs.dest %>/com/urbandaddy/main.js"
+            "<%= meta.dirs.dest %>/com/urbandaddy/site/main.js"
         ],
         "separator": ";"
     }
