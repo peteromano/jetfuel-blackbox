@@ -1,4 +1,4 @@
-urbandaddy-frontend
+frontend-boilerplate
 ===================
 
-UrbanDaddy boilerplate front-end project
+Boilerplate front-end project
