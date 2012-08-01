@@ -1,0 +1,43 @@
+{
+  "name": "urbandaddy-frontend",
+  "version": "0.1.0",
+  "title": "UrbanDaddy Front-End Boilerplate",
+  "organization": "UrbanDaddy Enterprises",
+  "description": "UrbanDaddy boilerplate front-end project",
+  "homepage": "https://urbandaddy.tpondemand.com/Default.aspx?acid=023D6D4B648AF034C82E874EEF63E30D",
+  "author": {
+    "name": "Pete Romano",
+    "email": "promano@urbandaddy.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peteromano/urbandaddy-frontend"
+  },
+  "bugs": {
+    "url": "https://github.com/peteromano/urbandaddy-frontend/issues"
+  },
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://www.freebsd.org/copyright/freebsd-license.html"
+    }
+  ],
+  "keywords": [],
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "install": "grunt install",
+    "update": "grunt update"
+  },
+  "dependencies": {
+    "jsdoc-toolkit": "~0.0.1",
+    "jquery": "~1.7.0",
+    "espresso-js": "~0.4.0",
+    "qunit": "~0.5.0"
+  },
+  "devDependencies": {
+      "grunt": "~0.3.11"
+  }
+}
