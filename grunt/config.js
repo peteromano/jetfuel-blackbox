@@ -64,7 +64,7 @@ module.exports = {
       },
       // grunt copy:jquery
       jquery: {
-        src: ['<%= meta.dirs.modules %>/jquery/lib/*.js'],
+        src: ['<%= meta.dirs.modules %>/jquery/tmp/*.js'],
         dest: '<%= meta.dirs.lib %>'
       },
       // grunt copy:espresso
