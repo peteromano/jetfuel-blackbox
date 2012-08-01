@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 
   // npm up, npm update, npm install, npm test - Node Package Manager (package.json) Scripts
   grunt.registerTask('test',        'clopylib qunit');
-  grunt.registerTask('install',     'clean:lib copy:lib build');
+  grunt.registerTask('install',     'clean:lib copy:lib build deploy');
   grunt.registerTask('update',      'clean:lib copy:lib build');
 
   // ${task}:js = ${task}:dist - Target Aliases
