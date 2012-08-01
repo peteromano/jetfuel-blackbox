@@ -1,26 +1,27 @@
 {
-  "name": "urbandaddy-frontend",
-  "version": "0.1.3",
-  "title": "UrbanDaddy Front-End Boilerplate",
-  "organization": "UrbanDaddy Enterprises",
-  "description": "UrbanDaddy boilerplate front-end project",
-  "homepage": "https://github.com/peteromano/urbandaddy-frontend/wiki",
+  "name": "frontend-boilerplate",
+  "version": "0.1.0",
+  "title": "Front-End Boilerplate",
+  "description": "Boilerplate front-end project",
+  "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
   "author": {
     "name": "Pete Romano",
-    "email": "promano@urbandaddy.com"
+    "email": "pete.romano@yahoo.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/promano-urbandaddy/urbandaddy-frontend"
+    "url": "https://github.com/peteromano/frontend-boilerplate"
   },
   "bugs": {
-    "url": "https://github.com/promano-urbandaddy/urbandaddy-frontend/issues"
+    "url": "https://github.com/peteromano/frontend-boilerplate/issues"
   },
   "licenses": [
-    {
-      "type": "BSD",
-      "url": "http://www.freebsd.org/copyright/freebsd-license.html"
-    }
+      {
+        "type": "MIT"
+      },
+      {
+        "type": "GPL"
+      }
   ],
   "keywords": [],
   "engines": {

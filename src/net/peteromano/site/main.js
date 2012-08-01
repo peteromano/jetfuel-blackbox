@@ -4,6 +4,6 @@
  */
 (function($, espresso, ctx, undefined) {
 
-    espresso.trace($);
+    document.write('<header>Hello, World!</header>');
 
 }(this.jQuery, this.espresso), this);
