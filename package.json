@@ -4,17 +4,17 @@
   "title": "UrbanDaddy Front-End Boilerplate",
   "organization": "UrbanDaddy Enterprises",
   "description": "UrbanDaddy boilerplate front-end project",
-  "homepage": "https://urbandaddy.tpondemand.com/Default.aspx?acid=023D6D4B648AF034C82E874EEF63E30D",
+  "homepage": "https://github.com/peteromano/urbandaddy-frontend/wiki",
   "author": {
     "name": "Pete Romano",
     "email": "promano@urbandaddy.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/urbandaddy-frontend"
+    "url": "https://github.com/promano-urbandaddy/urbandaddy-frontend"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/urbandaddy-frontend/issues"
+    "url": "https://github.com/promano-urbandaddy/urbandaddy-frontend/issues"
   },
   "licenses": [
     {
