@@ -13,10 +13,10 @@ module.exports = function(grunt) {
   grunt.registerTask('clompass',    'clean:sass compass');
   grunt.registerTask('clopycat',    'clopy godcat concat');
   grunt.registerTask('clopylib',    'clean:lib copy:lib');
-  grunt.registerTask('build',       'test clopycat godmin clompass clocks');
+  grunt.registerTask('build',       'clopycat godmin clompass clocks');
 
   // grunt all [--force] & variants - Command line interface (CLI)
-  grunt.registerTask('all',         'build deploy');
+  grunt.registerTask('all',         'test build deploy');
 
   // grunt dev [--force] & variants - Command line interface (CLI)
   grunt.registerTask('dev',         'clopycat clompass deploy:ci');

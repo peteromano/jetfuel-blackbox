@@ -1,3 +1,7 @@
+/**
+ * @name main
+ * @function
+ */
 (function($, espresso, ctx, undefined) {
 
     espresso.trace($);
