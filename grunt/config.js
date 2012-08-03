@@ -19,7 +19,8 @@ module.exports = {
 
       // Directory config
       dirs: {
-        test: 'test',
+        test: 'test',   // QUnit
+        spec: 'spec',   // Jasmine
         src: 'src',
         lib: 'lib',
         dest: 'dist',
@@ -170,11 +171,9 @@ module.exports = {
       }
     },
 
-    // grunt jasmine (grunt jasmine:all)
+    // grunt jasmine
     jasmine: {
-      all: {
-          src: ['SpecRunner.html']
-      }
+      files: ['<%= meta.dirs.spec %>/**/*.html']
     },
 
     // grunt qunit
