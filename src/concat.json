@@ -1,11 +1,11 @@
 {
 
-    "net/peteromano/site/main.all.js": {
-        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/main.all.js",
+    "net/peteromano/site/Application.all.js": {
+        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/Application.all.js",
         "src": [
             "<%= meta.dirs.lib %>/jquery/tmp/jquery.js",
             "<%= meta.dirs.lib %>/espresso-js/espresso.js",
-            "<%= meta.dirs.dest %>/net/peteromano/site/main.js"
+            "<%= meta.dirs.dest %>/net/peteromano/site/Application.js"
         ],
         "separator": ";"
     }

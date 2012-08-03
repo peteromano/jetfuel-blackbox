@@ -51,7 +51,11 @@ module.exports = {
       },
       // grunt clean:lib
       lib: {
-        src: ['<%= meta.dirs.lib %>', '<%= meta.dirs.lib %>/**/*']
+        src: [
+            '<%= meta.dirs.lib %>/espresso-js', '<%= meta.dirs.lib %>/espresso-js/**/*',
+            '<%= meta.dirs.lib %>/jquery', '<%= meta.dirs.lib %>/jquery/**/*',
+            '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*'
+        ]
       }
     },
 
@@ -154,12 +158,7 @@ module.exports = {
       }
     },
 
-    // grunt qunit
-    qunit: {
-      files: ['<%= meta.dirs.test %>/**/*.html']
-    },
-
-    // grunt watch
+    // grunt watch (grunt watch:all)
     watch: {  
       dist: {
         files: ['<%= meta.dirs.src %>/**/*.js'],
@@ -169,6 +168,18 @@ module.exports = {
         files: ['<%= meta.dirs.sass.src %>/**/*.sass'],
         tasks: 'dev:sass'
       }
+    },
+
+    // grunt jasmine (grunt jasmine:all)
+    jasmine: {
+      all: {
+          src: ['SpecRunner.html']
+      }
+    },
+
+    // grunt qunit
+    qunit: {
+      files: ['<%= meta.dirs.test %>/**/*.html']
     },
 
     // grunt lint

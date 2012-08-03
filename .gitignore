@@ -1,7 +1,6 @@
 # Project files #
 ###################
 .sass-cache
-lib
 docs
 dist
 node_modules
