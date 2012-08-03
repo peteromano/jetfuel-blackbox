@@ -2,9 +2,10 @@
 module.exports = function(grunt) {
   "use strict";
 
-  // External Tasks & Helpers
-  grunt.loadTasks('grunt/plugins/urbandaddy/tasks');
-  grunt.loadTasks('grunt/plugins/grunt-compass/tasks');
+  // third-party NPM Tasks
+  grunt.loadNpmTasks('grunt-jasmine-task');
+  grunt.loadNpmTasks('grunt-frontend-boilerplate');
+  grunt.loadNpmTasks('grunt-frontend-boilerplate-compass');
 
   // Private/Utility Tasks
   grunt.registerTask('clocks',      'clean:docs jsdoc');

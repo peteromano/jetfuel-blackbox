@@ -1,12 +1,13 @@
 {
   "name": "frontend-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": "Front-End Boilerplate",
   "description": "Boilerplate front-end project",
   "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
   "author": {
     "name": "Pete Romano",
-    "email": "pete.romano@yahoo.com"
+    "email": "pete.romano@yahoo.com",
+    "url": "http://www.peteromano.net"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,10 @@
     "jsdoc-toolkit": "~0.0.1",
     "jquery": "~1.7.0",
     "espresso-js": "~0.4.0",
-    "qunit": "~0.5.0"
+    "qunit": "~0.5.0",
+    "grunt-jasmine-task": "~0.2.0",
+    "grunt-frontend-boilerplate": "~0.1.0",
+    "grunt-frontend-boilerplate-compass": "~0.2.0"
   },
   "devDependencies": {
       "grunt": "~0.3.11"
