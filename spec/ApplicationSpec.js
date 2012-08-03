@@ -2,11 +2,11 @@ describe("Application", function() {
   var app;
 
   beforeEach(function() {
-    app = new Application;
+    app = Application.getInstance();
   });
 
   it("should be in the context of `window`", function() {
-    expect(app.getInstance()).toEqual(app);
+    expect(app).toEqual(Application.getInstance());
     expect(app.getContext()).toEqual(window);
   });
 
