@@ -8,5 +8,5 @@
 /webapp/js
 /webapp/css
 /lib/espresso-js
-/lib/jquery
 /lib/qunit
+/lib/jquery-browser
