@@ -105,7 +105,18 @@ module.exports = {
         dest: '<%= meta.dirs.dest %>',
         extension: '.min.js',
         replace: '.js',
-        verbose: true
+        verbose: true,
+		helper: 'minify.uglify',
+		args: {		
+          compilation_level: 'ADVANCED_OPTIMIZATIONS'
+		  //output_format: 'text',
+          //externs: ['path/to/file.js', '/source/**/*.js'],
+          //define: ["'goog.DEBUG=false'"],
+          //warning_level: 'verbose',
+          //jscomp_off: ['checkTypes', 'fileoverviewTags'],
+          //summary_detail_level: 3,
+          //output_wrapper: '(function(){%output%}).call(this);'
+		}
       }
     },
 
