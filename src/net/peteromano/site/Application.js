@@ -6,7 +6,7 @@
      * @private
      */
     function hello() {
-        document.write('<header>Hello, World!</header>');
+        //document.write('<header>Hello, World!</header>');
     }
 
     /**
