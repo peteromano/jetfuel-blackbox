@@ -1,5 +1,6 @@
 /.idea
 /.gitignore
+/.travis.yml
 /node_modules
 /.sass-cache
 /dist

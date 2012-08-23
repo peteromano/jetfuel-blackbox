@@ -29,9 +29,9 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "install": "grunt install",
-    "update": "grunt update"
+    "test": "grunt test --force",
+    "install": "grunt install --force",
+    "update": "grunt update --force"
   },
   "devDependencies": {
       "grunt": "~0.3.11",
