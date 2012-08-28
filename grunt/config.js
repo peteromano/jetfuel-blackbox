@@ -20,8 +20,8 @@ module.exports = {
       // Directory config
       dirs: {
         grunt: 'grunt',
-        test: 'test',   // QUnit
-        spec: 'spec',   // Jasmine
+        qunit: 'test/qunit',
+        jasmine: 'test/jasmine',
         src: 'src',
         lib: 'lib',
         dest: 'dist',
@@ -185,12 +185,12 @@ module.exports = {
 
     // grunt jasmine
     jasmine: {
-      files: ['<%= meta.dirs.spec %>/**/*.html']
+      files: ['<%= meta.dirs.jasmine %>/**/*.html']
     },
 
     // grunt qunit
     qunit: {
-      files: ['<%= meta.dirs.test %>/**/*.html']
+      files: ['<%= meta.dirs.qunit %>/**/*.html']
     },
 
     // grunt lint
