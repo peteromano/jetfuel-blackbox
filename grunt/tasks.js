@@ -24,7 +24,7 @@ module.exports = function(grunt) {
   registerTask('all',         'test build deploy');
 
   // grunt dev [--force] & variants - Command line interface (CLI)
-  registerTask('dev',         'clopycat clompass deploy:ci');
+  registerTask('dev',         'clopycat clompass deploy');
   registerTask('dev:dist',    'clopycat deploy:dist');
   registerTask('dev:sass',    'clompass deploy:sass');
 
