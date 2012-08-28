@@ -1,6 +1,6 @@
 {
   "name": "frontend-boilerplate",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "title": "Front-End Boilerplate",
   "description": "Boilerplate front-end project",
   "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
@@ -29,13 +29,14 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "grunt test --force",
-    "update": "grunt update --force",
-    "postinstall": "grunt install --force",
+    "test": "./node_modules/.bin/grunt test --force",
+    "update": "./node_modules/.bin/grunt update --force",
+    "postinstall": "./node_modules/.bin/grunt install --force",
     "preinstall": "rm -rf node_modules",
     "install": "./bin/install"
   },
   "dependencies": {
+    "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
     "grunt-frontend-boilerplate": "~0.1.0",
     "grunt-frontend-boilerplate-compass": "~0.2.0",
@@ -47,6 +48,5 @@
     "qunit": "~0.5.0"
   },
   "devDependencies": {
-    "grunt": "~0.3.11"
   }
 }
