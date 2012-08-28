@@ -1,21 +1,25 @@
 #!/usr/bin/env node
 
-var MODULES = 'node_modules';
+var MODULES = 'node_modules',
+    FORCE = '--force';
 
 var fs = require('fs'),
     path = require('path'),
     util = require('util'),
     puts = util.puts,
-    cwd = process.cwd().split('/'),
+    args = process.argv.splice(2),
+    pwd = process.cwd(),
+    cwd = pwd.split('/'),
     projectName = cwd.pop(),
     dirName = cwd.pop(),
-    target, modules;
+    target,
+    modules;
 
 if(dirName == MODULES) {
     try {
-        if(fs.existsSync(target = cwd.concat(projectName).join('/'))) log();
-        else if {
-            fs.renameSync(path.resolve('.'), target);
+        if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory exists: ' + target);
+        else {
+            fs.renameSync(pwd, target);
             puts();
             if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) fs.unlinkSync(modules);
             puts();
