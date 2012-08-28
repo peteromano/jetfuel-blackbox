@@ -1,14 +1,26 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    path = require('path');
-
 var MODULES = 'node_modules';
 
-var cwd = process.cwd().split('/'),
+var fs = require('fs'),
+    path = require('path'),
+    util = require('util'),
+    puts = util.puts,
+    cwd = process.cwd().split('/'),
     projectName = cwd.pop(),
-    dirName = cwd.pop();
+    dirName = cwd.pop(),
+    target, modules;
 
 if(dirName == MODULES) {
-
+    try {
+        if(fs.existsSync(target = cwd.concat(projectName).join('/'))) log();
+        else if {
+            fs.renameSync(path.resolve('.'), target);
+            puts();
+            if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) fs.unlinkSync(modules);
+            puts();
+        }
+    } catch(e) {
+        util.error(e);
+    }
 }
