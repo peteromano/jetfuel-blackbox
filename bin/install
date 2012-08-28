@@ -21,7 +21,9 @@ if(dirName == MODULES) {
         else {
             fs.renameSync(pwd, target);
             puts();
-            if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) fs.unlinkSync(modules);
+            if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) fs.rmdirSync(modules);
+            puts();
+            process.cwd(target);
             puts();
         }
     } catch(e) {
