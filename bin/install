@@ -34,4 +34,6 @@ if(dirName == MODULES) {
         util.error(e);
         process.exit(1);
     }
+} else {
+    puts('Install directory is already the target directory.');
 }
