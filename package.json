@@ -1,6 +1,6 @@
 {
   "name": "frontend-boilerplate",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "title": "Front-End Boilerplate",
   "description": "Boilerplate front-end project",
   "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
@@ -17,12 +17,12 @@
     "url": "https://github.com/peteromano/frontend-boilerplate/issues"
   },
   "licenses": [
-      {
-        "type": "MIT"
-      },
-      {
-        "type": "GPL"
-      }
+    {
+      "type": "MIT"
+    },
+    {
+      "type": "GPL"
+    }
   ],
   "keywords": [],
   "engines": {
@@ -30,21 +30,23 @@
   },
   "scripts": {
     "test": "grunt test --force",
-    "install": "grunt install --force",
-    "update": "grunt update --force"
+    "update": "grunt update --force",
+    "postinstall": "grunt install --force",
+    "preinstall": "rm -rf node_modules",
+    "install": "./bin/install"
   },
   "dependencies": {
-      "jsdoc-toolkit": "~0.0.1",
-      "jquery-browser": "~1.7.0",
-      "modernizr": "~2.6.2",
-      "espresso-js": "~0.4.0",
-      "qunit": "~0.5.0"
+    "grunt-jasmine-task": "~0.2.0",
+    "grunt-frontend-boilerplate": "~0.1.0",
+    "grunt-frontend-boilerplate-compass": "~0.2.0",
+    "closure-compiler": "~0.1.1",
+    "jsdoc-toolkit": "~0.0.1",
+    "jquery-browser": "~1.7.0",
+    "modernizr": "~2.6.2",
+    "espresso-js": "~0.4.0",
+    "qunit": "~0.5.0"
   },
   "devDependencies": {
-      "grunt": "~0.3.11",
-      "grunt-jasmine-task": "~0.2.0",
-      "grunt-frontend-boilerplate": "~0.1.0",
-      "grunt-frontend-boilerplate-compass": "~0.2.0",
-      "closure-compiler": "~0.1.1"
+    "grunt": "~0.3.11"
   }
 }

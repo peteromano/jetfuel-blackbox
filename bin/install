@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+    path = require('path');
+
+var MODULES = 'node_modules';
+
+var cwd = process.cwd().split('/'),
+    projectName = cwd.pop(),
+    dirName = cwd.pop();
+
+if(dirName == MODULES) {
+
+}
