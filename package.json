@@ -1,9 +1,9 @@
 {
-  "name": "espresso",
+  "name": "espresso-framework",
   "version": "0.2.0",
   "title": "Espresso JavaScript framework",
   "description": "Espresso JavaScript framework",
-  "homepage": "https://github.com/peteromano/espresso/wiki",
+  "homepage": "https://github.com/peteromano/espresso-framework/wiki",
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/espresso"
+    "url": "https://github.com/peteromano/espresso-framework"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/espresso/issues"
+    "url": "https://github.com/peteromano/espresso-framework/issues"
   },
   "licenses": [
     {
