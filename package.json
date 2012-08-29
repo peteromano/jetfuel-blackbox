@@ -29,7 +29,6 @@
     "node": ">= 0.6.0"
   },
   "main": "./bin/espresso",
-  "bin": "./espresso",
   "scripts": {
     "test": "./bin/espresso test --force",
     "update": "./bin/espresso update --force",
