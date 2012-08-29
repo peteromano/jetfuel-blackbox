@@ -31,13 +31,6 @@ if(dirName == MODULES) {
                 fs.rmdirSync(modules);
                 puts('Removed empty modules directory: ' + modules);
             }
-            puts('Spawning Grunt install...');
-            require('child_pocess')
-                .spawn(target + '/' + GRUNT, ['install', '--force'])
-                .on('exit', function(code) {
-                    (code && util.error || puts)('Grunt install exited with: ' + code);
-                    if(code) process.exit(10);
-                });
         }
     } catch(e) {
         util.error(e);
@@ -46,3 +39,11 @@ if(dirName == MODULES) {
 } else {
     puts('Install directory is already the target directory.');
 }
+
+puts('Spawning Grunt install...');
+require('child_pocess')
+    .spawn(target + '/' + GRUNT, ['install', '--force'])
+    .on('exit', function(code) {
+        (code && util.error || puts)('Grunt install exited with: ' + code);
+        if(code) process.exit(10);
+    });
