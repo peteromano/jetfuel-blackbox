@@ -1,2 +1,15 @@
 #!/usr/bin/env node
-require('grunt').cli();
+
+(function(module) {
+
+    function grunt() {
+        require('grunt').cli();  
+    }
+
+    function Espresso() {
+        grunt();
+    }
+
+    module.exports = new Espresso;
+
+})(module);
