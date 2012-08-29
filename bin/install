@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var MODULES = 'node_modules',
-    FORCE = '--force';
+    FORCE = '--force',
+    ESPRESSO = './espresso';
 
 var fs = require('fs'),
     path = require('path'),
@@ -39,5 +40,11 @@ if(dirName == MODULES) {
     puts('Install directory is already the target directory.');
 }
 
-puts('Executing Grunt task: grunt install\n');
-require('grunt').cli({ force: true, tasks: ['install'] });
+puts('Executing: espresso install\n');
+
+require('child_process')
+    .spawn(ESPRESSO, ['install', '--force'], { customFds: [0, 0, 0] })
+    .on('exit', function(code) {
+        (code && util.error || puts)('Espresso install exited with: ' + code);
+        if(code) process.exit(code);
+    });
