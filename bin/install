@@ -40,10 +40,10 @@ if(dirName == MODULES) {
     puts('Install directory is already the target directory.');
 }
 
-puts(['Spawning Grunt install...\n']);
+puts('Spawning Grunt install...\n');
 require('child_process')
     .spawn(GRUNT, ['install', '--force'], { customFds: [0, 0, 0] })
     .on('exit', function(code) {
         (code && util.error || puts)('Grunt install exited with: ' + code);
-        if(code) process.exit(10);
+        if(code) process.exit(1);
     });

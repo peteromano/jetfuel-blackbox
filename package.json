@@ -1,9 +1,9 @@
 {
-  "name": "frontend-boilerplate",
-  "version": "0.1.20",
-  "title": "Front-End Boilerplate",
-  "description": "Boilerplate front-end project",
-  "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
+  "name": "espresso",
+  "version": "0.2.0",
+  "title": "Espresso JavaScript framework",
+  "description": "Espresso JavaScript framework",
+  "homepage": "https://github.com/peteromano/espresso/wiki",
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/frontend-boilerplate"
+    "url": "https://github.com/peteromano/espresso"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/frontend-boilerplate/issues"
+    "url": "https://github.com/peteromano/espresso/issues"
   },
   "licenses": [
     {
@@ -46,6 +46,5 @@
     "espresso-js": "~0.4.0",
     "qunit": "~0.5.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
