@@ -28,7 +28,6 @@
   "engines": {
     "node": ">= 0.6.0"
   },
-  "main": "./bin/espresso",
   "scripts": {
     "test": "./bin/espresso test --force",
     "update": "./bin/espresso update --force",
@@ -38,9 +37,9 @@
   "dependencies": {
     "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
-    "espresso-framework-grunt-plugins": "~0.1.0",
-    "espresso-framework-grunt-compass": "~0.2.0",
     "closure-compiler": "~0.1.1",
+    "espresso-framework-core": "~0.1.0",
+    "espresso-framework-grunt-compass": "~0.2.0",
     "jsdoc-toolkit": "~0.0.1",
     "jquery-browser": "~1.7.0",
     "modernizr": "~2.6.2",

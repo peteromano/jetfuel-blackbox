@@ -6,10 +6,10 @@ module.exports = function(grunt) {
       loadNpmTasks = grunt.loadNpmTasks,
       renameTask = grunt.renameTask;
 
-  // Third-party NPM Tasks
-  loadNpmTasks('grunt-jasmine-task');
-  loadNpmTasks('espresso-framework-grunt-plugins');
+  // Vendor NPM Tasks
+  loadNpmTasks('espresso-framework-core');
   loadNpmTasks('espresso-framework-grunt-compass');
+  loadNpmTasks('grunt-jasmine-task');
 
   // Private/Utility Tasks
   registerTask('clocks',      'clean:docs jsdoc');
