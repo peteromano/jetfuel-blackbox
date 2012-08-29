@@ -14,8 +14,7 @@ var fs = require('fs'),
     projectName = cwd.pop(),
     dirName = cwd.pop(),
     target,
-    modules,
-    grunt;
+    modules;
 
 if(dirName == MODULES) {
     try {
