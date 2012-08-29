@@ -58,6 +58,12 @@ module.exports = {
             '<%= meta.dirs.lib %>/jquery', '<%= meta.dirs.lib %>/jquery/**/*',
             '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*'
         ]
+      },
+      deploy: {
+          src: [
+              '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
+              '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*'
+          ]
       }
     },
 
