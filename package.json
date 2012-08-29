@@ -35,7 +35,6 @@
     "preinstall": "rm -rf node_modules"
   },
   "dependencies": {
-    "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
     "closure-compiler": "~0.1.1",
     "espresso-framework-core": "~0.1.0",
