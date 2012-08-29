@@ -19,7 +19,7 @@ module.exports = {
 
       // Directory config
       dirs: {
-        grunt: 'grunt',
+        grunt: 'build',
         qunit: 'test/qunit',
         jasmine: 'test/jasmine',
         src: 'src',
@@ -148,7 +148,7 @@ module.exports = {
     },
 
     // grunt concat (grunt concat:all)
-    concat: '<json:grunt/concat.json>',
+    concat: '<json:build/concat.json>',
 
     // grunt compass (grunt compass:all)
     compass: {

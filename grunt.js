@@ -2,10 +2,10 @@
 module.exports = function(grunt) {
   'use strict';
 
-  // Task Definitions - ./grunt/tasks.js
-  require('./grunt/tasks')(grunt);
+  // Task Definitions - ./build/tasks.js
+  require('./build/tasks')(grunt);
 
-  // Config - ./grunt/config.js
-  grunt.initConfig(require('./grunt/config'));
+  // Config - ./build/config.js
+  grunt.initConfig(require('./build/config'));
 
 };
