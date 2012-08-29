@@ -37,8 +37,8 @@
   "dependencies": {
     "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
-    "grunt-frontend-boilerplate": "~0.1.0",
-    "grunt-frontend-boilerplate-compass": "~0.2.0",
+    "espresso-framework-grunt-plugins": "~0.1.0",
+    "espresso-framework-grunt-compass": "~0.2.0",
     "closure-compiler": "~0.1.1",
     "jsdoc-toolkit": "~0.0.1",
     "jquery-browser": "~1.7.0",
