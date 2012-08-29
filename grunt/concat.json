@@ -1,0 +1,13 @@
+{
+
+    "net/peteromano/site/Application.all.js": {
+        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/Application.all.js",
+        "src": [
+            "<%= meta.dirs.lib %>/jquery-browser/lib/jquery.js",
+            "<%= meta.dirs.lib %>/espresso-js/espresso.js",
+            "<%= meta.dirs.dest %>/net/peteromano/site/Application.js"
+        ],
+        "separator": ";"
+    }
+
+}
