@@ -2,7 +2,7 @@
 
 var MODULES = 'node_modules',
     FORCE = '--force',
-    GRUNT = './node_modules/.bin/grunt';
+    GRUNT = './grunt.local';
 
 var fs = require('fs'),
     path = require('path'),
@@ -45,5 +45,5 @@ require('child_process')
     .spawn(GRUNT, ['install', '--force'], { customFds: [0, 0, 0] })
     .on('exit', function(code) {
         (code && util.error || puts)('Grunt install exited with: ' + code);
-        if(code) process.exit(1);
+        if(code) process.exit(code);
     });
