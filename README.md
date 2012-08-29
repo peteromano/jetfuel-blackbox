@@ -1,4 +1,4 @@
-frontend-boilerplate
+espresso-framework
 ===================
 
-Boilerplate front-end project
+Espresso JavaScript framework
