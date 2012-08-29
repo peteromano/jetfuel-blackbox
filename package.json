@@ -29,9 +29,9 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "./bin/espresso test --force",
-    "update": "./bin/espresso update --force",
-    "install": "./bin/install",
+    "test": "./espresso test --force",
+    "update": "./espresso update --force",
+    "install": "./espresso install --force",
     "preinstall": "rm -rf node_modules"
   },
   "dependencies": {
