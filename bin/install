@@ -19,7 +19,7 @@ var fs = require('fs'),
 
 if(dirName == MODULES) {
     try {
-        if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory exists: ' + target);
+        if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory already exists: ' + target);
         else {
             fs.renameSync(pwd, target);
             puts('Moved project "' + projectName + '" to target: ' + target);
