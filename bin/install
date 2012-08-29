@@ -17,32 +17,30 @@ var fs = require('fs'),
     modules,
     grunt;
 
-puts('');
-
 if(dirName == MODULES) {
     try {
-        if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory already exists: ' + target);
+        if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('\nTarget directory already exists: ' + target);
         else {
             fs.renameSync(pwd, target);
-            puts('Moved project "' + projectName + '" (' + pwd + ') to target: ' + target);
+            puts('\nMoved project "' + projectName + '" (' + pwd + ') to target: ' + target);
 
             process.cwd(target);
-            puts('Changed directory: ' + target);
+            puts('\nChanged directory: ' + target);
 
             if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) {
                 fs.rmdirSync(modules);
-                puts('Removed empty modules directory: ' + modules);
+                puts('\nRemoved empty modules directory: ' + modules);
             }
         }
     } catch(e) {
-        util.error(e + '\n');
+        util.error('\n' + e + '\n');
         process.exit(1);
     }
 } else {
-    puts('Install directory is already the target directory.');
+    puts('\nInstall directory is already the target directory.');
 }
 
-puts('Executing: espresso install\n');
+puts('\nExecuting: espresso install\n');
 
 require('child_process')
     .spawn(ESPRESSO, ['install', '--force'], { customFds: [0, 0, 0] })
