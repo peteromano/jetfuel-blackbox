@@ -17,12 +17,14 @@ var fs = require('fs'),
     modules,
     grunt;
 
+puts('');
+
 if(dirName == MODULES) {
     try {
         if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory already exists: ' + target);
         else {
             fs.renameSync(pwd, target);
-            puts('Moved project "' + projectName + '" to target: ' + target);
+            puts('Moved project "' + projectName + '" (' + pwd + ') to target: ' + target);
 
             process.cwd(target);
             puts('Changed directory: ' + target);
@@ -45,6 +47,6 @@ puts('Executing: espresso install\n');
 require('child_process')
     .spawn(ESPRESSO, ['install', '--force'], { customFds: [0, 0, 0] })
     .on('exit', function(code) {
-        (code && util.error || puts)('Espresso install exited with: ' + code);
+        (code && util.error || puts)('\nEspresso install exited with: ' + code + '\n');
         if(code) process.exit(code);
     });
