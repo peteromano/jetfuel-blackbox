@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var MODULES = 'node_modules',
-    FORCE = '--force';
+    FORCE = '--force',
+    GRUNT = 'node_modules/.bin/grunt';
 
 var fs = require('fs'),
     path = require('path'),
@@ -13,7 +14,8 @@ var fs = require('fs'),
     projectName = cwd.pop(),
     dirName = cwd.pop(),
     target,
-    modules;
+    modules,
+    grunt;
 
 if(dirName == MODULES) {
     try {
@@ -24,11 +26,18 @@ if(dirName == MODULES) {
             fs.renameSync(pwd, target);
             puts('Moved project "' + projectName + '" to target: ' + target);
             process.cwd(target);
-            puts('Changed working directory: ' + target);
+            puts('Changed directory: ' + target);
             if(!fs.readdirSync(modules = path.resolve(target + '/../' + MODULES)).length) {
                 fs.rmdirSync(modules);
                 puts('Removed empty modules directory: ' + modules);
             }
+            puts('Spawning Grunt install...');
+            require('child_pocess')
+                .spawn(target + '/' + GRUNT, ['install', '--force'])
+                .on('exit', function(code) {
+                    (code && util.error || puts)('Grunt install exited with: ' + code);
+                    if(code) process.exit(10);
+                });
         }
     } catch(e) {
         util.error(e);

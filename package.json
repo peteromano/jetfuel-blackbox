@@ -1,6 +1,6 @@
 {
   "name": "frontend-boilerplate",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "title": "Front-End Boilerplate",
   "description": "Boilerplate front-end project",
   "homepage": "https://github.com/peteromano/frontend-boilerplate/wiki",
@@ -31,9 +31,8 @@
   "scripts": {
     "test": "./node_modules/.bin/grunt test --force",
     "update": "./node_modules/.bin/grunt update --force",
-    "postinstall": "./node_modules/.bin/grunt install --force",
-    "preinstall": "rm -rf node_modules",
-    "install": "./bin/install"
+      "install": "./bin/install",
+    "preinstall": "rm -rf node_modules"
   },
   "dependencies": {
     "grunt": "~0.3.11",
