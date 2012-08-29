@@ -18,7 +18,7 @@ var fs = require('fs'),
     grunt;
 
 if(dirName == MODULES) {
-    try {
+    try {throw new Error;
         if(fs.existsSync(target = cwd.concat(projectName).join('/')) && args[0] != FORCE) puts('Target directory already exists: ' + target);
         else {
             fs.renameSync(pwd, target);
@@ -33,14 +33,14 @@ if(dirName == MODULES) {
             }
         }
     } catch(e) {
-        util.error(e);
+        util.error(e + '\n');
         process.exit(1);
     }
 } else {
     puts('Install directory is already the target directory.');
 }
 
-puts('Spawning Grunt install...');
+puts(['Spawning Grunt install...\n']);
 require('child_process')
     .spawn(GRUNT, ['install', '--force'], { customFds: [0, 0, 0] })
     .on('exit', function(code) {
