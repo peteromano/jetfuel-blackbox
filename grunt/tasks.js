@@ -8,8 +8,8 @@ module.exports = function(grunt) {
 
   // Third-party NPM Tasks
   loadNpmTasks('grunt-jasmine-task');
-  loadNpmTasks('grunt-frontend-boilerplate');
-  loadNpmTasks('grunt-frontend-boilerplate-compass');
+  loadNpmTasks('espresso-framework-grunt-plugins');
+  loadNpmTasks('espresso-framework-grunt-compass');
 
   // Private/Utility Tasks
   registerTask('clocks',      'clean:docs jsdoc');
