@@ -31,7 +31,7 @@
   "scripts": {
     "test": "./node_modules/.bin/grunt test --force",
     "update": "./node_modules/.bin/grunt update --force",
-      "install": "./bin/install",
+    "install": "./bin/install",
     "preinstall": "rm -rf node_modules"
   },
   "dependencies": {
