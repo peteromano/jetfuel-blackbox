@@ -39,11 +39,11 @@
     "grunt-jasmine-task": "~0.2.0",
     "closure-compiler": "~0.1.1",
     "espresso-framework-core": "~0.1.0",
+    "espresso-framework-js": "~0.4.0",
     "espresso-framework-grunt-compass": "~0.2.0",
     "jsdoc-toolkit": "~0.0.1",
     "jquery-browser": "~1.7.0",
     "modernizr": "~2.6.2",
-    "espresso-js": "~0.4.0",
     "qunit": "~0.5.0"
   },
   "devDependencies": {}
