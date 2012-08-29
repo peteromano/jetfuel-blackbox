@@ -42,7 +42,7 @@ if(dirName == MODULES) {
 
 puts('Spawning Grunt install...');
 require('child_process')
-    .spawn(GRUNT, ['install', '--force'])
+    .spawn(GRUNT, ['install', '--force'], { customFds: [0, 0, 0] })
     .on('exit', function(code) {
         (code && util.error || puts)('Grunt install exited with: ' + code);
         if(code) process.exit(10);
