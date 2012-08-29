@@ -1,2 +1,3 @@
-#!/bin/bash
-./bin/espresso
+#!/usr/bin/env node
+
+require('grunt').cli();

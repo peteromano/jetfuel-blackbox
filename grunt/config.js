@@ -25,7 +25,7 @@ module.exports = {
         src: 'src',
         lib: 'lib',
         dest: 'dist',
-        docs: 'docs',
+        docs: 'doc',
         modules: 'node_modules',
         deploy: 'webapp/js',
         sass: {
