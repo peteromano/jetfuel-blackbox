@@ -13,7 +13,6 @@ module.exports = function(grunt) {
 
   // Private/Utility Tasks
   registerTask('clocks',      'clean:docs jsdoc');
-  registerTask('copy:lib',    'copy:jquery copy:espresso copy:qunit');
   registerTask('clopy',       'clopylib clean:dist copy:dist');
   registerTask('clompass',    'clean:sass compass');
   registerTask('clopycat',    'clopy godcat concat');

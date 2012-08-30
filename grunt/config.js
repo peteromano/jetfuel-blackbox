@@ -54,9 +54,10 @@ module.exports = {
       // grunt clean:lib
       lib: {
         src: [
-            '<%= meta.dirs.lib %>/espresso-js', '<%= meta.dirs.lib %>/espresso-js/**/*',
-            '<%= meta.dirs.lib %>/jquery', '<%= meta.dirs.lib %>/jquery/**/*',
-            '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*'
+            '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*',
+            '<%= meta.dirs.lib %>/jquery-browser', '<%= meta.dirs.lib %>/jquery-browser/**/*',
+            '<%= meta.dirs.lib %>/espresso-framework-js', '<%= meta.dirs.lib %>/espresso-framework-js/**/*',
+            '<%= meta.dirs.lib %>/modernizr', '<%= meta.dirs.lib %>/modernizr/**/*'
         ]
       },
       deploy: {
@@ -74,20 +75,15 @@ module.exports = {
         src: ['<%= meta.dirs.src %>/**/*.js'],
         dest: '<%= meta.dirs.dest %>'
       },
-      // grunt copy:jquery
-      jquery: {
-        src: ['<%= meta.dirs.modules %>/jquery-browser/lib/*.js'],
-        dest: '<%= meta.dirs.lib %>'
-      },
-      // grunt copy:espresso
-      espresso: {
-        src: ['<%= meta.dirs.modules %>/espresso-js/*.js'],
-        dest: '<%= meta.dirs.lib %>'
-      },
-      // grunt copy:qunit
-      qunit: {
-        src: ['<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*'],
-        dest: '<%= meta.dirs.lib %>'
+      // grunt copy:lib
+      lib: {
+          src: [
+              '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
+              '<%= meta.dirs.modules %>/jquery-browser/lib/*.js',
+              '<%= meta.dirs.modules %>/espresso-framework-js/*.js',
+              '<%= meta.dirs.modules %>/modernizr/lib/modernizr.js'
+          ],
+          dest: '<%= meta.dirs.lib %>'
       }
     },
 
