@@ -2,6 +2,7 @@
 /.gitignore
 /.travis.yml
 /.sass-cache
+/.espresso
 /dist
 /sass/dist
 /doc

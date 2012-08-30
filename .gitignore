@@ -1,6 +1,7 @@
 # Project files #
 ###################
 .sass-cache
+.espresso
 doc
 dist
 node_modules
