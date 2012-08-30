@@ -1,39 +1,17 @@
 {
   "name": "espresso-framework",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "title": "Espresso JavaScript framework",
   "description": "Espresso JavaScript framework",
   "homepage": "https://github.com/peteromano/espresso-framework/wiki",
+  "keywords": [],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
-  "espresso": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/peteromano/espresso-framework"
-  },
-  "bugs": {
-    "url": "https://github.com/peteromano/espresso-framework/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    },
-    {
-      "type": "GPL"
-    }
-  ],
-  "keywords": [],
-  "engines": {
-    "node": ">= 0.6.0"
-  },
-  "scripts": {
-    "test": "./espresso test --force",
-    "update": "./espresso update --force",
-    "install": "./espresso install --force",
-    "preinstall": "rm -rf node_modules"
+  "espresso": {
+
   },
   "dependencies": {
     "prompt": "~0.2.7",
@@ -48,5 +26,26 @@
     "modernizr": "~2.6.2",
     "qunit": "~0.5.0"
   },
-  "devDependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peteromano/espresso-framework"
+  },
+  "bugs": {
+    "url": "https://github.com/peteromano/espresso-framework/issues"
+  },
+  "licenses": [{
+    "type": "MIT"
+  }, {
+    "type": "GPL"
+  }],
+  "devDependencies": {},
+  "scripts": {
+    "test": "./espresso test --force",
+    "update": "./espresso update --force",
+    "install": "./espresso install --force",
+    "preinstall": "rm -rf node_modules"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  }
 }
