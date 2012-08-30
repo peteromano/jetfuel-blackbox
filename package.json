@@ -1,6 +1,6 @@
 {
   "name": "espresso-framework",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "title": "Espresso JavaScript framework",
   "description": "Espresso JavaScript framework",
   "homepage": "https://github.com/peteromano/espresso-framework/wiki",
@@ -36,6 +36,7 @@
     "preinstall": "rm -rf node_modules"
   },
   "dependencies": {
+    "prompt": "~0.2.7",
     "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
     "closure-compiler": "~0.1.1",
