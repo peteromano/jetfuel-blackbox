@@ -9,6 +9,7 @@
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
+  "espresso": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/peteromano/espresso-framework"
