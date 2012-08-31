@@ -106,7 +106,7 @@ module.exports = {
         //banner: '<banner:meta.banner>',
         src: ['<%= meta.dirs.dest %>/**/*.js'],
         dest: '<%= meta.dirs.dest %>',
-        extension: '.compressed.js',
+        extension: '.c.js',
         replace: '.js',
         verbose: true,
 		helper: 'minify.uglify',
