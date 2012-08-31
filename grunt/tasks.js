@@ -3,14 +3,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var registerTask = grunt.registerTask,
-      loadNpmTasks = grunt.loadNpmTasks,
-      loadEspressoTasks = grunt.loadEspressoTasks,
       renameTask = grunt.renameTask;
-
-  // Vendor NPM Tasks
-  loadEspressoTasks();
-  loadNpmTasks('espresso-framework-core');
-  loadNpmTasks('grunt-jasmine-task');
 
   // Private/Utility Tasks
   registerTask('clocks',      'clean:docs jsdoc');
