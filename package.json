@@ -1,6 +1,6 @@
 {
   "name": "espresso-framework",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "title": "Espresso JavaScript framework",
   "description": "Espresso JavaScript framework",
   "homepage": "https://github.com/peteromano/espresso-framework/wiki",
@@ -29,19 +29,14 @@
   "bugs": {
     "url": "https://github.com/peteromano/espresso-framework/issues"
   },
-  "licenses": [{
-    "type": "MIT"
-  }, {
-    "type": "GPL"
-  }],
   "scripts": {
     "test": "./espresso test --force",
     "update": "./espresso update --force",
     "install": "./espresso install --force",
     "preinstall": "rm -rf node_modules"
   },
+  "devDependencies": {},
   "engines": {
     "node": ">= 0.6.0"
-  },
-  "devDependencies": {}
+  }
 }
