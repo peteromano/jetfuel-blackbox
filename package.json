@@ -30,8 +30,7 @@
   "scripts": {
     "test": "./espresso test --force",
     "update": "./espresso update --force",
-    "install": "./espresso install --force",
-    "preinstall": "rm -rf node_modules"
+    "install": "./espresso install --force"
   },
   "devDependencies": {},
   "engines": {
