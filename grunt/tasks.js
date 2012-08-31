@@ -8,7 +8,6 @@ module.exports = function(grunt) {
 
   // Vendor NPM Tasks
   loadNpmTasks('espresso-framework-core');
-  loadNpmTasks('espresso-framework-grunt-compass');
   loadNpmTasks('grunt-jasmine-task');
 
   // Private/Utility Tasks
