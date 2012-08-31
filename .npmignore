@@ -3,6 +3,7 @@
 /.travis.yml
 /.sass-cache
 /.espresso
+/.npmignore
 /dist
 /sass/dist
 /doc
