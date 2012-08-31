@@ -4,9 +4,11 @@ module.exports = function(grunt) {
 
   var registerTask = grunt.registerTask,
       loadNpmTasks = grunt.loadNpmTasks,
+      loadEspressoTasks = grunt.loadEspressoTasks,
       renameTask = grunt.renameTask;
 
   // Vendor NPM Tasks
+  loadEspressoTasks();
   loadNpmTasks('espresso-framework-core');
   loadNpmTasks('grunt-jasmine-task');
 

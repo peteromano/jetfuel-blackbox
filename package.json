@@ -1,6 +1,6 @@
 {
   "name": "espresso-framework",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "title": "Espresso JavaScript framework",
   "description": "Espresso JavaScript framework",
   "homepage": "https://github.com/peteromano/espresso-framework/wiki",
@@ -10,12 +10,9 @@
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
-  "espresso": {
-
-  },
+  "espresso": {},
   "dependencies": {
     "prompt": "~0.2.7",
-    "grunt": "~0.3.11",
     "grunt-jasmine-task": "~0.2.0",
     "espresso-framework-core": "~0.1.0",
     "espresso-framework-js": "~0.4.0",
@@ -37,7 +34,6 @@
   }, {
     "type": "GPL"
   }],
-  "devDependencies": {},
   "scripts": {
     "test": "./espresso test --force",
     "update": "./espresso update --force",
@@ -46,5 +42,6 @@
   },
   "engines": {
     "node": ">= 0.6.0"
-  }
+  },
+  "devDependencies": {}
 }
