@@ -1,7 +1,7 @@
 {
 
-    "net/peteromano/site/Application.deps.js": {
-        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/Application.deps.js",
+    "net/peteromano/site/espresso.js": {
+        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/espresso.js",
         "src": [
             "<%= meta.dirs.lib %>/jquery-browser/lib/jquery.js",
             "<%= meta.dirs.lib %>/espresso-framework-js/espresso.js",
