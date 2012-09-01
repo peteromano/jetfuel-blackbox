@@ -4,7 +4,7 @@
   "title": "Espresso Project",
   "description": "A boilerplate Espresso project.",
   "homepage": "https://github.com/peteromano/espresso-project/wiki",
-  "keywords": [],
+  "keywords": ["espresso"],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
