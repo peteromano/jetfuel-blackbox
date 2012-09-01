@@ -1,9 +1,9 @@
 {
-  "name": "espresso-framework",
-  "version": "0.2.18",
-  "title": "Espresso JavaScript framework",
-  "description": "Espresso JavaScript framework",
-  "homepage": "https://github.com/peteromano/espresso-framework/wiki",
+  "name": "espresso-project",
+  "version": "0.2.19",
+  "title": "Espresso Project",
+  "description": "An Espresso project.",
+  "homepage": "https://github.com/peteromano/espresso-project/wiki",
   "keywords": [],
   "author": {
     "name": "Pete Romano",
@@ -12,18 +12,18 @@
   },
   "espresso": {},
   "dependencies": {
-    "espresso-framework-core": "~0.1.0",
-    "espresso-framework-js": "~0.5.0",
+    "espresso-framework": "~0.1.0",
+    "espresso-js": "~0.5.0",
     "jquery-browser": "~1.7.0",
     "modernizr": "~2.6.2",
     "qunit": "~0.5.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/espresso-framework"
+    "url": "https://github.com/peteromano/espresso-project"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/espresso-framework/issues"
+    "url": "https://github.com/peteromano/espresso-project/issues"
   },
   "scripts": {
     "test": "./espresso test --force",

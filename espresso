@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('espresso-framework-core').cli();
+require('espresso-framework').cli();
