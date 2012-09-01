@@ -166,10 +166,10 @@ module.exports = {
       dist: {
         src: '<%= meta.dirs.src %>',
         dest: '<%= meta.dirs.docs %>',
-        exclude: 'jquery',
-        recurse: 100,
-        all: true,
-        private: true
+        E: 'jquery',
+        r: 100,
+        a: true,
+        p: true
       }
     },
 
