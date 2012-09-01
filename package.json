@@ -29,7 +29,7 @@
     "test": "./espresso test --force",
     "update": "./espresso update --force",
     "install": "./espresso install --force",
-    "postinstall": "./espresso init"
+    "postinstall": "cd espresso-project && ./espresso init"
   },
   "devDependencies": {},
   "engines": {
