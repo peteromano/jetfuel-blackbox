@@ -6,10 +6,13 @@
 /.npmignore
 /dist
 /sass/dist
+/sass/.gitignore
 /doc
 /webapp/js
 /webapp/css
+/webapp/.gitignore
 /lib/espresso-framework-js
 /lib/qunit
 /lib/jquery-browser
 /lib/modernizr
+/lib/.gitignore
