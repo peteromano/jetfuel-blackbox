@@ -5,6 +5,7 @@
 doc
 dist
 node_modules
+npm-debug.log
 
 # IDE generated files #
 ###################
