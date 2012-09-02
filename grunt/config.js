@@ -19,6 +19,7 @@ module.exports = {
 
       // Directory config
       dirs: {
+        modules: 'node_modules',
         qunit: 'test/qunit',
         jasmine: 'test/jasmine',
         src: 'src',
@@ -54,7 +55,7 @@ module.exports = {
         src: [
             '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*',
             '<%= meta.dirs.lib %>/jquery-browser', '<%= meta.dirs.lib %>/jquery-browser/**/*',
-            '<%= meta.dirs.lib %>/espresso-framework-js', '<%= meta.dirs.lib %>/espresso-framework-js/**/*',
+            '<%= meta.dirs.lib %>/espresso-js', '<%= meta.dirs.lib %>/espresso-js/**/*',
             '<%= meta.dirs.lib %>/modernizr', '<%= meta.dirs.lib %>/modernizr/**/*'
         ]
       },
@@ -78,7 +79,7 @@ module.exports = {
           src: [
               '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
               '<%= meta.dirs.modules %>/jquery-browser/lib/*.js',
-              '<%= meta.dirs.modules %>/espresso-framework-js/*.js',
+              '<%= meta.dirs.modules %>/espresso-js/*.js',
               '<%= meta.dirs.modules %>/modernizr/lib/modernizr.js'
           ],
           dest: '<%= meta.dirs.lib %>'
