@@ -19,14 +19,12 @@ module.exports = {
 
       // Directory config
       dirs: {
-        grunt: 'grunt',
         qunit: 'test/qunit',
         jasmine: 'test/jasmine',
         src: 'src',
         lib: 'lib',
         dest: 'dist',
         docs: 'doc',
-        modules: 'node_modules',
         deploy: 'webapp/js',
         sass: {
           src: 'sass/src',
