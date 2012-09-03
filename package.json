@@ -1,6 +1,6 @@
 {
   "name": "espresso-project",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "title": "Espresso Project",
   "description": "A boilerplate Espresso project.",
   "homepage": "https://github.com/peteromano/espresso-project/wiki",
@@ -26,7 +26,7 @@
     "url": "https://github.com/peteromano/espresso-project/issues"
   },
   "scripts": {
-    "test": "./espresso test --force",
+    "test": "./espresso test",
     "update": "./espresso update --force",
     "install": "./espresso install --force && ./espresso init"
   },
