@@ -5,12 +5,12 @@ module.exports = function(grunt) {
   var registerTask = grunt.registerTask,
       renameTask = grunt.renameTask;
 
-  // Private/Utility Tasks
+  // Utility Tasks ("private")
   registerTask('clocks',      'clean:docs jsdoc');
-  registerTask('clopy',       'clopylib clean:dist copy:dist');
+  registerTask('clopy',       'clopyvendor clean:dist copy:dist');
   registerTask('clompass',    'clean:sass compass');
   registerTask('clopycat',    'clopy godcat concat');
-  registerTask('clopylib',    'clean:lib copy:lib');
+  registerTask('clopyvendor',  'clean:vendor copy:vendor');
   registerTask('build',       'clopycat godmin clompass clocks');
 
   // grunt all [--force] & variants - Command line interface (CLI)
@@ -35,9 +35,9 @@ module.exports = function(grunt) {
   registerTask('default',     'all');
 
   // npm up, npm update, npm install, npm test - Node Package Manager (package.json) Scripts
-  registerTask('test',        'clopylib jasmine');
-  registerTask('install',     'clean:lib copy:lib build deploy');
-  registerTask('update',      'clean:lib copy:lib build');
+  registerTask('test',        'clopyvendor jasmine');
+  registerTask('install',     'clopyvendor build deploy');
+  registerTask('update',      'clopyvendor build');
 
   // ${task}:js = ${task}:dist - Target Aliases
   registerTask('copy:js',     'copy:dist');

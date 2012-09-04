@@ -50,13 +50,12 @@ module.exports = {
       sass: {
           src: ['<%= meta.dirs.sass.dest %>', '<%= meta.dirs.sass.dest %>/**/*']
       },
-      // grunt clean:lib
-      lib: {
+      // grunt clean:vendor
+      vendor: {
         src: [
             '<%= meta.dirs.vendor %>/espresso.vendor.*', '<%= meta.dirs.vendor %>/espresso.vendor.*/**/*',
             '<%= meta.dirs.vendor %>/qunit', '<%= meta.dirs.vendor %>/qunit/**/*',
-            '<%= meta.dirs.vendor %>/jquery-browser', '<%= meta.dirs.vendor %>/jquery-browser/**/*',
-            '<%= meta.dirs.vendor %>/modernizr', '<%= meta.dirs.vendor %>/modernizr/**/*'
+            '<%= meta.dirs.vendor %>/jquery-browser', '<%= meta.dirs.vendor %>/jquery-browser/**/*'
         ]
       },
       deploy: {
@@ -74,14 +73,13 @@ module.exports = {
         src: ['<%= meta.dirs.src %>/**/*.js'],
         dest: '<%= meta.dirs.dest %>'
       },
-      // grunt copy:lib
-      lib: {
+      // grunt copy:vendor
+      vendor: {
           src: [
               '<%= meta.dirs.modules %>/espresso.vendor.*/*.js',
               '<%= meta.dirs.modules %>/espresso.vendor.*/*.sass',
               '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
-              '<%= meta.dirs.modules %>/jquery-browser/lib/*.js',
-              '<%= meta.dirs.modules %>/modernizr/lib/modernizr.js'
+              '<%= meta.dirs.modules %>/jquery-browser/lib/*.js'
           ],
           dest: '<%= meta.dirs.vendor %>'
       }
