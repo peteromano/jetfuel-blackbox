@@ -1,6 +1,6 @@
 # Project files #
 ###################
-espresso-framework-js
+espresso.vendor.*
 qunit
 jquery-browser
 modernizr

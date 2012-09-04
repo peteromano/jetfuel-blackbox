@@ -23,7 +23,7 @@ module.exports = {
         qunit: 'test/qunit',
         jasmine: 'test/jasmine',
         src: 'src',
-        lib: 'lib',
+        vendor: 'vendor',
         dest: 'dist',
         docs: 'doc',
         deploy: 'webapp/js',
@@ -53,10 +53,10 @@ module.exports = {
       // grunt clean:lib
       lib: {
         src: [
-            '<%= meta.dirs.lib %>/qunit', '<%= meta.dirs.lib %>/qunit/**/*',
-            '<%= meta.dirs.lib %>/jquery-browser', '<%= meta.dirs.lib %>/jquery-browser/**/*',
-            '<%= meta.dirs.lib %>/espresso-js', '<%= meta.dirs.lib %>/espresso-js/**/*',
-            '<%= meta.dirs.lib %>/modernizr', '<%= meta.dirs.lib %>/modernizr/**/*'
+            '<%= meta.dirs.vendor %>/espresso.vendor.*', '<%= meta.dirs.vendor %>/espresso.vendor.*/**/*',
+            '<%= meta.dirs.vendor %>/qunit', '<%= meta.dirs.vendor %>/qunit/**/*',
+            '<%= meta.dirs.vendor %>/jquery-browser', '<%= meta.dirs.vendor %>/jquery-browser/**/*',
+            '<%= meta.dirs.vendor %>/modernizr', '<%= meta.dirs.vendor %>/modernizr/**/*'
         ]
       },
       deploy: {
@@ -77,12 +77,13 @@ module.exports = {
       // grunt copy:lib
       lib: {
           src: [
+              '<%= meta.dirs.modules %>/espresso.vendor.*/*.js',
+              '<%= meta.dirs.modules %>/espresso.vendor.*/*.sass',
               '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
               '<%= meta.dirs.modules %>/jquery-browser/lib/*.js',
-              '<%= meta.dirs.modules %>/espresso-js/*.js',
               '<%= meta.dirs.modules %>/modernizr/lib/modernizr.js'
           ],
-          dest: '<%= meta.dirs.lib %>'
+          dest: '<%= meta.dirs.vendor %>'
       }
     },
 
@@ -126,7 +127,7 @@ module.exports = {
     deploy: {
         // grunt deploy:dist
         dist: {
-            src: ['<%= meta.dirs.dest %>/*', '<%= meta.dirs.lib %>/*'],
+            src: ['<%= meta.dirs.dest %>/*', '<%= meta.dirs.vendor %>/*'],
             dest: '<%= meta.dirs.deploy %>',
             rsync: {
                 args: '-rlpgoDc --exclude=.svn'

@@ -11,8 +11,8 @@
 /webapp/js
 /webapp/css
 /webapp/.gitignore
-/lib/espresso-framework-js
-/lib/qunit
-/lib/jquery-browser
-/lib/modernizr
-/lib/.gitignore
+/vendor/espresso.vendor.*
+/vendor/qunit
+/vendor/jquery-browser
+/vendor/modernizr
+/vendor/.gitignore
