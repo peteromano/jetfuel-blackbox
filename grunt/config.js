@@ -33,7 +33,12 @@ module.exports = {
           resources: 'sass/resources',
           deploy: 'webapp/css'
         }
+      },
+
+      yml: {
+        espresso: '.espresso.json'
       }
+
     },
 
     // grunt clean (grunt clean:all)
@@ -76,8 +81,7 @@ module.exports = {
       // grunt copy:vendor
       vendor: {
           src: [
-              '<%= meta.dirs.modules %>/espresso.vendor.*/*.js',
-              '<%= meta.dirs.modules %>/espresso.vendor.*/*.sass',
+              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.yml.espresso %>',
               '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
               '<%= meta.dirs.modules %>/jquery-browser/lib/*.js'
           ],

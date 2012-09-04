@@ -1,7 +1,7 @@
 {
   "name": "espresso.project",
-  "version": "0.3.6",
-  "title": "Espresso Project",
+  "version": "0.3.9",
+  "title": "espresso.project",
   "description": "A boilerplate Espresso project.",
   "homepage": "https://github.com/peteromano/espresso.project/wiki",
   "keywords": ["espresso"],
@@ -12,9 +12,9 @@
   },
   "espresso": {},
   "dependencies": {
-    "espresso.framework.core": "~0.1.25",
+    "espresso.framework.core": "~0.1.26",
     "espresso.vendor.js.espresso": "~0.5.6",
-    "espresso.vendor.js.modernizr": "~2.6.2",
+    "espresso.vendor.js.modernizr": "~2.6.3",
     "jquery-browser": "~1.7.0",
     "qunit": "~0.5.0"
   },
