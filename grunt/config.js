@@ -35,8 +35,8 @@ module.exports = {
         }
       },
 
-      yml: {
-        espresso: '.espresso.json'
+      vendor: {
+        config: '.espresso.json'
       }
 
     },
@@ -81,7 +81,7 @@ module.exports = {
       // grunt copy:vendor
       vendor: {
           src: [
-              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.yml.espresso %>',
+              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>',
               '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
               '<%= meta.dirs.modules %>/jquery-browser/lib/*.js'
           ],
