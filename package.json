@@ -1,6 +1,6 @@
 {
   "name": "espresso-js",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "title": "espresso-js",
   "description": "A boilerplate Espresso project.",
   "homepage": "https://github.com/peteromano/espresso-js/wiki",
@@ -17,7 +17,8 @@
     "espresso.vendor.espresso": "~0.5.6-1",
     "espresso.vendor.modernizr": "~2.6.3pre-1",
     "espresso.vendor.jasmine": "~1.0.26-1",
-    "espresso.vendor.qunit": "~1.11.0pre-1"
+    "espresso.vendor.qunit": "~1.11.0pre-1",
+    "espresso.vendor.documentcloud.backbone": "~0.9.2-1"
   },
   "repository": {
     "type": "git",
