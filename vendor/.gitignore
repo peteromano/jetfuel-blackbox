@@ -1,6 +1,0 @@
-# Project files #
-###################
-espresso.vendor.*
-qunit
-jquery-browser
-modernizr

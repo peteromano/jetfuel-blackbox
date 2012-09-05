@@ -11,8 +11,4 @@
 /webapp/js
 /webapp/css
 /webapp/.gitignore
-/vendor/espresso.vendor.*
-/vendor/qunit
-/vendor/jquery-browser
-/vendor/modernizr
-/vendor/.gitignore
+/vendor
