@@ -1,6 +1,6 @@
 {
   "name": "espresso.project",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "title": "espresso.project",
   "description": "A boilerplate Espresso project.",
   "homepage": "https://github.com/peteromano/espresso.project/wiki",
@@ -13,11 +13,11 @@
   "espresso": {},
   "dependencies": {
     "espresso.framework.core": "~0.1.26",
-    "espresso.vendor.js.espresso": "~0.5.6",
-    "espresso.vendor.js.modernizr": "~2.6.3",
-    "espresso.vendor.js.jasmine": "~1.0.26",
     "espresso.vendor.jquery": "~1.7.2-3",
-    "qunit": "~0.5.0"
+    "espresso.vendor.js.espresso": "~0.5.6",
+    "espresso.vendor.js.modernizr": "~2.6.3pre",
+    "espresso.vendor.js.jasmine": "~1.0.26",
+    "espresso.vendor.qunit": "~1.11.0pre"
   },
   "repository": {
     "type": "git",

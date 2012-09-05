@@ -77,8 +77,7 @@ module.exports = {
       // grunt copy:vendor
       vendor: {
           src: [
-              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>',
-              '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*'
+              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'
           ],
           dest: '<%= meta.dirs.vendor %>'
       }
