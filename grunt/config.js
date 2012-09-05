@@ -57,11 +57,7 @@ module.exports = {
       },
       // grunt clean:vendor
       vendor: {
-        src: [
-            '<%= meta.dirs.vendor %>/espresso.vendor.*', '<%= meta.dirs.vendor %>/espresso.vendor.*/**/*',
-            '<%= meta.dirs.vendor %>/qunit', '<%= meta.dirs.vendor %>/qunit/**/*',
-            '<%= meta.dirs.vendor %>/jquery-browser', '<%= meta.dirs.vendor %>/jquery-browser/**/*'
-        ]
+        src: ['<%= meta.dirs.vendor %>', '<%= meta.dirs.vendor %>/**/*']
       },
       deploy: {
           src: [
