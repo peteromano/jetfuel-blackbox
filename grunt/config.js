@@ -24,12 +24,12 @@ module.exports = {
         jasmine: 'test/jasmine',
         src: 'src',
         vendor: 'vendor',
-        dest: 'dist',
+        dest: 'lib',
         docs: 'doc',
         deploy: 'public/js',
         sass: {
           src: 'sass/src',
-          dest: 'sass/dist',
+          dest: 'sass/lib',
           resources: 'sass/resources',
           deploy: 'public/css'
         }

@@ -4,8 +4,11 @@
 /.sass-cache
 /.espresso
 /.npmignore
+/npm-debug.log
 /dist
+/lib
 /sass/dist
+/sass/lib
 /sass/.gitignore
 /doc
 /vendor

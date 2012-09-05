@@ -4,6 +4,7 @@
 .espresso
 doc
 dist
+lib
 node_modules
 npm-debug.log
 vendor

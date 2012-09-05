@@ -10,8 +10,9 @@ module.exports = function(grunt) {
   registerTask('clopy',       'clopyvendor clean:dist copy:dist');
   registerTask('clompass',    'clean:sass compass');
   registerTask('clopycat',    'clopy godcat concat');
-  registerTask('clopyvendor',  'clean:vendor copy:vendor');
+  registerTask('clopyvendor', 'clean:vendor copy:vendor');
   registerTask('build',       'clopycat godmin clompass clocks');
+  registerTask('uglify',      'min');
 
   // grunt all [--force] & variants - Command line interface (CLI)
   registerTask('all',         'test build deploy');
