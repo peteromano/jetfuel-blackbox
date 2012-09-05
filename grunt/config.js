@@ -26,12 +26,12 @@ module.exports = {
         vendor: 'vendor',
         dest: 'dist',
         docs: 'doc',
-        deploy: 'webapp/js',
+        deploy: 'public/js',
         sass: {
           src: 'sass/src',
           dest: 'sass/dist',
           resources: 'sass/resources',
-          deploy: 'webapp/css'
+          deploy: 'public/css'
         }
       },
 
@@ -76,9 +76,7 @@ module.exports = {
       },
       // grunt copy:vendor
       vendor: {
-          src: [
-              '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'
-          ],
+          src: ['<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'],
           dest: '<%= meta.dirs.vendor %>'
       }
     },
