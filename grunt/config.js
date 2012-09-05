@@ -78,8 +78,7 @@ module.exports = {
       vendor: {
           src: [
               '<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>',
-              '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*',
-              '<%= meta.dirs.modules %>/jquery-browser/lib/*.js'
+              '<%= meta.dirs.modules %>/qunit/support/qunit/qunit/*'
           ],
           dest: '<%= meta.dirs.vendor %>'
       }
