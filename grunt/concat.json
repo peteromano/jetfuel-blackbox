@@ -3,9 +3,9 @@
     "net/peteromano/site/espresso.js": {
         "dest": "<%= meta.dirs.dest %>/net/peteromano/site/espresso.js",
         "src": [
-            "<%= meta.dirs.vendor %>/espresso.vendor.js.modernizr/modernizr.js",
+            "<%= meta.dirs.vendor %>/espresso.vendor.modernizr/modernizr.js",
             "<%= meta.dirs.vendor %>/espresso.vendor.jquery/jquery.js",
-            "<%= meta.dirs.vendor %>/espresso.vendor.js.espresso/espresso.js",
+            "<%= meta.dirs.vendor %>/espresso.vendor.espresso/espresso.js",
             "<%= meta.dirs.dest %>/net/peteromano/site/Application.js"
         ],
         "separator": ";"
