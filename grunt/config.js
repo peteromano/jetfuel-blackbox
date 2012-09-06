@@ -63,7 +63,7 @@ module.exports = {
       },
       // grunt clean:vendor
       vendor: {
-        src: ['<%= meta.dirs.vendor %>', '<%= meta.dirs.vendor %>/**/*']
+        src: ['<%= meta.dirs.vendor.dest %>', '<%= meta.dirs.vendor.dest %>/**/*']
       },
       // grunt clean:deploy
       deploy: {
