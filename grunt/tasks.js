@@ -9,9 +9,9 @@ module.exports = function(grunt) {
   registerTask('clocks',      'clean:docs jsdoc');
   registerTask('clopy',       'clopyvendor clean:dist copy:dist');
   registerTask('clompass',    'clean:sass compass');
-  registerTask('clopycat',    'clopy godcat concat');
+  registerTask('clopycat',    'clopy autocat concat');
   registerTask('clopyvendor', 'clean:vendor copy:vendor');
-  registerTask('build',       'clopycat godmin clompass clocks');
+  registerTask('build',       'clopycat automin clompass clocks');
   registerTask('uglify',      'min');
 
   // grunt all [--force] & variants - Command line interface (CLI)
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
   // grunt dev [--force] & variants - Command line interface (CLI)
   registerTask('dev',         'clopycat clompass deploy');
-  registerTask('dev:dist',    'clopycat deploy:dist');
+  registerTask('dev:dist',    'clopycat deploy:js');
   registerTask('dev:sass',    'clompass deploy:sass');
 
   // grunt docs [--force] - Command line interface (CLI)
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
   // ${task}:js = ${task}:dist - Target Aliases
   registerTask('copy:js',     'copy:dist');
   registerTask('clean:js',    'clean:dist');
-  registerTask('deploy:js',   'deploy:dist');
+  registerTask('deploy:js',   'deploy:dist deploy:vendor');
   registerTask('dev:js',      'dev:dist');
   registerTask('watch:js',    'watch:dist');
 

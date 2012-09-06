@@ -12,6 +12,7 @@
 /sass/.gitignore
 /doc
 /vendor
-/public/js
+/public/lib
+/public/vendor
 /public/css
 /public/.gitignore

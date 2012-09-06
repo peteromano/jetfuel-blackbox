@@ -4,6 +4,9 @@ module.exports = {
     // Use package.json project config
     pkg: '<json:package.json>',
 
+    // grunt concat (grunt concat:all)
+    concat: '<json:grunt/concat.json>',
+
     // Meta config
     meta: {
 
@@ -23,10 +26,13 @@ module.exports = {
         qunit: 'test/qunit',
         jasmine: 'test/jasmine',
         src: 'src',
-        vendor: 'vendor',
         dest: 'lib',
         docs: 'doc',
-        deploy: 'public/js',
+        deploy: 'public/lib',
+        vendor: {
+            dest: 'vendor',
+            deploy: 'public/vendor'
+        },
         sass: {
           src: 'sass/src',
           dest: 'sass/lib',
@@ -59,9 +65,11 @@ module.exports = {
       vendor: {
         src: ['<%= meta.dirs.vendor %>', '<%= meta.dirs.vendor %>/**/*']
       },
+      // grunt clean:deploy
       deploy: {
           src: [
               '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
+              '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
               '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*'
           ]
       }
@@ -77,13 +85,13 @@ module.exports = {
       // grunt copy:vendor
       vendor: {
           src: ['<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'],
-          dest: '<%= meta.dirs.vendor %>'
+          dest: '<%= meta.dirs.vendor.dest %>'
       }
     },
 
-    // grunt godcat (grunt godcat:all)
-    godcat: {
-      // grunt godcat:dist
+    // grunt autocat (grunt autocat:all)
+    autocat: {
+      // grunt autocat:dist
       dist: {
         src: ['<%= meta.dirs.dest %>/**'],
         dest: '<%= meta.dirs.dest %>',
@@ -93,9 +101,9 @@ module.exports = {
       }
     },
 
-    // grunt godmin (grunt godmin:all)
-    godmin: {
-      // grunt godmin:dist
+    // grunt automin (grunt automin:all)
+    automin: {
+      // grunt automin:dist
       dist: {
         //banner: '<banner:meta.banner>',
         src: ['<%= meta.dirs.dest %>/**/*.js'],
@@ -121,7 +129,7 @@ module.exports = {
     deploy: {
         // grunt deploy:dist
         dist: {
-            src: ['<%= meta.dirs.dest %>/*', '<%= meta.dirs.vendor %>/*'],
+            src: ['<%= meta.dirs.dest %>/*'],
             dest: '<%= meta.dirs.deploy %>',
             rsync: {
                 args: '-rlpgoDc --exclude=.svn'
@@ -134,11 +142,16 @@ module.exports = {
             rsync: {
                 args: '-rlpgoDc --exclude=.svn'
             }
+        },
+        // grunt deploy:vendor
+        vendor: {
+            src: ['<%= meta.dirs.vendor.dest %>/*'],
+            dest: '<%= meta.dirs.vendor.deploy %>',
+            rsync: {
+                args: '-rlpgoDc --exclude=.svn'
+            }
         }
     },
-
-    // grunt concat (grunt concat:all)
-    concat: '<json:grunt/concat.json>',
 
     // grunt compass (grunt compass:all)
     compass: {
@@ -160,7 +173,6 @@ module.exports = {
       dist: {
         src: '<%= meta.dirs.src %>',
         dest: '<%= meta.dirs.docs %>',
-        E: 'jquery',
         r: 100,
         a: true,
         p: true
