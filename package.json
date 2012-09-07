@@ -1,8 +1,8 @@
 {
   "name": "espresso-js",
-  "version": "0.3.31",
+  "version": "0.3.33",
   "title": "espresso-js",
-  "description": "A boilerplate Espresso project.",
+  "description": "Creates an Espresso project.",
   "homepage": "https://github.com/peteromano/espresso-js/wiki",
   "keywords": ["espresso", "espresso-js"],
   "author": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "espresso.framework.core": "~0.1.29",
     "espresso.vendor.jquery": "~1.7.2-3",
-    "espresso.vendor.espresso": "~0.5.6-1",
+    "espresso.vendor.espresso": "~0.6.0-1",
     "espresso.vendor.modernizr": "~2.6.3pre-1",
     "espresso.vendor.jasmine": "~1.0.26-1",
     "espresso.vendor.qunit": "~1.11.0pre-1",

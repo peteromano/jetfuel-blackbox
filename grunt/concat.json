@@ -1,14 +1,14 @@
 {
 
-    "net/peteromano/site/main.js": {
-        "dest": "<%= meta.dirs.dest %>/net/peteromano/site/main.js",
+    "site/main.js": {
+        "dest": "<%= meta.dirs.dest %>/site/main.js",
         "src": [
             "<%= meta.dirs.vendor.dest %>/espresso.vendor.modernizr/modernizr.js",
             "<%= meta.dirs.vendor.dest %>/espresso.vendor.jquery/jquery.js",
             "<%= meta.dirs.vendor.dest %>/espresso.vendor.documentcloud.underscore/underscore.js",
             "<%= meta.dirs.vendor.dest %>/espresso.vendor.documentcloud.backbone/backbone.js",
             "<%= meta.dirs.vendor.dest %>/espresso.vendor.espresso/espresso.js",
-            "<%= meta.dirs.dest %>/net/peteromano/site/Application.js"
+            "<%= meta.dirs.dest %>/site/Application.js"
         ],
         "separator": ";"
     }
