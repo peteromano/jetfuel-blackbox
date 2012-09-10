@@ -1,4 +1,4 @@
-espresso.Application('Application', function($) {
+espresso.Application('Application', function($, require, _, Backbone) {
     'use strict';
 
     return {
@@ -16,12 +16,11 @@ espresso.Application('Application', function($) {
 }, {
 
     Services: {
-        /*basePath: 'site.services',
-        attributes: '@withDependencies',
+        services: 'site.services',
         autoload: ['Router'],
         registry: {
-            Router:         '{basePath}.Router {attributes}'
-        }*/
+            Router: '{services}.Router'
+        }
     },
 
     Configuration: {
@@ -30,9 +29,17 @@ espresso.Application('Application', function($) {
 
             services: {
 
-                /*Router: {
+                Router: {}
 
-                }*/
+            },
+
+            espresso: {
+
+                loader: {
+                    libPath: '/lib',
+                    vendorPath: '/vendor',
+                    compressed: true
+                }
 
             }
 
