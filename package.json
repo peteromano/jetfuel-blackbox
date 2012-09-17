@@ -1,6 +1,6 @@
 {
   "name": "espresso-js",
-  "version": "0.3.38",
+  "version": "0.3.40",
   "title": "espresso-js",
   "description": "Creates an Espresso project.",
   "homepage": "https://github.com/peteromano/espresso-js/wiki",
@@ -28,10 +28,19 @@
   "bugs": {
     "url": "https://github.com/peteromano/espresso-js/issues"
   },
+  "directories": {
+    "src":  "./src",
+    "test": "./build/test",
+    "doc":  "./build/doc",
+    "lib":  "./build/lib",
+    "bin":  "./build/bin"
+  },
   "scripts": {
-    "test": "./espresso test",
-    "update": "./espresso update --force",
-    "install": "./espresso install --force && ./espresso init"
+    "test":     "./espresso test",
+    "doc":      "./espresso docs",
+    "build":    "./espresso --force",
+    "update":   "./espresso update --force",
+    "install":  "./espresso install --force && ./espresso init"
   },
   "devDependencies": {},
   "engines": {

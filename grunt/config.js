@@ -22,22 +22,24 @@ module.exports = {
 
       // Directory config
       dirs: {
-        modules: 'node_modules',
-        qunit: 'test/qunit',
-        jasmine: 'test/jasmine',
-        src: 'src',
-        dest: 'lib',
-        docs: 'doc',
-        deploy: 'public/lib',
+        modules:    './node_modules',
+        build:      './build',
+        qunit:      './src/test/qunit',
+        jasmine:    './src/test/jasmine',
+        src:        './src/main',
+        dest:       './build/lib',
+        docs:       './build/doc',
+        deploy:     './deploy/lib',
         vendor: {
-            dest: 'vendor',
-            deploy: 'public/vendor'
+            dest:       './build/vendor',
+            deploy:     './deploy/vendor'
         },
         sass: {
-          src: 'sass/src',
-          dest: 'sass/lib',
-          resources: 'sass/resources',
-          deploy: 'public/css'
+          src:          './src/sass',
+          dest:         './build/css',
+          cache:        '.sass-cache',
+          resources:    './src/sass/resources',
+          deploy:       './deploy/css'
         }
       },
 
@@ -49,6 +51,10 @@ module.exports = {
 
     // grunt clean (grunt clean:all)
     clean: {
+      // grunt clean:build
+      build: {
+        src: ['<%= meta.dirs.build %>', '<%= meta.dirs.build %>/**/*']
+      },
       // grunt clean:dist
       dist: {
         src: ['<%= meta.dirs.dest %>', '<%= meta.dirs.dest %>/**/*']
@@ -59,7 +65,10 @@ module.exports = {
       },
       // grunt clean:sass
       sass: {
-          src: ['<%= meta.dirs.sass.dest %>', '<%= meta.dirs.sass.dest %>/**/*']
+        src: [
+          '<%= meta.dirs.sass.dest %>', '<%= meta.dirs.sass.dest %>/**/*',
+          '<%= meta.dirs.sass.cache %>', '<%= meta.dirs.sass.cache %>/**/*'
+        ]
       },
       // grunt clean:vendor
       vendor: {
@@ -68,9 +77,9 @@ module.exports = {
       // grunt clean:deploy
       deploy: {
           src: [
-              '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
-              '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
-              '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*'
+            '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
+            '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
+            '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*'
           ]
       }
     },
@@ -97,7 +106,8 @@ module.exports = {
         dest: '<%= meta.dirs.dest %>',
         filters: ['*.js'],
         extension: '.js',
-        separator: ';'
+        separator: ';',
+        verbose: true
       }
     },
 
@@ -159,8 +169,8 @@ module.exports = {
       dist: {
         src: '<%= meta.dirs.sass.src %>',
         dest: '<%= meta.dirs.sass.dest %>',
-        images: 'sass/resources/images',
-        config: 'sass/config.rb',
+        images: './src/sass/resources/images',
+        config: './src/sass/config.rb',
         outputstyle: 'compressed',
         linecomments: true,
         forcecompile: true

@@ -36,7 +36,7 @@ module.exports = function(grunt) {
   registerTask('default',     'all');
 
   // npm up, npm update, npm install, npm test - Node Package Manager (package.json) Scripts
-  registerTask('test',        'clopyvendor jasmine');
+  registerTask('test',        'clopyvendor qunit');
   registerTask('install',     'clopyvendor build deploy');
   registerTask('update',      'clopyvendor build');
 

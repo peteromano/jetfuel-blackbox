@@ -2,12 +2,9 @@
 ###################
 .sass-cache
 .espresso
-doc
-dist
-lib
+build
 node_modules
 npm-debug.log
-vendor
 
 # IDE generated files #
 ###################
