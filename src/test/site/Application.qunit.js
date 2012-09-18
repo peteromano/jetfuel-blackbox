@@ -22,10 +22,10 @@
       raises(block, [expected], [message])
   */
 
-    module('main');
+    module('Espresso');
 
-    test('is true', 1, function() {
-      ok(true, 'true should be true');
+    test('is at version 0.6.x', 1, function() {
+      equal(/0\.6\.\d+/.test(espresso.version()), true, 'espresso.version() should match /0\.6\.\d+/');
     });
 
 }());

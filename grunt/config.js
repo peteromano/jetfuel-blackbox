@@ -24,8 +24,7 @@ module.exports = {
       dirs: {
         modules:    './node_modules',
         build:      './build',
-        qunit:      './src/test/qunit',
-        jasmine:    './src/test/jasmine',
+        test:       './src/test',
         src:        './src/main',
         dest:       './build/lib',
         docs:       './build/doc',
@@ -37,9 +36,16 @@ module.exports = {
         sass: {
           src:          './src/sass',
           dest:         './build/css',
-          cache:        '.sass-cache',
+          cache:        './.sass-cache',
           resources:    './src/sass/resources',
           deploy:       './deploy/css'
+        }
+      },
+
+      test: {
+        runner: {
+          jasmine:  '*.jasmine.html',
+          qunit:    '*.qunit.html'
         }
       },
 
@@ -203,12 +209,12 @@ module.exports = {
 
     // grunt jasmine
     jasmine: {
-      files: ['<%= meta.dirs.jasmine %>/**/*.html']
+      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runner.jasmine %>']
     },
 
     // grunt qunit
     qunit: {
-      files: ['<%= meta.dirs.qunit %>/**/*.html']
+      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runner.qunit %>']
     },
 
     // grunt lint
