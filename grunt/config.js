@@ -46,7 +46,7 @@ module.exports = {
       },
 
       test: {
-        runner: {
+        runners: {
           jasmine:  '*.jasmine.html',
           qunit:    '*.qunit.html'
         }
@@ -216,12 +216,12 @@ module.exports = {
 
     // grunt jasmine
     jasmine: {
-      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runner.jasmine %>']
+      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.jasmine %>']
     },
 
     // grunt qunit
     qunit: {
-      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runner.qunit %>']
+      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.qunit %>']
     },
 
     // grunt lint
