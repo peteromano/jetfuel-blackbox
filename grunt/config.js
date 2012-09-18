@@ -17,7 +17,7 @@ module.exports = {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */',
 
       build: {
-          name: '<%= pkg.name %>-<%= pkg.version %>'
+        name: '<%= pkg.name %>-<%= pkg.version %>'
       },
 
       // Directory config
@@ -29,15 +29,18 @@ module.exports = {
         dest:       './build/lib',
         docs:       './build/doc',
         deploy:     './deploy/lib',
+        resources:  {
+          src:        './src/resources',
+          deploy:     './deploy/resources'
+        },
         vendor: {
-            dest:       './build/vendor',
-            deploy:     './deploy/vendor'
+          dest:       './build/vendor',
+          deploy:     './deploy/vendor'
         },
         sass: {
           src:          './src/sass',
           dest:         './build/css',
           cache:        './.sass-cache',
-          resources:    './src/sass/resources',
           deploy:       './deploy/css'
         }
       },
@@ -85,7 +88,8 @@ module.exports = {
           src: [
             '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
             '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
-            '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*'
+            '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*',
+            '<%= meta.dirs.resources.deploy %>', '<%= meta.dirs.resources.deploy %>/**/*'
           ]
       }
     },
@@ -128,8 +132,8 @@ module.exports = {
         replace: '.js',
         verbose: true,
 		helper: 'minify.uglify',
-		args: {		
-          compilation_level: 'ADVANCED_OPTIMIZATIONS'
+		args: {
+          //compilation_level: 'SIMPLE_OPTIMIZATIONS'
 		  //output_format: 'text',
           //externs: ['path/to/file.js', '/source/**/*.js'],
           //define: ["'goog.DEBUG=false'"],
@@ -143,30 +147,37 @@ module.exports = {
 
     // grunt deploy (grunt deploy:all)
     deploy: {
-        // grunt deploy:dist
-        dist: {
-            src: ['<%= meta.dirs.dest %>/*'],
-            dest: '<%= meta.dirs.deploy %>',
-            rsync: {
-                args: '-rlpgoDc --exclude=.svn'
-            }
-        },
-        // grunt deploy:sass
-        sass: {
-            src: ['<%= meta.dirs.sass.dest %>/*', '<%= meta.dirs.sass.resources %>/*'],
-            dest: '<%= meta.dirs.sass.deploy %>',
-            rsync: {
-                args: '-rlpgoDc --exclude=.svn'
-            }
-        },
-        // grunt deploy:vendor
-        vendor: {
-            src: ['<%= meta.dirs.vendor.dest %>/*'],
-            dest: '<%= meta.dirs.vendor.deploy %>',
-            rsync: {
-                args: '-rlpgoDc --exclude=.svn'
-            }
+      // grunt deploy:dist
+      dist: {
+        src: ['<%= meta.dirs.dest %>/*'],
+        dest: '<%= meta.dirs.deploy %>',
+        rsync: {
+            args: '-rlpgoDc --exclude=.svn'
         }
+      },
+      // grunt deploy:sass
+      sass: {
+        src: ['<%= meta.dirs.sass.dest %>/*'],
+        dest: '<%= meta.dirs.sass.deploy %>',
+        rsync: {
+            args: '-rlpgoDc --exclude=.svn'
+        }
+      },
+      // grunt deploy:vendor
+      vendor: {
+        src: ['<%= meta.dirs.vendor.dest %>/*'],
+        dest: '<%= meta.dirs.vendor.deploy %>',
+        rsync: {
+            args: '-rlpgoDc --exclude=.svn'
+        }
+      },
+      resources: {
+        src: ['<%= meta.dirs.resources.src %>/*'],
+        dest: '<%= meta.dirs.resources.deploy %>',
+        rsync: {
+            args: '-rlpgoDc --exclude=.svn'
+        }
+      }
     },
 
     // grunt compass (grunt compass:all)
@@ -175,11 +186,7 @@ module.exports = {
       dist: {
         src: '<%= meta.dirs.sass.src %>',
         dest: '<%= meta.dirs.sass.dest %>',
-        images: './src/sass/resources/images',
-        config: './src/sass/config.rb',
-        outputstyle: 'compressed',
-        linecomments: true,
-        forcecompile: true
+        outputstyle: 'compressed'
       }
     },
 
