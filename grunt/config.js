@@ -85,12 +85,12 @@ module.exports = {
       },
       // grunt clean:deploy
       deploy: {
-          src: [
-            '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
-            '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
-            '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*',
-            '<%= meta.dirs.resources.deploy %>', '<%= meta.dirs.resources.deploy %>/**/*'
-          ]
+        src: [
+          '<%= meta.dirs.deploy %>', '<%= meta.dirs.deploy %>/**/*',
+          '<%= meta.dirs.vendor.deploy %>', '<%= meta.dirs.vendor.deploy %>/**/*',
+          '<%= meta.dirs.sass.deploy %>', '<%= meta.dirs.sass.deploy %>/**/*',
+          '<%= meta.dirs.resources.deploy %>', '<%= meta.dirs.resources.deploy %>/**/*'
+        ]
       }
     },
 
@@ -103,8 +103,8 @@ module.exports = {
       },
       // grunt copy:vendor
       vendor: {
-          src: ['<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'],
-          dest: '<%= meta.dirs.vendor.dest %>'
+        src: ['<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'],
+        dest: '<%= meta.dirs.vendor.dest %>'
       }
     },
 
@@ -152,7 +152,7 @@ module.exports = {
         src: ['<%= meta.dirs.dest %>/*'],
         dest: '<%= meta.dirs.deploy %>',
         rsync: {
-            args: '-rlpgoDc --exclude=.svn'
+          args: '-rlpgoDc --exclude=.svn'
         }
       },
       // grunt deploy:sass
@@ -160,7 +160,7 @@ module.exports = {
         src: ['<%= meta.dirs.sass.dest %>/*'],
         dest: '<%= meta.dirs.sass.deploy %>',
         rsync: {
-            args: '-rlpgoDc --exclude=.svn'
+          args: '-rlpgoDc --exclude=.svn'
         }
       },
       // grunt deploy:vendor
@@ -168,14 +168,14 @@ module.exports = {
         src: ['<%= meta.dirs.vendor.dest %>/*'],
         dest: '<%= meta.dirs.vendor.deploy %>',
         rsync: {
-            args: '-rlpgoDc --exclude=.svn'
+          args: '-rlpgoDc --exclude=.svn'
         }
       },
       resources: {
         src: ['<%= meta.dirs.resources.src %>/*'],
         dest: '<%= meta.dirs.resources.deploy %>',
         rsync: {
-            args: '-rlpgoDc --exclude=.svn'
+          args: '-rlpgoDc --exclude=.svn'
         }
       }
     },
