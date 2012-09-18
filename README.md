@@ -1,4 +1,4 @@
-espresso-project
-================
+espresso-js
+===========
 
 A boilerplate Espresso project.
