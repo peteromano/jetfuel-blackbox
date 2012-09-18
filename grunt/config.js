@@ -28,20 +28,20 @@ module.exports = {
         src:        './src/main',
         dest:       './build/lib',
         docs:       './build/doc',
-        deploy:     './deploy/lib',
+        deploy:     './example/lib',
         resources:  {
           src:        './src/resources',
-          deploy:     './deploy/resources'
+          deploy:     './example/resources'
         },
         vendor: {
           dest:       './build/vendor',
-          deploy:     './deploy/vendor'
+          deploy:     './example/vendor'
         },
         sass: {
           src:          './src/sass',
           dest:         './build/css',
           cache:        './.sass-cache',
-          deploy:       './deploy/css'
+          deploy:       './example/css'
         }
       },
 
