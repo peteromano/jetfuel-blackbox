@@ -22,20 +22,20 @@ module.exports = {
 
       // Directory config
       dirs: {
-        modules:    './node_modules',
-        build:      './build',
-        test:       './src/test',
-        src:        './src/main',
-        dest:       './build/lib',
-        docs:       './build/doc',
-        deploy:     './example/lib',
+        modules:        './node_modules',
+        build:          './build',
+        test:           './src/test',
+        src:            './src/main',
+        dest:           './build/lib',
+        docs:           './build/doc',
+        deploy:         './example/lib',
         resources:  {
-          src:        './src/resources',
-          deploy:     './example/resources'
+          src:          './src/resources',
+          deploy:       './example/resources'
         },
         vendor: {
-          dest:       './build/vendor',
-          deploy:     './example/vendor'
+          dest:         './build/vendor',
+          deploy:       './example/vendor'
         },
         sass: {
           src:          './src/sass',
@@ -45,15 +45,17 @@ module.exports = {
         }
       },
 
+      // Specify test runner files for each unit test framework
       test: {
         runners: {
-          jasmine:  '*.jasmine.html',
-          qunit:    '*.qunit.html'
+          jasmine:      '*.jasmine.html',
+          qunit:        '*.qunit.html'
         }
       },
 
+      // The name of the vendor config file (used with espresso.vendor.* projects with the copy task)
       vendor: {
-        config: '.espresso.json'
+        config:         '.espresso.json'
       }
 
     },
@@ -134,7 +136,7 @@ module.exports = {
 		helper: 'minify.uglify',
 		args: {
           //compilation_level: 'SIMPLE_OPTIMIZATIONS'
-		  //output_format: 'text',
+          //output_format: 'text',
           //externs: ['path/to/file.js', '/source/**/*.js'],
           //define: ["'goog.DEBUG=false'"],
           //warning_level: 'verbose',
