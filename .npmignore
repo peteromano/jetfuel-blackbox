@@ -6,7 +6,8 @@
 /.npmignore
 /npm-debug.log
 /build
-/deploy/lib
-/deploy/vendor
-/deploy/css
-/deploy/.gitignore
+/example/lib
+/example/vendor
+/example/css
+/example/resources
+/example/.gitignore
