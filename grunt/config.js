@@ -25,31 +25,37 @@ module.exports = {
         modules:        './node_modules',
         build:          './build',
         test:           './src/test',
+        jetrunner:      './src/jetrunner',
         src:            './src/main',
         dest:           './build/lib',
         docs:           './build/doc',
-        deploy:         './example/lib',
-        resources:  {
+        deploy:         './example/site/lib',
+        resources: {
           src:          './src/resources',
-          deploy:       './example/resources'
+          deploy:       './example/site/resources'
         },
         vendor: {
           dest:         './build/vendor',
-          deploy:       './example/vendor'
+          deploy:       './example/site/vendor'
         },
         sass: {
           src:          './src/sass',
           dest:         './build/css',
           cache:        './.sass-cache',
-          deploy:       './example/css'
+          deploy:       './example/site/css'
         }
       },
 
-      // Specify test runner files for each unit test framework
-      test: {
-        runners: {
-          jasmine:      '.jasmine.html',
-          qunit:        '.qunit.html'
+      // JetRunner configuration
+      jetrunner: {
+        template:       'mocha.runner.jade',
+        server: {
+          port:         3000
+        },
+        soda: {
+          url:          'http://ci.example.com',
+          username:     'username',
+          key:          'access-key'
         }
       },
 
@@ -205,37 +211,68 @@ module.exports = {
     },
 
     // grunt watch (grunt watch:all)
-    watch: {  
+    watch: {
+      // grunt watch:dist
       dist: {
         files: ['<%= meta.dirs.src %>/**/*.js'],
         tasks: 'dev:dist'
-      },  
+      },
+      // grunt watch:sass
       sass: {
         files: ['<%= meta.dirs.sass.src %>/**/*.sass'],
         tasks: 'dev:sass'
       }
     },
 
+    // grunt server
     server: {
       port: 8000,
       base: '.'
     },
 
-    // grunt jasmine
-    jasmine: {
-      //files: ['<%= meta.dirs.test %>/**/*<%= meta.test.runners.jasmine %>'],
-      all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.jasmine %>']
-    },
-
-    // grunt qunit
+    // grunt qunit (grunt qunit:all)
     qunit: {
-      //files: ['<%= meta.dirs.test %>/**/*<%= meta.test.runners.qunit %>'],
-      all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.qunit %>']
+      all: [
+        'http://localhost:<%= server.port %>/<%= meta.dirs.test %>/site/Application.runner.html',
+        'http://localhost:<%= server.port %>/<%= meta.dirs.test %>/site/services/Router.runner.html'
+      ]
     },
 
-    // grunt lint
+    // grunt lint (grunt lint:all)
     lint: {
-      files: ['grunt.js', '<%= meta.dirs.src %>/**/*.js', '<%= meta.dirs.test %>/**/*.js']
+      // grunt lint:files
+      files: ['<%= meta.dirs.src %>/**/*.js', '<%= meta.dirs.test %>/**/*.js']
+    },
+
+    // grunt jetrunner (grunt jetrunner:all)
+    jetrunner: {
+      // grunt jetrunner:local
+      local: {
+        src: '<% meta.dirs.src %>',
+        test: '<% meta.dirs.test %>',
+        runner: '<% meta.dirs.jetrunner %>/<% meta.jetrunner.template %>',
+        server: {
+          port: '<% meta.jetrunner.server.port %>'
+        }
+      },
+      // grunt jetrunner:remote
+      remote: {
+        src: '<% meta.dirs.src %>',
+        test: '<% meta.dirs.test %>',
+        runner: '<% meta.dirs.jetrunner %>/<% meta.jetrunner.template %>',
+        server: {
+          port: '<% meta.jetrunner.server.port %>'
+        },
+        soda: {
+          'url': '<% meta.jetrunner.soda.server %>',
+          'username': '<% meta.jetrunner.soda.username %>',
+          'key': '<% meta.jetrunner.soda.key %>',
+          'systems': [
+            { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
+            { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
+          ]
+        }
+      }
     }
 
 };

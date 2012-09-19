@@ -15,11 +15,11 @@ module.exports = function(grunt) {
   registerTask('uglify',      'min');
 
   // grunt all [--force] & variants - Command line interface (CLI)
-  registerTask('all',         'test build deploy');
+  registerTask('all',         'lint test build deploy');
 
   // grunt dev [--force] & variants - Command line interface (CLI)
-  registerTask('dev',         'clopycat clompass deploy');
-  registerTask('dev:dist',    'clopycat deploy:js');
+  registerTask('dev',         'lint clopycat clompass deploy');
+  registerTask('dev:dist',    'lint clopycat deploy:js');
   registerTask('dev:sass',    'clompass deploy:sass');
 
   // grunt docs [--force] - Command line interface (CLI)

@@ -21,12 +21,13 @@
       notStrictEqual(actual, expected, [message])
       raises(block, [expected], [message])
   */
+
     QUnit.start();
 
-    module('Application');
+    module('Router Service');
 
     test('is a singleton', 1, function() {
-      equal(new Application, Application.getInstance(), 'Trying to instantiate a new Application instance should return the same thing as Application.getInstance()');
+      equal(new site.services.Router(), site.services.Router.getInstance(), 'Trying to instantiate a new Router service should return the same thing as site.services.Router.getInstance()');
     });
 
 }());
