@@ -48,8 +48,8 @@ module.exports = {
       // Specify test runner files for each unit test framework
       test: {
         runners: {
-          jasmine:      '*.jasmine.html',
-          qunit:        '*.qunit.html'
+          jasmine:      '.jasmine.html',
+          qunit:        '.qunit.html'
         }
       },
 
@@ -216,14 +216,21 @@ module.exports = {
       }
     },
 
+    server: {
+      port: 8000,
+      base: '.'
+    },
+
     // grunt jasmine
     jasmine: {
-      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.jasmine %>']
+      //files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.jasmine %>'],
+      all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.jasmine %>']
     },
 
     // grunt qunit
     qunit: {
-      files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.qunit %>']
+      //files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.qunit %>'],
+      all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.qunit %>']
     },
 
     // grunt lint

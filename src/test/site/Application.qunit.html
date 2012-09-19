@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>UrbanDaddy Test Suite</title>
-    <link rel="stylesheet" href="../../../build/vendor/espresso.vendor.qunit/qunit.css" media="screen">
+  <title>QUnit Test Suite</title>
+  <link rel="stylesheet" href="/build/vendor/espresso.vendor.qunit/qunit.css" media="screen">
 </head>
 <body>
   <h1 id="qunit-header">UrbanDaddy Test Suite</h1>
@@ -16,11 +16,12 @@
     <span>normal test markup</span>
     <span>awesome test markup</span>
   </div>
-  <script src="../../../build/vendor/espresso.vendor.qunit/qunit.js"></script>
-  <script src="../../../build/vendor/espresso.vendor.modernizr/modernizr.js"></script>
-  <script src="../../../build/vendor/espresso.vendor.jquery/jquery.js"></script>
-  <script src="../../../build/vendor/espresso.vendor.espresso/espresso.js"></script>
-  <script src="../../main/site/Application.js"></script>
-  <script src="Application.qunit.js"></script>
+  <script src="/build/vendor/espresso.vendor.qunit/qunit.js"></script>
+  <script src="/build/vendor/espresso.vendor.modernizr/modernizr.js"></script>
+  <script src="/build/vendor/espresso.vendor.jquery/jquery.js"></script>
+  <script src="/build/vendor/espresso.vendor.espresso/espresso.js"></script>
+  <script src="/src/main/site/Application.js"></script>
+  <script src="/src/test/site/Application.qunit.js"></script>
+  <script>QUnit.start();</script>
 </body>
 </html>
