@@ -1,12 +1,12 @@
-describe("Espresso", function() {
-  var version;
+describe("Application", function() {
+  var app;
 
   beforeEach(function() {
-    version = espresso.version();
+    app = new Application;
   });
 
-  it("should be at version 0.6.x", function() {
-    expect(version).toMatch(/0\.6\.\d+/);
+  it("should be a singleton", function() {
+    expect(Application.getInstance()).toEqual(app);
   });
 
 });

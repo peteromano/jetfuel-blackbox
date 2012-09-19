@@ -21,11 +21,12 @@
       notStrictEqual(actual, expected, [message])
       raises(block, [expected], [message])
   */
+    QUnit.start();
 
-    module('Espresso');
+    module('Application');
 
-    test('is at version 0.6.x', 1, function() {
-      equal(/0\.6\.\d+/.test(espresso.version()), true, 'espresso.version() should match /0\.6\.\d+/');
+    test('is a singleton', 1, function() {
+      equal(new Application, Application.getInstance(), 'Trying to instantiate a new Application instance should return the same thing as Application.getInstance()');
     });
 
 }());

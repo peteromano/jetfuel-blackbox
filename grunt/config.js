@@ -223,13 +223,13 @@ module.exports = {
 
     // grunt jasmine
     jasmine: {
-      //files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.jasmine %>'],
+      //files: ['<%= meta.dirs.test %>/**/*<%= meta.test.runners.jasmine %>'],
       all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.jasmine %>']
     },
 
     // grunt qunit
     qunit: {
-      //files: ['<%= meta.dirs.test %>/**/<%= meta.test.runners.qunit %>'],
+      //files: ['<%= meta.dirs.test %>/**/*<%= meta.test.runners.qunit %>'],
       all: ['http://localhost:<%= server.port %>/src/test/site/Application<%= meta.test.runners.qunit %>']
     },
 
