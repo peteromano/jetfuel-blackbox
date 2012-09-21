@@ -2,7 +2,7 @@
 /.gitignore
 /.travis.yml
 /.sass-cache
-/.espresso
+/.jetfuel
 /.npmignore
 /npm-debug.log
 /build

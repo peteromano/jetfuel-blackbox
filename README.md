@@ -1,4 +1,4 @@
-espresso-js
-===========
+jetfuel
+=======
 
-A boilerplate Espresso project.
+Create a boilerplate JetFuel project.

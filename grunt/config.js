@@ -20,7 +20,7 @@ module.exports = {
         name: '<%= pkg.name %>-<%= pkg.version %>'
       },
 
-      // Directory config
+      // Directory configuration
       dirs: {
         modules:        './node_modules',
         build:          './build',
@@ -59,19 +59,17 @@ module.exports = {
         }
       },
 
-      // The name of the vendor config file (used with espresso.vendor.* projects with the copy task)
+      // Vendor configuration
       vendor: {
-        config:         '.espresso.json'
+        // The name of the vendor config file used with jetfuel.vendor.* projects (via the copy task)
+        config:         '.jetfuel.json',
+        include:        'jetfuel.vendor.*'
       }
 
     },
 
     // grunt clean (grunt clean:all)
     clean: {
-      // grunt clean:build
-      build: {
-        src: ['<%= meta.dirs.build %>', '<%= meta.dirs.build %>/**/*']
-      },
       // grunt clean:dist
       dist: {
         src: ['<%= meta.dirs.dest %>', '<%= meta.dirs.dest %>/**/*']
@@ -90,6 +88,10 @@ module.exports = {
       // grunt clean:vendor
       vendor: {
         src: ['<%= meta.dirs.vendor.dest %>', '<%= meta.dirs.vendor.dest %>/**/*']
+      },
+      // grunt clean:build
+      build: {
+        src: ['<%= meta.dirs.build %>', '<%= meta.dirs.build %>/**/*']
       },
       // grunt clean:deploy
       deploy: {
@@ -111,7 +113,7 @@ module.exports = {
       },
       // grunt copy:vendor
       vendor: {
-        src: ['<%= meta.dirs.modules %>/espresso.vendor.*/<%= meta.vendor.config %>'],
+        src: ['<%= meta.dirs.modules %>/<%= meta.vendor.include %>/<%= meta.vendor.config %>'],
         dest: '<%= meta.dirs.vendor.dest %>'
       }
     },
