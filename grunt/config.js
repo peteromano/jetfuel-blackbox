@@ -266,10 +266,10 @@ module.exports = {
           port: '<% meta.jetrunner.server.port %>'
         },
         soda: {
-          'url': '<% meta.jetrunner.soda.server %>',
-          'username': '<% meta.jetrunner.soda.username %>',
-          'key': '<% meta.jetrunner.soda.key %>',
-          'systems': [
+          url: '<% meta.jetrunner.soda.server %>',
+          username: '<% meta.jetrunner.soda.username %>',
+          key: '<% meta.jetrunner.soda.key %>',
+          systems: [
             { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
             { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
           ]
