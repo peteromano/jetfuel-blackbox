@@ -48,13 +48,13 @@ module.exports = {
 
       // JetRunner unit test server configuration
       jetrunner: {
-        src: '<% meta.dirs.src %>',
-        test: '<% meta.dirs.test %>',
-        vendor: '<% meta.dirs.vendor %>',
-        runner: '<% meta.dirs.jetrunner %>/mocha.runner.jade',
+        src:            '<% meta.dirs.src %>',
+        test:           '<% meta.dirs.test %>',
+        vendor:         '<% meta.dirs.vendor %>',
+        runner:         '<% meta.dirs.jetrunner %>/mocha.runner.jade',
         server: {
-          base: '.',
-          port: 3000
+          base:         '.',
+          port:         3000
         },
         soda: {
           url:          'http://ci.example.com',
