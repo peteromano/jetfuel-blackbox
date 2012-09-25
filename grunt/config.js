@@ -46,11 +46,15 @@ module.exports = {
         }
       },
 
-      // JetRunner configuration
+      // JetRunner unit test server configuration
       jetrunner: {
-        template:       'mocha.runner.jade',
+        src: '<% meta.dirs.src %>',
+        test: '<% meta.dirs.test %>',
+        vendor: '<% meta.dirs.vendor %>',
+        runner: '<% meta.dirs.jetrunner %>/mocha.runner.jade',
         server: {
-          port:         3000
+          base: '.',
+          port: 3000
         },
         soda: {
           url:          'http://ci.example.com',
@@ -141,17 +145,7 @@ module.exports = {
         extension: '.compressed.js',
         replace: '.js',
         verbose: true,
-		helper: 'minify.uglify',
-		args: {
-          //compilation_level: 'SIMPLE_OPTIMIZATIONS'
-          //output_format: 'text',
-          //externs: ['path/to/file.js', '/source/**/*.js'],
-          //define: ["'goog.DEBUG=false'"],
-          //warning_level: 'verbose',
-          //jscomp_off: ['checkTypes', 'fileoverviewTags'],
-          //summary_detail_level: 3,
-          //output_wrapper: '(function(){%output%}).call(this);'
-		}
+		helper: 'minify.uglify'
       }
     },
 
@@ -226,18 +220,10 @@ module.exports = {
       }
     },
 
-    // grunt server
-    server: {
-      port: 8000,
-      base: '.'
-    },
-
     // grunt qunit (grunt qunit:all)
     qunit: {
-      all: [
-        'http://localhost:<%= server.port %>/<%= meta.dirs.test %>/site/Application.runner.html',
-        'http://localhost:<%= server.port %>/<%= meta.dirs.test %>/site/services/Router.runner.html'
-      ]
+      'site.Application': 'http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/Application.runner.html',
+      'site.services.Router': 'http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/services/Router.runner.html'
     },
 
     // grunt lint (grunt lint:all)
@@ -249,22 +235,10 @@ module.exports = {
     // grunt jetrunner (grunt jetrunner:all)
     jetrunner: {
       // grunt jetrunner:local
-      local: {
-        src: '<% meta.dirs.src %>',
-        test: '<% meta.dirs.test %>',
-        runner: '<% meta.dirs.jetrunner %>/<% meta.jetrunner.template %>',
-        server: {
-          port: '<% meta.jetrunner.server.port %>'
-        }
-      },
+      local: {},
       // grunt jetrunner:remote
       remote: {
-        src: '<% meta.dirs.src %>',
-        test: '<% meta.dirs.test %>',
-        runner: '<% meta.dirs.jetrunner %>/<% meta.jetrunner.template %>',
-        server: {
-          port: '<% meta.jetrunner.server.port %>'
-        },
+        remote: true,
         soda: {
           url: '<% meta.jetrunner.soda.server %>',
           username: '<% meta.jetrunner.soda.username %>',
