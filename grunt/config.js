@@ -48,26 +48,33 @@ module.exports = {
 
       // JetRunner unit test server configuration
       jetrunner: {
-        src:            '<% meta.dirs.src %>',
-        test:           '<% meta.dirs.test %>',
-        vendor:         '<% meta.dirs.vendor %>',
-        runner:         '<% meta.dirs.jetrunner %>/mocha.runner.jade',
+        test: '<%= meta.dirs.test %>/**/*.test.js',
+        runner: {
+          template: '<%= meta.dirs.jetrunner %>/mocha.runner.jade',
+          src: '<%= meta.dirs.src %>',
+          dependencies: [
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.modernizr/modernizr.js',
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js',
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.underscore/underscore.js',
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.backbone/backbone.js',
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js'
+          ]
+        },
         server: {
-          base:         '.',
-          port:         3000
+          base: '.',
+          port: 3000
         },
         soda: {
-          url:          'http://ci.example.com',
-          username:     'username',
-          key:          'access-key'
+          url: 'http://ci.example.com',
+          username: 'username',
+          key: 'access-key'
         }
       },
 
       // Vendor configuration
       vendor: {
-        // The name of the vendor config file used with jetfuel.vendor.* projects (via the copy task)
-        config:         '.jetfuel.json',
-        include:        'jetfuel.vendor.*'
+        include:        'jetfuel.vendor.*',
+        config:         '.jetfuel.json' // The name of the vendor config file used with jetfuel.vendor.* projects (via the copy task)
       }
 
     },
@@ -235,14 +242,13 @@ module.exports = {
     // grunt jetrunner (grunt jetrunner:all)
     jetrunner: {
       // grunt jetrunner:local
-      local: {},
+      local: {
+        remote: false
+      },
       // grunt jetrunner:remote
       remote: {
         remote: true,
         soda: {
-          url: '<% meta.jetrunner.soda.server %>',
-          username: '<% meta.jetrunner.soda.username %>',
-          key: '<% meta.jetrunner.soda.key %>',
           systems: [
             { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
             { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
