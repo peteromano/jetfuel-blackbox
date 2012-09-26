@@ -45,9 +45,9 @@ espresso.Application('Application', function($, require, _, Backbone) {
             espresso: {
 
                 loader: {
-                    libPath: '/lib',
-                    vendorPath: '/vendor',
-                    compressed: true
+                    libPath: this.ESPRESSO_LOADER_LIB_PATH || '/lib',
+                    vendorPath: this.ESPRESSO_LOADER_VENDOR_PATH || '/vendor',
+                    compressed: typeof this.ESPRESSO_LOADER_COMPRESSED !== undefined ? this.ESPRESSO_LOADER_COMPRESSED : true
                 }
 
             }
