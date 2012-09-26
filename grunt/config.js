@@ -60,10 +60,13 @@ module.exports = {
         src: '<%= meta.dirs.src %>',
         runner: {
           template: '<%= meta.dirs.jetrunner %>/mocha.runner.jade',
-          dependencies: [
+          scripts: [
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js',
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js',
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js'
+          ],
+          styles: [
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css'
           ]
         },
         server: {

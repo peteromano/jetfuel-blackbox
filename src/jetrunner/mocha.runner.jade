@@ -1,45 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Jasmine Spec Runner</title>
-  <link rel="stylesheet" type="text/css" href="/build/vendor/espresso.vendor.jasmine/jasmine.css">
-</head>
-<body>
-  <script type="text/javascript" src="/build/vendor/espresso.vendor.jasmine/jasmine.js"></script>
-  <script type="text/javascript" src="/build/vendor/espresso.vendor.jasmine/jasmine-html.js"></script>
-  <script type="text/javascript" src="/build/vendor/espresso.vendor.modernizr/modernizr.js"></script>
-  <script type="text/javascript" src="/build/vendor/espresso.vendor.jquery/jquery.js"></script>
-  <script type="text/javascript" src="/build/vendor/espresso.vendor.espresso/espresso.js"></script>
-
-  <script type="text/javascript" src="/src/main/site/Application.js"></script>
-  <script type="text/javascript" src="/src/test/site/Application.jasmine.js"></script>
-  <script type="text/javascript">
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
-      jasmineEnv.updateInterval = 1000;
-
-      var trivialReporter = new jasmine.TrivialReporter();
-
-      jasmineEnv.addReporter(trivialReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
-      };
-
-      var currentWindowOnload = window.onload;
-
-      window.onload = function() {
-        if (currentWindowOnload) {
-          currentWindowOnload();
-        }
-        execJasmine();
-      };
-
-      function execJasmine() {
-        jasmineEnv.execute();
-      }
-
-    })();
-  </script>
-</body>
-</html>
+!!! 5
+html(lang="en")
+  head
+    title= title
+    each style in styles
+      link(href="#{style}", rel="stylesheet")
+  body
+    each script in scripts
+      script(src="#{script}")
+    script(src="#{src}")
+    script(src="#{test}")
+    script
+       mocha.ui('bdd');
+       mocha.reporter('spec'); // spec, list, html, doc, tap, dot, min
+       mocha.run();
