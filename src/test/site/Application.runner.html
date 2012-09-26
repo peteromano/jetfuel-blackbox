@@ -5,9 +5,13 @@
   <title>QUnit Test Suite</title>
   <link rel="stylesheet" href="/build/vendor/jetfuel.vendor.qunit/qunit.css" media="screen">
   <script>
-    ESPRESSO_LOADER_LIB_PATH      = '/src/main';
-    ESPRESSO_LOADER_VENDOR_PATH   = '/build/vendor';
-    ESPRESSO_LOADER_COMPRESSED    = false;
+      espressoConfig = {
+          loader: {
+              libPath: '/src/main',
+              vendorPath: '/build/vendor',
+              compressed: false
+          }
+      };
   </script>
 </head>
 <body>
