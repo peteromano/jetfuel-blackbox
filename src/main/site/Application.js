@@ -24,6 +24,12 @@ espresso.Application('Application', function($, require, _, Backbone) {
 
 }, {
 
+    Dependencies: [
+        'jetfuel.vendor.modernizr/modernizr @vendor',
+        'jetfuel.vendor.documentcloud.underscore/underscore @vendor',
+        'jetfuel.vendor.documentcloud.backbone/backbone @vendor'
+    ],
+
     Services: {
         services: 'site.services',
         autoload: ['Router'],

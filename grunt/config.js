@@ -46,18 +46,24 @@ module.exports = {
         }
       },
 
+      // Vendor configuration
+      vendor: {
+        // The following properties are used with the copy task to control how third-party libraries are imported into the project.
+        // Vendor libraries must be included as dependencies specified in package.json, and *should* have a .jetfuel.json file in the library...
+        pkg:            'jetfuel.vendor.*',
+        file:           '.jetfuel.json'
+      },
+
       // JetRunner unit test server configuration
       jetrunner: {
         test: '<%= meta.dirs.test %>/**/*.test.js',
+        src: '<%= meta.dirs.src %>',
         runner: {
           template: '<%= meta.dirs.jetrunner %>/mocha.runner.jade',
-          src: '<%= meta.dirs.src %>',
           dependencies: [
-            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.modernizr/modernizr.js',
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js',
-            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.underscore/underscore.js',
-            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.backbone/backbone.js',
-            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js'
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js',
+            '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js'
           ]
         },
         server: {
@@ -69,12 +75,6 @@ module.exports = {
           username: 'username',
           key: 'access-key'
         }
-      },
-
-      // Vendor configuration
-      vendor: {
-        include:        'jetfuel.vendor.*',
-        config:         '.jetfuel.json' // The name of the vendor config file used with jetfuel.vendor.* projects (via the copy task)
       }
 
     },
@@ -124,7 +124,7 @@ module.exports = {
       },
       // grunt copy:vendor
       vendor: {
-        src: ['<%= meta.dirs.modules %>/<%= meta.vendor.include %>/<%= meta.vendor.config %>'],
+        src: ['<%= meta.dirs.modules %>/<%= meta.vendor.pkg %>/<%= meta.vendor.file %>'],
         dest: '<%= meta.dirs.vendor.dest %>'
       }
     },
@@ -201,6 +201,23 @@ module.exports = {
       }
     },
 
+    // grunt jetrunner (grunt jetrunner:all)
+    jetrunner: {
+      // grunt jetrunner:local
+      local: {},
+      // grunt jetrunner:remote
+      remote: {
+        remote: {
+          soda: {
+            systems: [
+              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
+              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
+            ]
+          }
+        }
+      }
+    },
+
     // grunt docs (grunt jsdoc:all)
     jsdoc: {
       // grunt jsdoc:dist
@@ -237,23 +254,6 @@ module.exports = {
     lint: {
       // grunt lint:files
       files: ['<%= meta.dirs.src %>/**/*.js', '<%= meta.dirs.test %>/**/*.js']
-    },
-
-    // grunt jetrunner (grunt jetrunner:all)
-    jetrunner: {
-      // grunt jetrunner:local
-      local: {},
-      // grunt jetrunner:remote
-      remote: {
-        remote: {
-          soda: {
-            systems: [
-              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
-              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
-            ]
-          }
-        }
-      }
     }
 
 };
