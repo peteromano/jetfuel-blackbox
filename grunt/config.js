@@ -242,17 +242,16 @@ module.exports = {
     // grunt jetrunner (grunt jetrunner:all)
     jetrunner: {
       // grunt jetrunner:local
-      local: {
-        remote: false
-      },
+      local: {},
       // grunt jetrunner:remote
       remote: {
-        remote: true,
-        soda: {
-          systems: [
-            { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
-            { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
-          ]
+        remote: {
+          soda: {
+            systems: [
+              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '10.', 'max-duration': 300 },
+              { 'os': 'Linux', 'browser': 'firefox', 'browser-version': '11.', 'max-duration': 300 }
+            ]
+          }
         }
       }
     }
