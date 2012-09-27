@@ -5,12 +5,17 @@ espresso.Application('Application', function($, require, _, Backbone) {
      * @lends site.Application.prototype
      */
     return {
+
         /**
          * @constructs
          * @description This class is a singleton
+         * @augments espresso.framework.Application
+         */
+        Application: function() {},
+
+        /**
          * @param {Object} config
          * @param {Object} context
-         * @augments espresso.framework.Application
          */
         initialize: function(config, context) {
 
@@ -25,16 +30,16 @@ espresso.Application('Application', function($, require, _, Backbone) {
 }, {
 
     Dependencies: [
-        'jetfuel.vendor.modernizr/modernizr @vendor',
-        'jetfuel.vendor.documentcloud.underscore/underscore @vendor',
-        'jetfuel.vendor.documentcloud.backbone/backbone @vendor'
+        'jetfuel.vendor.modernizr/modernizr @vendor @alias=Modernizr',
+        'jetfuel.vendor.documentcloud.underscore/underscore @vendor @alias=_',
+        'jetfuel.vendor.documentcloud.backbone/backbone @vendor @alias=Backbone'
     ],
 
     Services: {
-        services: 'site.services',
+        basePath: 'site.services',
         autoload: ['Router'],
         registry: {
-            Router: '{services}.Router'
+            Router: '{basePath}.Router'
         }
     },
 

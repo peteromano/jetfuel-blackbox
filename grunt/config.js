@@ -59,7 +59,7 @@ module.exports = {
         test: '<%= meta.dirs.test %>/**/*.test.js',
         src: '<%= meta.dirs.src %>',
         runner: {
-          template: '<%= meta.dirs.jetrunner %>/mocha.runner.jade',
+          template: '<%= meta.dirs.jetrunner %>/runner.jade',
           scripts: [
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js',
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js',
@@ -68,6 +68,10 @@ module.exports = {
           styles: [
             '<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css'
           ]
+        },
+        reporter: {
+          cli: 'spec',
+          file: 'jenkins'
         },
         server: {
           base: '.',
