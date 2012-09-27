@@ -12,7 +12,7 @@
   },
   "jetfuel": {},
   "dependencies": {
-    "jetfuel.engine.core": "~0.2.5",
+    "jetfuel.engine.core": "~0.2.7",
     "jetfuel.vendor.espresso": "~0.6.4-1",
     "jetfuel.vendor.mocha": "~1.5.0-1",
     "jetfuel.vendor.qunit": "~1.11.0pre-2",

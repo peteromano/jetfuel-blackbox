@@ -49,6 +49,21 @@ module.exports = {
   },
 
   "jetrunner": {
+    "site": {
+      "test": "<%= meta.dirs.test %>/site/**/*.test.js",
+      "src": "<%= meta.dirs.main.src %>/site",
+      "runner": {
+        "template": "<%= meta.dirs.jetrunner %>/site/runner.jade",
+        "scripts": [
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js",
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js",
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js"
+        ],
+        "styles": [
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
+        ]
+      }
+    },
     "reporter": {
       "cli": "spec",
       "html": "spec"
@@ -57,10 +72,16 @@ module.exports = {
       "base": ".",
       "port": 3000
     },
-    "soda": {
-      "url": "http://ci.example.com",
-      "username": "username",
-      "key": "access-key"
+    "remote": {
+      "soda": {
+        "url": "http://ci.example.com",
+        "username": "username",
+        "key": "access-key",
+        "systems": [
+          { "os": "Linux", "browser": "firefox", "browser-version": "10.", "max-duration": 300 },
+          { "os": "Linux", "browser": "firefox", "browser-version": "11.", "max-duration": 300 }
+        ]
+      }
     }
   }
 
