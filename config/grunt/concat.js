@@ -1,4 +1,4 @@
-{
+module.exports = {
 
     "site/Application.bundle.js": {
         "dest": "<%= meta.dirs.dest %>/site/Application.bundle.js",
@@ -9,8 +9,7 @@
             "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.underscore/underscore.js",
             "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.documentcloud.backbone/backbone.js",
             "<%= meta.dirs.dest %>/site/Application.js"
-        ],
-        "separator": ";"
+        ]
     }
 
-}
+};
