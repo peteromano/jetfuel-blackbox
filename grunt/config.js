@@ -70,9 +70,9 @@ module.exports = {
           ]
         },
         reporter: {
+          // supports: spec, list, html, doc, tap, dot, min
           cli: 'spec',
-          html: 'spec',
-          file: 'jenkins'
+          html: 'spec'
         },
         server: {
           base: '.',
