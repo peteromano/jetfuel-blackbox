@@ -1,7 +1,7 @@
 module.exports = {
 
     "site/Application.bundle.js": {
-        "dest": "<%= meta.dirs.dest %>/site/Application.bundle.js",
+        "dest": "<%= meta.dirs.main.dest %>/site/Application.bundle.js",
         "src": [
             "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js",
             "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js",
