@@ -71,6 +71,7 @@ module.exports = {
         },
         reporter: {
           cli: 'spec',
+          html: 'spec',
           file: 'jenkins'
         },
         server: {
