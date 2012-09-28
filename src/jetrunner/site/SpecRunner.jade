@@ -1,0 +1,21 @@
+!!! 5
+html(lang="en")
+  head
+    title= title
+    each style in styles
+      link(href="#{style}", rel="stylesheet")
+    script
+      espressoConfig = {
+          loader: {
+              libPath: '/build/lib'
+          }
+      }
+  body
+    each script in scripts
+      script(src="#{script}")
+    script(src="#{src}")
+    script(src="#{test}")
+    script
+       mocha.ui('bdd');
+       mocha.reporter('#{reporter}');
+       mocha.run();
