@@ -1,6 +1,6 @@
 {
   "name": "jetfuel",
-  "version": "1.0.0pre-10",
+  "version": "1.0.0pre-11",
   "title": "JetFuel",
   "description": "Create a boilerplate JetFuel project.",
   "homepage": "https://github.com/peteromano/jetfuel/wiki",
@@ -37,11 +37,10 @@
     "lib":      "./build/lib"
   },
   "scripts": {
-    "build":    "./jetfuel --force",
-    "test":     "./jetfuel test --force",
-    "update":   "./jetfuel update --force",
-    "install":  "./jetfuel install --force && ./jetfuel init",
-    "doc":      "./jetfuel docs"
+    "build":    "./jetfuel build",
+    "test":     "./jetfuel test",
+    "doc":      "./jetfuel docs",
+    "install":  "./jetfuel install --force && ./jetfuel init"
   },
   "engines": {
     "node": ">= 0.6.0"
