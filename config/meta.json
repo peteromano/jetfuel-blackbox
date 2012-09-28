@@ -10,15 +10,11 @@
     "modules":        "./node_modules",
     "build":          "./build",
     "docs":           "./build/doc",
-    "jetrunner":      "./src/jetrunner",
+    "test":           "./src/test",
     "deploy":         "./example/site/lib",
     "main": {
       "src":          "./src/main",
       "dest":         "./build/lib"
-    },
-    "test": {
-      "src":          "./src/test",
-      "dest":         "./build/test"
     },
     "vendor": {
       "dest":         "./build/vendor",
@@ -50,7 +46,7 @@
   "jetrunner": {
     "site": {
       "runner": {
-        "template": "<%= meta.dirs.jetrunner %>/site/SpecRunner.jade",
+        "template": "<%= meta.dirs.test %>/site/SpecRunner.jade",
         "styles": [
           "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
         ],

@@ -5,10 +5,6 @@
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],
       "dest": "<%= meta.dirs.main.dest %>"
     },
-    "test": {
-      "src": ["<%= meta.dirs.test.src %>/**/*"],
-      "dest": "<%= meta.dirs.test.dest %>"
-    },
     "vendor": {
       "src": ["<%= meta.dirs.modules %>/<%= meta.vendor.pkg %>/<%= meta.vendor.file %>"],
       "dest": "<%= meta.dirs.vendor.dest %>"
@@ -38,8 +34,8 @@
   },
 
   "qunit": {
-    "site.Application": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test.dest %>/site/ApplicationTest.qunit.html",
-    "site.services.Router": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test.dest %>/site/services/RouterTest.qunit.html"
+    "site.Application": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/ApplicationTest.qunit.html",
+    "site.services.Router": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/services/RouterTest.qunit.html"
   },
 
   "jetrunner": {
@@ -92,9 +88,6 @@
   "clean": {
     "main": {
       "src": ["<%= meta.dirs.main.dest %>", "<%= meta.dirs.main.dest %>/**/*"]
-    },
-    "test": {
-      "src": ["<%= meta.dirs.test.dest %>", "<%= meta.dirs.test.dest %>/**/*"]
     },
     "docs": {
       "src": ["<%= meta.dirs.docs %>", "<%= meta.dirs.docs %>/**/*"]
