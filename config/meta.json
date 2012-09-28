@@ -46,7 +46,7 @@
   "jetrunner": {
     "site": {
       "runner": {
-        "template": "<%= meta.dirs.test %>/site/SpecRunner.jade",
+        "template": "<%= meta.dirs.test %>/SpecRunner.jade",
         "styles": [
           "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
         ],
