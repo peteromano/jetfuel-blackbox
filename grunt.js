@@ -2,16 +2,16 @@
 module.exports = function(grunt) {
     'use strict';
 
-    var CONFIG = './config/grunt';
+    var CONFIG = './config';
 
     require(CONFIG + '/tasks')(grunt);
 
     grunt.initConfig(
-        grunt.utils._.extend(require(CONFIG + '/targets'), {
-            pkg: '<json:package.json>',
-            meta: require(CONFIG + '/meta'),
-            concat: require(CONFIG + '/concat')
-        })
+        grunt.utils._.extend({
+            pkg: require('./package.json'),
+            meta: require(CONFIG + '/meta.json'),
+            concat: require(CONFIG + '/concat.json')
+        }, require(CONFIG + '/targets.json'))
     );
 
 };

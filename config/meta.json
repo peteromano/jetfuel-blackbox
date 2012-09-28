@@ -1,19 +1,16 @@
-module.exports = {
-
-  "banner": "/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> -\
-    <%= grunt.template.today('yyyy-mm-dd') %>\n\
-    <%= pkg.homepage ? \'* \' + pkg.homepage + '\n' : '' %>\
-    * Copyright (c) <%= grunt.template.today('yyyy') %> <%= pkg.organization %>;\
-     Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %> */",
+{
 
   "build": {
     "name": "<%= pkg.name %>-<%= pkg.version %>"
   },
 
+  "banner": "<file_template:config/templates/BANNER>",
+
   "dirs": {
     "modules":        "./node_modules",
     "build":          "./build",
     "docs":           "./build/doc",
+    "jetrunner":      "./src/jetrunner",
     "deploy":         "./example/site/lib",
     "main": {
       "src":          "./src/main",
@@ -22,10 +19,6 @@ module.exports = {
     "test": {
       "src":          "./src/test",
       "dest":         "./build/test"
-    },
-    "jetrunner": {
-      "src":          "./src/jetrunner",
-      "dest":         "./build/jetrunner"
     },
     "vendor": {
       "dest":         "./build/vendor",
@@ -56,9 +49,8 @@ module.exports = {
 
   "jetrunner": {
     "site": {
-      "tests": "<%= meta.dirs.test.dest %>/site/**/*Test.js",
       "runner": {
-        "template": "<%= meta.dirs.jetrunner.dest %>/site/SpecRunner.jade",
+        "template": "<%= meta.dirs.jetrunner %>/site/SpecRunner.jade",
         "styles": [
           "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
         ],
@@ -73,7 +65,7 @@ module.exports = {
       "html": "spec"
     },
     "server": {
-      "base": "./build",
+      "base": ".",
       "port": 3000
     },
     "remote": {
@@ -89,4 +81,4 @@ module.exports = {
     }
   }
 
-};
+}
