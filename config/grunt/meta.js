@@ -13,17 +13,19 @@ module.exports = {
   "dirs": {
     "modules":        "./node_modules",
     "build":          "./build",
-    "test":           "./src/test",
-    "jetrunner":      "./src/jetrunner",
     "docs":           "./build/doc",
     "deploy":         "./example/site/lib",
     "main": {
       "src":          "./src/main",
       "dest":         "./build/lib"
     },
-    "resources": {
-      "src":          "./src/resources",
-      "deploy":       "./example/site/resources"
+    "test": {
+      "src":          "./src/test",
+      "dest":         "./build/test"
+    },
+    "jetrunner": {
+      "src":          "./src/jetrunner",
+      "dest":         "./build/jetrunner"
     },
     "vendor": {
       "dest":         "./build/vendor",
@@ -34,6 +36,10 @@ module.exports = {
       "dest":         "./build/css",
       "cache":        "./.sass-cache",
       "deploy":       "./example/site/css"
+    },
+    "resources": {
+      "src":          "./src/resources",
+      "deploy":       "./example/site/resources"
     }
   },
 
@@ -50,17 +56,15 @@ module.exports = {
 
   "jetrunner": {
     "site": {
-      "test": "<%= meta.dirs.test %>/site/**/*.test.js",
-      "src": "<%= meta.dirs.main.src %>/site",
+      "tests": "<%= meta.dirs.test.dest %>/site/**/*Test.js",
       "runner": {
-        "template": "<%= meta.dirs.jetrunner %>/site/runner.jade",
-        "scripts": [
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.jquery/jquery.js",
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.espresso/espresso.js",
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js"
-        ],
+        "template": "<%= meta.dirs.jetrunner.dest %>/site/SpecRunner.jade",
         "styles": [
           "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
+        ],
+        "scripts": [
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js",
+          "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js"
         ]
       }
     },
@@ -69,7 +73,7 @@ module.exports = {
       "html": "spec"
     },
     "server": {
-      "base": ".",
+      "base": "./build",
       "port": 3000
     },
     "remote": {

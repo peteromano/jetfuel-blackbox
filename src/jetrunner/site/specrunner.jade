@@ -7,8 +7,11 @@ html(lang="en")
   body
     each script in scripts
       script(src="#{script}")
+    script
+      espressoConfig = {
+          environment: espresso.util.Config.DefaultEnvironments.TEST
+      };
     script(src="#{src}")
-    script(src="#{test}")
     script
        mocha.ui('bdd');
        mocha.reporter('#{reporter}');

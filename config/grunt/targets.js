@@ -7,6 +7,16 @@ module.exports = {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],
       "dest": "<%= meta.dirs.main.dest %>"
     },
+    // jetfuel copy:test
+    "test": {
+      "src": ["<%= meta.dirs.test.src %>/**/*"],
+      "dest": "<%= meta.dirs.test.dest %>"
+    },
+    // jetfuel copy:jetrunner
+    "jetrunner": {
+      "src": ["<%= meta.dirs.jetrunner.src %>/**/*"],
+      "dest": "<%= meta.dirs.jetrunner.dest %>"
+    },
     // jetfuel copy:vendor
     "vendor": {
       "src": ["<%= meta.dirs.modules %>/<%= meta.vendor.pkg %>/<%= meta.vendor.file %>"],
@@ -44,24 +54,22 @@ module.exports = {
 
   // jetfuel qunit (jetfuel qunit:all)
   "qunit": {
-    "site.Application": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/Application.runner.html",
-    "site.services.Router": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/services/Router.runner.html"
+    "site.Application": "http://localhost:<%= meta.jetrunner.server.port %>/test/site/ApplicationTest.qunit.html",
+    "site.services.Router": "http://localhost:<%= meta.jetrunner.server.port %>/test/site/services/RouterTest.qunit.html"
   },
 
   // jetfuel jetrunner (jetfuel jetrunner:all)
   "jetrunner": {
     // jetfuel jetrunner:local
     "local": [{
-      "test": "<config:meta.jetrunner.site.test>",
-      "src": "<config:meta.jetrunner.site.src>",
+      "tests": "<config:meta.jetrunner.site.tests>",
       "runner": "<config:meta.jetrunner.site.runner>",
       "reporter": "<config:meta.jetrunner.reporter>",
       "server": "<config:meta.jetrunner.server>"
     }],
     // jetfuel jetrunner:remote
     "remote": [{
-      "test": "<config:meta.jetrunner.site.test>",
-      "src": "<config:meta.jetrunner.site.src>",
+      "tests": "<config:meta.jetrunner.site.tests>",
       "runner": "<config:meta.jetrunner.site.runner>",
       "reporter": "<config:meta.jetrunner.reporter>",
       "server": "<config:meta.jetrunner.server>",
@@ -113,7 +121,14 @@ module.exports = {
     "main": {
       "src": ["<%= meta.dirs.main.dest %>", "<%= meta.dirs.main.dest %>/**/*"]
     },
-    // jetfuel clean:docs
+    // jetfuel clean:test
+    "test": {
+      "src": ["<%= meta.dirs.test.dest %>", "<%= meta.dirs.test.dest %>/**/*"]
+    },
+    // jetfuel clean:jetrunner
+    "jetrunner": {
+      "src": ["<%= meta.dirs.jetrunner.dest %>", "<%= meta.dirs.jetrunner.dest %>/**/*"]
+    },    // jetfuel clean:docs
     "docs": {
       "src": ["<%= meta.dirs.docs %>", "<%= meta.dirs.docs %>/**/*"]
     },

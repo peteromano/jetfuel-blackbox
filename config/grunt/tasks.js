@@ -10,16 +10,18 @@ module.exports = function(grunt) {
   registerTask('clompass',    'clean:sass compass');
   registerTask('clopycat',    'clopy autocat concat');
   registerTask('clopyvendor', 'clean:vendor copy:vendor');
-  registerTask('build',       'clopycat automin clompass clocks');
+  registerTask('clunner',     'clean:jetrunner copy:jetrunner');
+  registerTask('clest',       'clean:test copy:test');
+  registerTask('build',       'lint clopyvendor clunner clest clopycat automin clompass clocks');
   registerTask('uglify',      'min');
 
   // jetfuel all
-  registerTask('all',         'lint test build deploy');
+  registerTask('all',         'test deploy');
 
   // jetfuel dev
-  registerTask('dev',         'lint clopycat clompass deploy');
-  registerTask('dev:main',    'lint clopycat deploy:main');
-  registerTask('dev:sass',    'clompass deploy:sass');
+  registerTask('dev',         'lint clopyvendor clopycat clompass deploy');
+  registerTask('dev:main',    'lint clopyvendor clopycat deploy:main');
+  registerTask('dev:sass',    'clopyvendor clompass deploy:sass');
 
   // jetfuel watch
   renameTask('watch',         'observe');
@@ -32,9 +34,9 @@ module.exports = function(grunt) {
   registerTask('default',     'all');
 
   // NPM hooks
-  registerTask('test',        'clopyvendor jetrunner:local qunit');
-  registerTask('install',     'clopyvendor build deploy');
-  registerTask('update',      'clopyvendor build');
+  registerTask('install',     'default');
+  registerTask('test',        'build jetrunner:local qunit');
+  registerTask('update',      'build');
 
   // main -> js - Target aliases
   registerTask('copy:js',     'copy:main');

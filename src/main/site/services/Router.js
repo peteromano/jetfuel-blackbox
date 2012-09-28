@@ -10,6 +10,6 @@ espresso.Service('site.services.Router', function($, require, _, Backbone) {
 
 }, {
 
-	Dependencies: ['site.Application @alias=Application']
+	Dependencies: ['site.Application @alias=Application @bundled']
 
 });

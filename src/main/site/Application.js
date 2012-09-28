@@ -30,7 +30,7 @@ espresso.Application('Application', function($, require, _, Backbone) {
 }, {
 
     Dependencies: [
-        'jetfuel.vendor.modernizr/modernizr @vendor @alias=Modernizr',
+        'jetfuel.vendor.modernizr/modernizr @vendor @alias=Modernizr @compressed=false',
         'jetfuel.vendor.documentcloud.underscore/underscore @vendor @alias=_',
         'jetfuel.vendor.documentcloud.backbone/backbone @vendor @alias=Backbone'
     ],
