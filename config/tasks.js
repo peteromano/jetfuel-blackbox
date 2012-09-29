@@ -10,15 +10,15 @@ module.exports = function(grunt) {
   registerTask('clompass',    'clean:sass compass');
   registerTask('clopycat',    'clopy autocat concat');
   registerTask('clopyvendor', 'clean:vendor copy:vendor');
-  registerTask('build',       'lint clopyvendor clopycat automin clompass clocks');
+  registerTask('build',       'lint clopycat automin clompass clocks');
   registerTask('uglify',      'min');
 
   // jetfuel all
   registerTask('all',         'test deploy');
 
   // jetfuel dev
-  registerTask('dev',         'lint clopyvendor clopycat clompass deploy');
-  registerTask('dev:main',    'lint clopyvendor clopycat deploy:main');
+  registerTask('dev',         'lint clopycat clompass deploy');
+  registerTask('dev:main',    'lint clopycat deploy:main');
   registerTask('dev:sass',    'clopyvendor clompass deploy:sass');
 
   // jetfuel watch
