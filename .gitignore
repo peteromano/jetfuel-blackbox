@@ -1,7 +1,7 @@
 # Project files #
 ###################
 .sass-cache
-.espresso
+.jetfuel
 build
 node_modules
 npm-debug.log
