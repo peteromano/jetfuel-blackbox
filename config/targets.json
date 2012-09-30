@@ -34,8 +34,8 @@
   },
 
   "qunit": {
-    "site.Application": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/ApplicationTest.qunit.html",
-    "site.services.Router": "http://localhost:<%= meta.jetrunner.server.port %>/<%= meta.dirs.test %>/site/services/RouterTest.qunit.html"
+    "/site/Application":      "http://localhost:<%= meta.jetrunner.server.port %>?test=<%= meta.dirs.test %>/site/ApplicationTest.js",
+    "/site/services/Router":  "http://localhost:<%= meta.jetrunner.server.port %>?test=<%= meta.dirs.test %>/site/services/RouterTest.js&lib=<%= meta.dirs.main.dest %>/site/services/Router.js"
   },
 
   "jetrunner": {

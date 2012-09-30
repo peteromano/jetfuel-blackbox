@@ -13,9 +13,5 @@ html(lang="en")
   body
     each script in scripts
       script(src="#{script}")
-    script(src="#{src}")
+    script(src="#{lib}")
     script(src="#{test}")
-    script
-       mocha.ui('bdd');
-       mocha.reporter('#{reporter}');
-       mocha.run();
