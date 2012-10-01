@@ -33,11 +33,6 @@
     }
   },
 
-  "qunit": {
-    "/site/Application":      "http://localhost:<%= meta.jetrunner.server.port %>?test=<%= meta.dirs.test %>/site/ApplicationTest.js",
-    "/site/services/Router":  "http://localhost:<%= meta.jetrunner.server.port %>?test=<%= meta.dirs.test %>/site/services/RouterTest.js&lib=<%= meta.dirs.main.dest %>/site/services/Router.js"
-  },
-
   "jetrunner": {
     "local": [{
       "tests": "<json:config/tests/site.json>",

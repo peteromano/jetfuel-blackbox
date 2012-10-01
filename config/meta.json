@@ -47,11 +47,12 @@
     "runner": {
       "template": "<%= meta.dirs.test %>/JetRunner.jade",
       "styles": [
-        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.css"
+        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
       ],
       "scripts": [
-        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.js",
-        "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js"
+        "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js",
+        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js",
+        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.chai/chai.js"
       ]
     },
     "reporter": {

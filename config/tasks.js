@@ -32,7 +32,7 @@ module.exports = function(grunt) {
   registerTask('default',     'all');
 
   // NPM hooks
-  registerTask('test',        'build jetrunner:local qunit');
+  registerTask('test',        'build jetrunner:local');
 
   // main -> js - Target aliases
   registerTask('copy:js',     'copy:main');
