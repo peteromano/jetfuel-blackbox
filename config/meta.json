@@ -44,17 +44,15 @@
   },
 
   "jetrunner": {
-    "site": {
-      "runner": {
-        "template": "<%= meta.dirs.test %>/JetRunner.jade",
-        "styles": [
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.css"
-        ],
-        "scripts": [
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.js",
-          "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js"
-        ]
-      }
+    "runner": {
+      "template": "<%= meta.dirs.test %>/JetRunner.jade",
+      "styles": [
+        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.css"
+      ],
+      "scripts": [
+        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.qunit/qunit.js",
+        "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js"
+      ]
     },
     "reporter": {
       "cli": "spec",

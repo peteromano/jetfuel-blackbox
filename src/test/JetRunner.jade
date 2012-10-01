@@ -11,7 +11,17 @@ html(lang="en")
           }
       }
   body
+    h1#qunit-header QUnit Test Suite
+    h2#qunit-banner
+    div#qunit-testrunner-toolbar
+    h2#qunit-userAgent
+    ol#qunit-tests
+    div#qunit-fixture
+      span lame test markup
+      span normal test markup
+      span awesome test markup
     each script in scripts
       script(src="#{script}")
-    script(src="#{lib}")
+    if lib
+        script(src="#{lib}")
     script(src="#{test}")
