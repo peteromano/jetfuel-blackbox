@@ -44,21 +44,18 @@
   },
 
   "jetrunner": {
-    "runner": {
-      "template": "<%= meta.dirs.test %>/JetRunner.jade",
-      "styles": [
-        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
-      ],
-      "scripts": [
-        "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js",
-        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js",
-        "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.chai/chai.js"
-      ]
-    },
-    "reporter": "spec",
     "server": {
-      "base": ".",
-      "port": 3000
+      "runner": {
+        "template": "<%= meta.dirs.test %>/JetRunner.jade",
+        "styles": [
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
+        ],
+        "scripts": [
+          "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js",
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js",
+          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.chai/chai.js"
+        ]
+      }
     },
     "remote": {
       "soda": {
