@@ -17,10 +17,11 @@ html(lang="en")
     script
       assert = chai.assert;
       expect = chai.expect;
-      should = chai.should();
+      //should = chai.should();
       mocha.setup('bdd');
     if lib
         script(src="#{lib}")
     script(src="#{test}")
     script
-      if(!window.mochaPhantomJS) mocha.run();
+      if(window.mochaPhantomJS) mochaPhantomJS.started = true;
+      else mocha.run();

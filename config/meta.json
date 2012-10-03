@@ -55,10 +55,7 @@
         "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.chai/chai.js"
       ]
     },
-    "reporter": {
-      "cli": "spec",
-      "html": "spec"
-    },
+    "reporter": "spec",
     "server": {
       "base": ".",
       "port": 3000

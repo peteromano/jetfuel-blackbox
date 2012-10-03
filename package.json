@@ -15,7 +15,7 @@
     "jetfuel.engine.core": "~0.2.12",
     "jetfuel.vendor.espresso": "~0.6.5-1",
     "jetfuel.vendor.mocha": "~1.5.0-1",
-    "jetfuel.vendor.chai": "~1.2.0-1",
+    "jetfuel.vendor.chai": "~1.2.0-3",
     "jetfuel.vendor.qunit": "~1.11.0pre-2",
     "jetfuel.vendor.jasmine": "~1.0.26-2",
     "jetfuel.vendor.jquery": "~1.7.2-4",
