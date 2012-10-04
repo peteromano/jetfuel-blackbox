@@ -1,8 +1,8 @@
 {
 
     "grunt": {
-        "config": {
-            "pkg":      "./package.json",
+        "files": {
+            "info":     "./package.json",
             "tasks":    "./config/tasks.js",
             "meta":     "./config/meta.json",
             "targets":  "./config/targets.json",
@@ -11,7 +11,8 @@
     },
 
     "bower": {
-        "config": {
+        "files": {
+            "info":     "./package.json",
             "vendor":   "./config/vendor.json"
         }
     }
