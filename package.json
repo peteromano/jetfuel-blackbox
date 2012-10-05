@@ -1,6 +1,6 @@
 {
   "name": "jetfuel",
-  "version": "1.0.0pre-17",
+  "version": "1.0.0pre-18",
   "title": "JetFuel",
   "description": "Create a boilerplate JetFuel project.",
   "homepage": "https://github.com/peteromano/jetfuel/wiki",
@@ -12,7 +12,7 @@
   },
   "jetfuel": {},
   "dependencies": {
-    "jetfuel.engine.core": "~0.2.16",
+    "jetfuel.engine.core": "~0.2.17",
     "jetfuel.vendor.espresso": "~0.6.5-1",
     "jetfuel.vendor.mocha": "~1.5.0-1",
     "jetfuel.vendor.chai": "~1.2.0-3",
