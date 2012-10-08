@@ -1,13 +1,15 @@
 {
-
     "grunt": {
-        "config": {
-            "info":     "./package.json",
-            "tasks":    "./config/tasks.json",
-            "meta":     "./config/meta.json",
-            "targets":  "./config/targets.json",
-            "concat":   "./config/concat.json"
-        }
+        "pkg":      "<json:package.json>",
+        "tasks":    "<json:config/tasks.json>",
+        "meta":     "<json:config/meta.json>",
+        "targets":  "<json:config/targets.json>",
+        "concat":   "<json:config/concat.json>"
+    },
+
+    "bower": {
+        "directory":    "./vendor",
+        "json":         "./config/vendor.json"
     }
 
 }
