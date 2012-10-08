@@ -1,18 +1,16 @@
 {
-  "name": "jetfuel",
-  "version": "1.0.0pre-19",
-  "title": "JetFuel",
+  "name": "jetfuel-boilerplate",
+  "version": "1.0.0pre-1",
+  "title": "JetFuel Boilerplate",
   "description": "Create a boilerplate JetFuel project.",
-  "homepage": "https://github.com/peteromano/jetfuel/wiki",
-  "keywords": ["jetfuel"],
+  "homepage": "https://github.com/peteromano/jetfuel-boilerplate/wiki",
+  "keywords": ["jetfuel-boilerplate", "jetfuel"],
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
-  "jetfuel": {},
   "dependencies": {
-    "jetfuel.engine.core": "~0.2.18",
     "jetfuel.vendor.espresso": "~0.6.5-1",
     "jetfuel.vendor.mocha": "~1.5.0-1",
     "jetfuel.vendor.chai": "~1.2.0-3",
@@ -25,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/jetfuel"
+    "url": "https://github.com/peteromano/jetfuel-boilerplate"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/jetfuel/issues"
+    "url": "https://github.com/peteromano/jetfuel-boilerplate/issues"
   },
   "directories": {
     "example":  "./example",
@@ -38,10 +36,9 @@
     "lib":      "./build/lib"
   },
   "scripts": {
-    "build":    "./jetfuel build",
-    "test":     "./jetfuel test",
-    "doc":      "./jetfuel docs",
-    "install":  "./jetfuel install --force && ./jetfuel init"
+    "build":    "jetfuel build",
+    "test":     "jetfuel test",
+    "doc":      "jetfuel docs"
   },
   "engines": {
     "node": ">= 0.6.0"
