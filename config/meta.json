@@ -7,28 +7,28 @@
   "banner": "<file_template:config/templates/BANNER>",
 
   "dirs": {
-    "modules":        "./node_modules",
-    "build":          "./build",
-    "docs":           "./build/doc",
-    "test":           "./src/test",
-    "deploy":         "./example/site/lib",
+    "modules":        "node_modules",
+    "build":          "build",
+    "docs":           "build/doc",
+    "test":           "src/test",
+    "deploy":         "example/site/lib",
     "main": {
-      "src":          "./src/main",
-      "dest":         "./build/lib"
+      "src":          "src/main",
+      "dest":         "build/lib"
     },
     "vendor": {
-      "dest":         "./build/vendor",
-      "deploy":       "./example/site/vendor"
+      "dest":         "build/vendor",
+      "deploy":       "example/site/vendor"
     },
     "sass": {
-      "src":          "./src/sass",
-      "dest":         "./build/css",
-      "cache":        "./.sass-cache",
-      "deploy":       "./example/site/css"
+      "src":          "src/sass",
+      "dest":         "build/css",
+      "cache":        ".sass-cache",
+      "deploy":       "example/site/css"
     },
     "resources": {
-      "src":          "./src/resources",
-      "deploy":       "./example/site/resources"
+      "src":          "src/resources",
+      "deploy":       "example/site/resources"
     }
   },
 

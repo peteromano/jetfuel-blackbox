@@ -1,5 +1,7 @@
 {
 
+  "concat": "<json:config/concat.json>",
+
   "copy": {
     "main": {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],
