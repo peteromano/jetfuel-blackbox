@@ -1,36 +1,48 @@
 {
 
     "rename": {
+
         "watch":        "observe"
+        
     },
 
     "register": {
+
         "default":      "all",
+
         "all":          "test deploy",
-        "clocks":       "clean:docs docs",
-        "clopy":        "clopyvendor clean:main copy:main",
-        "clompass":     "clean:sass compass",
-        "clopycat":     "clopy autocat concat",
-        "clopyvendor":  "clean:vendor copy:vendor",
+
+        "test":         "build jetrunner:local",
+
         "build":        "lint clopycat automin clompass clocks",
+
         "uglify":       "min",
+
         "dev":          "lint clopycat clompass deploy",
         "dev:main":     "lint clopycat deploy:main",
         "dev:sass":     "clopyvendor clompass deploy:sass",
+
         "watch":        "observe:main observe:sass",
         "watch:main":   "observe:main",
         "watch:sass":   "observe:sass",
         "watch:all":    "observe",
-        "test":         "build jetrunner:local",
+
         "copy:js":      "copy:main",
         "clean:js":     "clean:main",
         "deploy:js":    "deploy:main deploy:vendor",
         "dev:js":       "dev:main",
         "watch:js":     "watch:main",
+
         "clean:css":    "clean:sass",
         "deploy:css":   "deploy:sass",
         "dev:css":      "dev:sass",
-        "watch:css":    "watch:sass"
+        "watch:css":    "watch:sass",
+
+        "clocks":       "clean:docs docs",
+        "clopy":        "clopyvendor clean:main copy:main",
+        "clompass":     "clean:sass compass",
+        "clopycat":     "clopy autocat concat",
+        "clopyvendor":  "clean:vendor copy:vendor"
     }
 
 }
