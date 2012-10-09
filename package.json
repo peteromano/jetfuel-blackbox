@@ -36,8 +36,8 @@
     "lib":      "./build/lib"
   },
   "scripts": {
-    "build":    "jetfuel build",
-    "test":     "jetfuel test",
+    "build":    "npm up && jetfuel build",
+    "test":     "npm up && jetfuel test",
     "doc":      "jetfuel docs"
   },
   "engines": {
