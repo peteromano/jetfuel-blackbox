@@ -123,11 +123,6 @@
 
   "lint": {
     "all": ["<%= meta.dirs.main.src %>/**/*.js", "<%= meta.dirs.test %>/**/*.js"]
-  },
-
-  "server": {
-    "base": "./build",
-    "port": 8000
   }
 
 }
