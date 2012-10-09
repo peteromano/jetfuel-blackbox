@@ -44,6 +44,7 @@
   },
 
   "jetrunner": {
+    "reporter": "list",
     "server": {
       "runner": {
         "template": "<%= meta.dirs.test %>/JetRunner.jade",
