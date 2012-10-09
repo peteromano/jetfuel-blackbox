@@ -89,10 +89,10 @@
       "src": ["<%= meta.dirs.docs %>", "<%= meta.dirs.docs %>/**/*"]
     },
     "sass": {
-      "src": [
-        "<%= meta.dirs.sass.dest %>", "<%= meta.dirs.sass.dest %>/**/*",
-        "<%= meta.dirs.sass.cache %>", "<%= meta.dirs.sass.cache %>/**/*"
-      ]
+      "src": ["<%= meta.dirs.sass.dest %>", "<%= meta.dirs.sass.dest %>/**/*"]
+    },
+    "sass-cache": {
+      "src": ["<%= meta.dirs.sass.cache %>", "<%= meta.dirs.sass.cache %>/**/*"]
     },
     "vendor": {
       "src": ["<%= meta.dirs.vendor.dest %>", "<%= meta.dirs.vendor.dest %>/**/*"]
