@@ -2,13 +2,6 @@
 
   "concat": "<json:config/concat.json>",
 
-  "six": {
-    "main": {
-      "src": ["<%= meta.dirs.main.src %>/**/*.js"],
-      "dest": "<%= meta.dirs.main.dest %>"
-    }
-  },
-
   "copy": {
     "main": {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],

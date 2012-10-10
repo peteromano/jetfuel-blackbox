@@ -5,6 +5,10 @@
         "tasks":    "<json:config/tasks.json>",
         "meta":     "<json:config/meta.json>",
         "targets":  "<json:config/targets.json>"
+    },
+
+    "bower": {
+        "vendor":   "<json:config/vendor.json>"
     }
 
 }
