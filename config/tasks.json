@@ -1,45 +1,34 @@
 {
 
     "rename": {
-
         "watch":        "observe"
-        
     },
 
     "register": {
-
         "default":      "all",
-
         "all":          "test deploy",
-
         "test":         "build jetrunner:local",
-
         "build":        "lint clopycat automin clompass clocks",
-
         "uglify":       "min",
-
+        "vendor":       "install",
         "dev":          "lint clopycat clean:sass compass deploy",
         "dev:main":     "lint clopycat deploy:main",
-        "dev:sass":     "install clean:sass compass deploy:sass",
-
+        "dev:sass":     "vendor clean:sass compass deploy:sass",
         "watch":        "observe:main observe:sass",
         "watch:main":   "observe:main",
         "watch:sass":   "observe:sass",
         "watch:all":    "observe",
-
         "copy:js":      "copy:main",
         "clean:js":     "clean:main",
         "deploy:js":    "deploy:main deploy:vendor",
         "dev:js":       "dev:main",
         "watch:js":     "watch:main",
-
         "clean:css":    "clean:sass",
         "deploy:css":   "deploy:sass",
         "dev:css":      "dev:sass",
         "watch:css":    "watch:sass",
-
         "clocks":       "clean:docs docs",
-        "clopy":        "install clean:main copy:main",
+        "clopy":        "vendor clean:main copy:main",
         "clompass":     "clean:sass clean:sass-cache compass",
         "clopycat":     "clopy autocat concat"
     }

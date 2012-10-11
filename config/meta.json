@@ -32,14 +32,7 @@
     }
   },
 
-  "deploy": {
-    "rsync": {
-      "args": "-rlpgoDc --exclude=.svn"
-    }
-  },
-
   "jetrunner": {
-    "reporter": "list",
     "server": {
       "runner": {
         "template": "<%= meta.dirs.test %>/JetRunner.jade",
@@ -63,6 +56,12 @@
           { "os": "Linux", "browser": "firefox", "browser-version": "11.", "max-duration": 300 }
         ]
       }
+    }
+  },
+
+  "deploy": {
+    "rsync": {
+      "args": "-rlpgoDc --exclude=.svn"
     }
   }
 
