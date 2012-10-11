@@ -2,6 +2,8 @@
 
   "concat": "<json:config/concat.json>",
 
+  "jshint": "<json:config/jshint.json>",
+
   "copy": {
     "main": {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],

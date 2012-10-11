@@ -5,7 +5,6 @@ espresso.Application('Application', function($, require, _, Backbone) {
      * @lends site.Application.prototype
      */
     return {
-
         /**
          * @constructs
          * @description This class is a singleton
@@ -30,9 +29,8 @@ espresso.Application('Application', function($, require, _, Backbone) {
 }, {
 
     Dependencies: [
-        'jetfuel.vendor.modernizr/modernizr @vendor @alias=Modernizr @compressed=false',
-        'jetfuel.vendor.documentcloud.underscore/underscore @vendor @alias=_',
-        'jetfuel.vendor.documentcloud.backbone/backbone @vendor @alias=Backbone'
+        'underscore/underscore @vendor @alias=_',
+        'backbone/backbone @vendor @alias=Backbone'
     ],
 
     Services: {

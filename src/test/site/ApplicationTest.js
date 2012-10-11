@@ -1,4 +1,7 @@
+/*global Application */
 describe('Application', function(){
+  'use strict';
+
   var app;
 
   before(function(){

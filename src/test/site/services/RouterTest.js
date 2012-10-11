@@ -1,4 +1,7 @@
+/*global site */
 describe('site.services.Router', function(){
+  'use strict';
+
   var router;
 
   before(function(){

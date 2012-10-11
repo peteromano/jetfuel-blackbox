@@ -1,4 +1,5 @@
 espresso.Service('site.services.Router', function($, require, _, Backbone) {
+    'use strict';
 
     return {
 
@@ -10,6 +11,6 @@ espresso.Service('site.services.Router', function($, require, _, Backbone) {
 
 }, {
 
-	Dependencies: ['site.Application @alias=Application @bundled']
+	Dependencies: ['site/Application @alias=Application @bundled']
 
 });
