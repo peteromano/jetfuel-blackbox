@@ -7,17 +7,17 @@
   "banner": "<file_template:config/templates/BANNER>",
 
   "dirs": {
-    "modules":        "node_modules",
     "build":          "build",
+    "modules":        "node_modules",
     "docs":           "build/doc",
     "test":           "src/test",
-    "deploy":         "example/site/lib",
     "main": {
       "src":          "src/main",
-      "dest":         "build/lib"
+      "dest":         "build/lib",
+      "deploy":       "example/site/lib"
     },
     "vendor": {
-      "dest":         "build/vendor",
+      "dest":         "vendor",
       "deploy":       "example/site/vendor"
     },
     "sass": {
@@ -32,11 +32,6 @@
     }
   },
 
-  "vendor": {
-    "pkg": "jetfuel.vendor.*",
-    "file": ".jetfuel.json"
-  },
-
   "deploy": {
     "rsync": {
       "args": "-rlpgoDc --exclude=.svn"
@@ -49,12 +44,12 @@
       "runner": {
         "template": "<%= meta.dirs.test %>/JetRunner.jade",
         "styles": [
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.css"
+          "<%= meta.dirs.vendor.dest %>/mocha/mocha.css"
         ],
         "scripts": [
           "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js",
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.mocha/mocha.js",
-          "<%= meta.dirs.vendor.dest %>/jetfuel.vendor.chai/chai.js"
+          "<%= meta.dirs.vendor.dest %>/mocha/mocha.js",
+          "<%= meta.dirs.vendor.dest %>/chai/chai.js"
         ]
       }
     },

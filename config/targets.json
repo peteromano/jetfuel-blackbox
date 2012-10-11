@@ -6,10 +6,6 @@
     "main": {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],
       "dest": "<%= meta.dirs.main.dest %>"
-    },
-    "vendor": {
-      "src": ["<%= meta.dirs.modules %>/<%= meta.vendor.pkg %>/<%= meta.vendor.file %>"],
-      "dest": "<%= meta.dirs.vendor.dest %>"
     }
   },
 
@@ -65,7 +61,7 @@
   "deploy": {
     "main": {
       "src": ["<%= meta.dirs.main.dest %>/*"],
-      "dest": "<%= meta.dirs.deploy %>"
+      "dest": "<%= meta.dirs.main.deploy %>"
     },
     "sass": {
       "src": ["<%= meta.dirs.sass.dest %>/*"],
@@ -93,9 +89,6 @@
     },
     "sass-cache": {
       "src": ["<%= meta.dirs.sass.cache %>", "<%= meta.dirs.sass.cache %>/**/*"]
-    },
-    "vendor": {
-      "src": ["<%= meta.dirs.vendor.dest %>", "<%= meta.dirs.vendor.dest %>/**/*"]
     },
     "build": {
       "src": ["<%= meta.dirs.build %>", "<%= meta.dirs.build %>/**/*"]

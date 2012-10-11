@@ -2,6 +2,7 @@
     "dependencies": {
         "mocha": "~1.5.0",
         "chai": "~1.2.0",
+        "espresso": "*",
         "underscore": "*",
         "backbone": "*",
         "jquery": "*"

@@ -20,7 +20,7 @@
 
         "dev":          "lint clopycat clean:sass compass deploy",
         "dev:main":     "lint clopycat deploy:main",
-        "dev:sass":     "clopyvendor clean:sass compass deploy:sass",
+        "dev:sass":     "install clean:sass compass deploy:sass",
 
         "watch":        "observe:main observe:sass",
         "watch:main":   "observe:main",
@@ -39,10 +39,9 @@
         "watch:css":    "watch:sass",
 
         "clocks":       "clean:docs docs",
-        "clopy":        "clopyvendor clean:main copy:main",
+        "clopy":        "install clean:main copy:main",
         "clompass":     "clean:sass clean:sass-cache compass",
-        "clopycat":     "clopy autocat concat",
-        "clopyvendor":  "clean:vendor copy:vendor"
+        "clopycat":     "clopy autocat concat"
     }
 
 }

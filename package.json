@@ -1,6 +1,6 @@
 {
   "name": "jetfuel-boilerplate",
-  "version": "1.0.0pre23",
+  "version": "1.0.0pre24",
   "title": "JetFuel Boilerplate",
   "description": "Create a boilerplate JetFuel project.",
   "homepage": "https://github.com/peteromano/jetfuel-boilerplate/wiki",
@@ -10,17 +10,7 @@
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
-  "dependencies": {
-    "jetfuel.vendor.espresso": "~0.6.5-1",
-    "jetfuel.vendor.mocha": "~1.5.0-1",
-    "jetfuel.vendor.chai": "~1.2.0-3",
-    "jetfuel.vendor.qunit": "~1.11.0pre-2",
-    "jetfuel.vendor.jasmine": "~1.0.26-2",
-    "jetfuel.vendor.jquery": "~1.7.2-4",
-    "jetfuel.vendor.modernizr": "~2.6.3pre-2",
-    "jetfuel.vendor.documentcloud.underscore": "~1.3.3-3",
-    "jetfuel.vendor.documentcloud.backbone": "~0.9.2-3"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/peteromano/jetfuel-boilerplate"
