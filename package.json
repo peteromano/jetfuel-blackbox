@@ -1,10 +1,11 @@
 {
-  "name": "jetfuel",
-  "version": "1.0.0pre29",
-  "title": "JetFuel",
-  "description": "JetFuel for front-end development framework.",
-  "homepage": "https://github.com/peteromano/jetfuel/wiki",
+  "name": "jetfuel-boilerplate",
+  "version": "1.0.0pre25",
+  "title": "JetFuel Boilerplate",
+  "description": "Create a boilerplate JetFuel project.",
+  "homepage": "https://github.com/peteromano/jetfuel-boilerplate/wiki",
   "keywords": [
+    "jetfuel-boilerplate",
     "jetfuel"
   ],
   "author": {
@@ -12,39 +13,28 @@
     "email": "pete.romano@yahoo.com",
     "url": "http://www.peteromano.net"
   },
+  "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/jetfuel"
+    "url": "https://github.com/peteromano/jetfuel-boilerplate"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/jetfuel/issues"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">= 0.6.0"
-  },
-  "main": "./lib/jetfuel",
-  "man": "./man/jetfuel.1",
-  "bin": {
-    "jetfuel": "./bin/jetfuel"
+    "url": "https://github.com/peteromano/jetfuel-boilerplate/issues"
   },
   "directories": {
-    "bin": "./bin",
-    "lib": "./lib",
-    "man": "./man",
-    "test": "./test"
+    "example": "./example",
+    "src": "./src",
+    "test": "./build/test",
+    "doc": "./build/doc",
+    "lib": "./build/lib"
   },
   "scripts": {
-    "test": "npm up && mocha ./test/jetfuel.js -R list"
+    "build": "npm up && jetfuel build",
+    "test": "npm up && jetfuel test",
+    "doc": "jetfuel docs"
   },
-  "preferGlobal": true,
-  "dependencies": {
-    "grunt": "~0.3.12",
-    "jamjs": "~0.2.11",
-    "colors": "~0.6.0-1",
-    "fs-extra": "~0.2.1",
-    "jetfuel-boilerplate": "~1.0.0pre25",
-    "jetfuel-grunt-tasks": "~1.0.4"
+  "engines": {
+    "node": ">= 0.6.0"
   },
   "jam": {
     "packageDir": "vendor",
