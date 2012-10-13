@@ -37,12 +37,12 @@
       "runner": {
         "template": "<%= meta.dirs.test %>/JetRunner.jade",
         "styles": [
-          "<%= meta.dirs.vendor.dest %>/mocha/mocha.css"
+          "<%= meta.dirs.vendor.dest %>/mocha/mocha/mocha.css"
         ],
         "scripts": [
           "<%= meta.dirs.main.dest %>/site/Application.bundled.compressed.js",
-          "<%= meta.dirs.vendor.dest %>/mocha/mocha.js",
-          "<%= meta.dirs.vendor.dest %>/chai/chai.js"
+          "<%= meta.dirs.vendor.dest %>/mocha/mocha/mocha.js",
+          "<%= meta.dirs.vendor.dest %>/chai/chai/chai.js"
         ]
       }
     },

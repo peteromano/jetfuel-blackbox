@@ -10,7 +10,6 @@
         "test":         "build jetrunner:local",
         "build":        "lint clopycat automin clompass clocks",
         "uglify":       "min",
-        "vendor":       "install",
         "dev":          "lint clopycat clean:sass compass deploy",
         "dev:main":     "lint clopycat deploy:main",
         "dev:sass":     "vendor clean:sass compass deploy:sass",
