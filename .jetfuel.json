@@ -1,6 +1,6 @@
 {
 
-  "jam":          "<json:config/vendor.json>",
+  "jam":        "<json:config/vendor.json>",
 
   "grunt": {
     "pkg":      "<json:package.json>",
