@@ -61,7 +61,7 @@
 
   "deploy": {
     "rsync": {
-      "args": "-rlpgoDc --exclude=.svn"
+      "args": "-rlpgoDcv --exclude=.svn"
     }
   }
 
