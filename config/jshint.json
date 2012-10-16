@@ -3,8 +3,7 @@
   "options": {  
     "browser":  true,  
     "curly":    true,  
-    "laxcomma":   true,  
-    "unused":   true,  
+    "laxcomma":   true,
     "multistr":   true,  
     "immed":		true,  
     "latedef":	true,  

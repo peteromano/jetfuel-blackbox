@@ -1,14 +1,10 @@
-{
-
-  "/site/Application.bundled.js": {
-    "dest": "<%= meta.dirs.main.dest %>/site/Application.bundled.js",
-    "src": [
-      "<%= meta.dirs.vendor.dest %>/jquery/jquery.js",
-      "<%= meta.dirs.vendor.dest %>/espresso/espresso.js",
-      "<%= meta.dirs.vendor.dest %>/underscore/underscore.js",
-      "<%= meta.dirs.vendor.dest %>/backbone/backbone.js",
-      "<%= meta.dirs.main.dest %>/site/Application.js"
-    ]
-  }
-
-}
+[{
+  "dest": "<%= meta.dirs.main.dest %>/site/Application.bundled.js",
+  "src": [
+    "<%= meta.dirs.vendor.dest %>/jquery/jquery.js",
+    "<%= meta.dirs.vendor.dest %>/espresso/espresso.js",
+    "<%= meta.dirs.vendor.dest %>/underscore/underscore.js",
+    "<%= meta.dirs.vendor.dest %>/backbone/backbone.js",
+    "<%= meta.dirs.main.dest %>/site/Application.js"
+  ]
+}]
