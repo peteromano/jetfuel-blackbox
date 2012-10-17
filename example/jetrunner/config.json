@@ -1,0 +1,18 @@
+{
+    "tests": {
+      "src/test/site/ApplicationTest.js": "",
+      "src/test/site/services/RouterTest.js": "build/lib/site/services/Router.js"
+    },
+
+    "server": {
+        "runner": {
+            "template": "src/test/JetRunner.jade",
+            "styles": ["vendor/mocha/mocha/mocha.css"],
+            "scripts": [
+                "build/lib/site/Application.bundled.compressed.js",
+                "vendor/mocha/mocha/mocha.js",
+                "vendor/chai/chai/chai.js"
+            ]
+        }
+    }
+}
