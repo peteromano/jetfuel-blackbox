@@ -36,14 +36,13 @@
   "jetrunner": {
     "local": [{
       "tests": "<json:config/tests/site.json>",
-      "reporter": "<config:meta.jetrunner.reporter>",
       "server": "<config:meta.jetrunner.server>"
     }],
     "remote": [{
+      "remote": true,
       "tests": "<json:config/tests/site.json>",
-      "reporter": "<config:meta.jetrunner.reporter>",
       "server": "<config:meta.jetrunner.server>",
-      "remote": "<config:meta.jetrunner.remote>",
+      "soda": "<config:meta.jetrunner.soda>",
       "continueOnFail": true
     }]
   },
