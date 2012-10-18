@@ -42,7 +42,7 @@
       "remote": true,
       "tests": "<json:config/tests/site.json>",
       "server": "<config:meta.jetrunner.server>",
-      "soda": "<config:meta.jetrunner.soda>",
+      "saucelabs": "<config:meta.jetrunner.saucelabs>",
       "continueOnFail": true
     }]
   },
