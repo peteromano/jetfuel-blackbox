@@ -47,7 +47,7 @@
       }
     },
     "saucelabs": {
-      "url": "http://localhost",
+      "domain": "localhost",
       "username": "username",
       "access-key": "access-key",
       "max-duration": 300,

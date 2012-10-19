@@ -18,9 +18,12 @@ html(lang="en")
       assert = chai.assert;
       expect = chai.expect;
       should = !this.mochaPhantomJS && chai.should();
-      mocha.setup('#{ui}');
+      mocha.setup({
+        ignoreLeaks: true,
+        ui: '#{ui}'
+      });
     if lib
         script(src="#{lib}")
     script(src="#{test}")
     script
-      (this.mochaPhantomJS || mocha).run();
+      reporter = (this.mochaPhantomJS || mocha).run();
