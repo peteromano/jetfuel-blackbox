@@ -1,6 +1,6 @@
 {
 
-  "banner": "<file_template:config/templates/BANNER>",
+  "banner": "<file_template:config/BANNER>",
 
   "build": {
     "name": "<%= pkg.name %>-<%= pkg.version %>"
