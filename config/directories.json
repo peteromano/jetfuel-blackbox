@@ -1,0 +1,25 @@
+{
+    "build":          "build",
+    "modules":        "node_modules",
+    "docs":           "build/doc",
+    "test":           "src/test",
+    "main": {
+      "src":          "src/main",
+      "dest":         "build/lib",
+      "deploy":       "example/site/lib"
+    },
+    "vendor": {
+      "dest":         "vendor",
+      "deploy":       "example/site/vendor"
+    },
+    "sass": {
+      "src":          "src/sass",
+      "dest":         "build/css",
+      "cache":        ".sass-cache",
+      "deploy":       "example/site/css"
+    },
+    "resources": {
+      "src":          "src/resources",
+      "deploy":       "example/site/resources"
+    }
+}
