@@ -96,7 +96,7 @@
     },
     "deploy": {
       "src": [
-        "<%= meta.dirs.deploy %>", "<%= meta.dirs.deploy %>/**/*",
+        "<%= meta.dirs.main.deploy %>", "<%= meta.dirs.main.deploy %>/**/*",
         "<%= meta.dirs.vendor.deploy %>", "<%= meta.dirs.vendor.deploy %>/**/*",
         "<%= meta.dirs.sass.deploy %>", "<%= meta.dirs.sass.deploy %>/**/*",
         "<%= meta.dirs.resources.deploy %>", "<%= meta.dirs.resources.deploy %>/**/*"
