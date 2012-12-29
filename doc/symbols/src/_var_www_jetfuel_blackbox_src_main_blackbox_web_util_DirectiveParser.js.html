@@ -1,0 +1,117 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @fileOverview Parses directive syntax into an object.
+<span class='line'>  3</span>  * @author &lt;a href="mailto:promano@urbandaddy.com">Pete Romano&lt;/a>
+<span class='line'>  4</span>  */</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="STRN">'util/DirectiveParser'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="WHIT">    </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  7</span> 
+<span class='line'>  8</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="COMM">/**
+<span class='line'>  9</span>          * @constant
+<span class='line'> 10</span>          * @private
+<span class='line'> 11</span>          * @type {RegExp}
+<span class='line'> 12</span>          * @fieldOf blackbox.web.util.DirectiveParser
+<span class='line'> 13</span>          * @description Value: /&lt;(.*)>/
+<span class='line'> 14</span>          */</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">        </span><span class="NAME">DIRECTIVE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/&lt;(.*)>/</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 16</span> 
+<span class='line'> 17</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 18</span>      * @methodOf blackbox.web.util.DirectiveParser
+<span class='line'> 19</span>      * @private
+<span class='line'> 20</span>      * @static
+<span class='line'> 21</span>      * @param {String} directive
+<span class='line'> 22</span>      * @returns {Array|null}
+<span class='line'> 23</span>      */</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getDirectiveArray</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">        </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">directive.match</span><span class="PUNC">(</span><span class="REGX">/&lt;(.*)>/</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">split</span><span class="PUNC">(</span><span class="STRN">':'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 30</span>      * @name blackbox.web.util.DirectiveParser
+<span class='line'> 31</span>      * @version 2.0
+<span class='line'> 32</span>      * @constructor
+<span class='line'> 33</span>      * @description
+<span class='line'> 34</span>      * The directive syntax is as follows:
+<span class='line'> 35</span>      * &lt;pre>&lt;&lt;em>method&lt;/em>[:&lt;em>arg1&lt;/em>][:&lt;em>arg2&lt;/em>][&lt;em>...&lt;/em>]&gt;&lt;/pre>
+<span class='line'> 36</span>      *
+<span class='line'> 37</span>      *
+<span class='line'> 38</span>      */</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">DirectiveParser</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 43</span>          * @name parse
+<span class='line'> 44</span>          * @methodOf blackbox.web.util.DirectiveParser
+<span class='line'> 45</span>          * @static
+<span class='line'> 46</span>          * @param {String} directive
+<span class='line'> 47</span>          * @returns {Object|Boolean}
+<span class='line'> 48</span>          *
+<span class='line'> 49</span>          * @example
+<span class='line'> 50</span>          * var app = Application.getInstance(),
+<span class='line'> 51</span>          *     parsed = DirectiveParser.parse('&lt;execute:Navigator:reload&gt;');
+<span class='line'> 52</span>          *
+<span class='line'> 53</span>          * // parsed == { method: 'execute', args: ['Navigator', 'reload'] }
+<span class='line'> 54</span>          * app[parsed.method].apply(app, parsed.args);
+<span class='line'> 55</span>          *
+<span class='line'> 56</span>          * @description
+<span class='line'> 57</span>          * The method name to invoke is the first segment, followed by the argument list. The context to invoke the
+<span class='line'> 58</span>          * method is up to you after you parse the directive, OR use the utility method {@link blackbox.web.util.DirectiveParser.invoke}
+<span class='line'> 59</span>          * to automatically invoke the method with the supplied context.
+<span class='line'> 60</span>          *
+<span class='line'> 61</span>          * Returns false if the supplied directive cannot be parsed.
+<span class='line'> 62</span>          */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">        </span><span class="NAME">parse</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">getDirectiveArray</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">                    </span><span class="NAME">method</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">directive.shift</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">                    </span><span class="NAME">args</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">directive</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> 
+<span class='line'> 74</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 75</span>          * @name invoke
+<span class='line'> 76</span>          * @methodOf blackbox.web.util.DirectiveParser
+<span class='line'> 77</span>          * @static
+<span class='line'> 78</span>          * @param {String} directive
+<span class='line'> 79</span>          * @param {Object} context
+<span class='line'> 80</span>          * @param {int} delay
+<span class='line'> 81</span>          * @returns {mixed|Boolean|int}
+<span class='line'> 82</span>          *
+<span class='line'> 83</span>          * @example
+<span class='line'> 84</span>          * // Translates to setTimeout(function() { Application.getInstance().execute('Navigator', 'reload'); }, 2500);
+<span class='line'> 85</span>          * DirectiveParser.invoke('&lt;execute:Navigator:reload&gt;', Application.getInstance(), 2500);
+<span class='line'> 86</span>          *
+<span class='line'> 87</span>          * @description
+<span class='line'> 88</span>          * Returns false if the supplied directive cannot be parsed.&lt;br />
+<span class='line'> 89</span>          * Returns the return value of the invocation if &lt;pre style="display:inline;">delay&lt;/pre> is not specified (the call is synchronous).&lt;br />
+<span class='line'> 90</span>          * Returns the reference ID from the setTimeout call if &lt;pre style="display:inline;">delay&lt;/pre> is specified (the call is asynchronous).
+<span class='line'> 91</span>          */</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">        </span><span class="NAME">invoke</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">context</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">delay</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.parse</span><span class="PUNC">(</span><span class="NAME">directive</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="WHIT">            </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">invoke</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">context</span><span class="PUNC">[</span><span class="NAME">d.method</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">apply</span><span class="PUNC">(</span><span class="NAME">context</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">d.args</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 98</span> 
+<span class='line'> 99</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">d</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">delay</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">                </span><span class="NAME">setTimeout</span><span class="PUNC">(</span><span class="NAME">invoke</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">delay</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">invoke</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

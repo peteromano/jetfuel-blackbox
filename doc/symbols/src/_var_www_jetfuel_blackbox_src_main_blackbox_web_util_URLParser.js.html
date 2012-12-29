@@ -1,0 +1,244 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @fileOverview Parses a string into URL parts
+<span class='line'>  3</span>  * @author &lt;a href="mailto:promano@urbandaddy.com">Pete Romano&lt;/a>
+<span class='line'>  4</span>  */</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="STRN">'util/URLParser'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="WHIT">    </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  7</span> 
+<span class='line'>  8</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="COMM">/**
+<span class='line'>  9</span>          * @constant
+<span class='line'> 10</span>          * @private
+<span class='line'> 11</span>          * @type {RegExp}
+<span class='line'> 12</span>          * @fieldOf blackbox.web.util.URLParser
+<span class='line'> 13</span>          * @description Value: /^((\w+)\:)?\/\/([^\/\\]+)/
+<span class='line'> 14</span>          */</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">        </span><span class="NAME">X_DOMAIN</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/^((\w+)\:)?\/\/([^\/\\]+)/</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 17</span>          * @constant
+<span class='line'> 18</span>          * @private
+<span class='line'> 19</span>          * @type {RegExp}
+<span class='line'> 20</span>          * @fieldOf blackbox.web.util.URLParser
+<span class='line'> 21</span>          * @description Value: /^(?:([A-Za-z]+:))?(?:\/{2})?([0-9.\-A-Za-z]*)(?::(\d+))?(?:(\/[^?#]*))?(?:\?([^#]*))?(?:#!?(.*))?$/
+<span class='line'> 22</span>          */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">        </span><span class="NAME">SEGMENTS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/^(?:([A-Za-z]+:))?(?:\/{2})?([0-9.\-A-Za-z]*)(?::(\d+))?(?:(\/[^?#]*))?(?:\?([^#]*))?(?:#!?(.*))?$/</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 25</span>          * @constant
+<span class='line'> 26</span>          * @private
+<span class='line'> 27</span>          * @type {RegExp}
+<span class='line'> 28</span>          * @fieldOf blackbox.web.util.URLParser
+<span class='line'> 29</span>          * @description Value: /([^&=]+)=?([^&]*)/g
+<span class='line'> 30</span>          */</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">        </span><span class="NAME">QS_PARTS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/([^&=]+)=?([^&]*)/g</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 33</span>          * @constant
+<span class='line'> 34</span>          * @private
+<span class='line'> 35</span>          * @type {RegExp}
+<span class='line'> 36</span>          * @fieldOf blackbox.web.util.URLParser
+<span class='line'> 37</span>          * @description Value: /\+/g
+<span class='line'> 38</span>          */</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">        </span><span class="NAME">QS_SPACE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/\+/g</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'> 41</span>          * @private
+<span class='line'> 42</span>          * @fieldOf blackbox.web.util.URLParser
+<span class='line'> 43</span>          * @namespace
+<span class='line'> 44</span>          */</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">        </span><span class="NAME">SegmentsEnum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 47</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.PROTOCOL
+<span class='line'> 48</span>              * @constant
+<span class='line'> 49</span>              * @type {int}
+<span class='line'> 50</span>              * @description Value: 1
+<span class='line'> 51</span>              */</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">            </span><span class="NAME">PROTOCOL</span><span class="PUNC">:</span><span class="WHIT">		</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 54</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.DOMAIN
+<span class='line'> 55</span>              * @constant
+<span class='line'> 56</span>              * @type {int}
+<span class='line'> 57</span>              * @description Value: 2
+<span class='line'> 58</span>              */</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">            </span><span class="NAME">DOMAIN</span><span class="PUNC">:</span><span class="WHIT">			</span><span class="NUMB">2</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 61</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.PORT
+<span class='line'> 62</span>              * @constant
+<span class='line'> 63</span>              * @type {int}
+<span class='line'> 64</span>              * @description Value: 3
+<span class='line'> 65</span>              */</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">            </span><span class="NAME">PORT</span><span class="PUNC">:</span><span class="WHIT">			</span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 68</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.PATH
+<span class='line'> 69</span>              * @constant
+<span class='line'> 70</span>              * @type {int}
+<span class='line'> 71</span>              * @description Value: 4
+<span class='line'> 72</span>              */</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">            </span><span class="NAME">PATH</span><span class="PUNC">:</span><span class="WHIT">			</span><span class="NUMB">4</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 75</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.QUERY_STRING
+<span class='line'> 76</span>              * @constant
+<span class='line'> 77</span>              * @type {int}
+<span class='line'> 78</span>              * @description Value: 5
+<span class='line'> 79</span>              */</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">            </span><span class="NAME">QUERY_STRING</span><span class="PUNC">:</span><span class="WHIT">	</span><span class="NUMB">5</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'> 82</span>              * @name blackbox.web.util.URLParser.SegmentsEnum.HASH
+<span class='line'> 83</span>              * @constant
+<span class='line'> 84</span>              * @type {int}
+<span class='line'> 85</span>              * @description Value: 6
+<span class='line'> 86</span>              */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">            </span><span class="NAME">HASH</span><span class="PUNC">:</span><span class="WHIT">			</span><span class="NUMB">6</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> 
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 91</span>      * @methodOf blackbox.web.util.URLParser
+<span class='line'> 92</span>      * @private
+<span class='line'> 93</span>      * @static
+<span class='line'> 94</span>      * @param {String} url
+<span class='line'> 95</span>      * @param {int} segment
+<span class='line'> 96</span>      * @returns {String}
+<span class='line'> 97</span>      */</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">segment</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">concat</span><span class="PUNC">(</span><span class="NAME">url.match</span><span class="PUNC">(</span><span class="NAME">SEGMENTS</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NAME">segment</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>103</span>      * @methodOf blackbox.web.util.URLParser
+<span class='line'>104</span>      * @private
+<span class='line'>105</span>      * @static
+<span class='line'>106</span>      * @param {String} url
+<span class='line'>107</span>      * @returns {Array}
+<span class='line'>108</span>      */</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getSegments</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">concat</span><span class="PUNC">(</span><span class="NAME">url.match</span><span class="PUNC">(</span><span class="NAME">SEGMENTS</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>112</span> 
+<span class='line'>113</span> </span><span class="WHIT">    </span><span class="NAME">getSegment.curry</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">segment</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">segment</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">    
+<span class='line'>117</span>     </span><span class="COMM">/**
+<span class='line'>118</span>      * @name blackbox.web.util.URLParser
+<span class='line'>119</span>      * @version 2.0
+<span class='line'>120</span>      * @constructor
+<span class='line'>121</span>      * @description
+<span class='line'>122</span>      * Parses a string into URL parts 
+<span class='line'>123</span>      */</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">URLParser</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">    
+<span class='line'>126</span>     </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>128</span>          * @name parse
+<span class='line'>129</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>130</span>          * @static
+<span class='line'>131</span>          * @param {String} url
+<span class='line'>132</span>          * @returns {Object}
+<span class='line'>133</span>          */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">        </span><span class="NAME">parse</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">segments</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">getSegments</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> 
+<span class='line'>137</span> </span><span class="WHIT">            </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">segment</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">segments</span><span class="PUNC">[</span><span class="NAME">segment</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">                </span><span class="NAME">port</span><span class="PUNC">:</span><span class="WHIT">           </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PORT</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">                </span><span class="NAME">path</span><span class="PUNC">:</span><span class="WHIT">           </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PATH</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">                </span><span class="NAME">queryString</span><span class="PUNC">:</span><span class="WHIT">    </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.QUERY_STRING</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">                </span><span class="NAME">protocol</span><span class="PUNC">:</span><span class="WHIT">       </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PROTOCOL</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">                </span><span class="NAME">domain</span><span class="PUNC">:</span><span class="WHIT">         </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.DOMAIN</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">                </span><span class="NAME">hash</span><span class="PUNC">:</span><span class="WHIT">           </span><span class="NAME">getSegment</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.HASH</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>152</span>          * @name getHash
+<span class='line'>153</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>154</span>          * @static
+<span class='line'>155</span>          * @param {String} url
+<span class='line'>156</span>          * @returns {String}
+<span class='line'>157</span>          */</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">        </span><span class="NAME">getHash</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.HASH</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>161</span>          * @name getDomain
+<span class='line'>162</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>163</span>          * @static
+<span class='line'>164</span>          * @param {String} url
+<span class='line'>165</span>          * @returns {String}
+<span class='line'>166</span>          */</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">        </span><span class="NAME">getDomain</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.DOMAIN</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>170</span>          * @name getPort
+<span class='line'>171</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>172</span>          * @static
+<span class='line'>173</span>          * @param {String} url
+<span class='line'>174</span>          * @returns {String}
+<span class='line'>175</span>          */</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">        </span><span class="NAME">getPort</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PORT</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>177</span> 
+<span class='line'>178</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>179</span>          * @name getPath
+<span class='line'>180</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>181</span>          * @static
+<span class='line'>182</span>          * @param {String} url
+<span class='line'>183</span>          * @returns {String}
+<span class='line'>184</span>          */</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">        </span><span class="NAME">getPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PATH</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> 
+<span class='line'>187</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>188</span>          * @name getQueryString
+<span class='line'>189</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>190</span>          * @static
+<span class='line'>191</span>          * @param {String} url
+<span class='line'>192</span>          * @returns {String}
+<span class='line'>193</span>          */</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">        </span><span class="NAME">getQueryString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.QUERY_STRING</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>195</span> 
+<span class='line'>196</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>197</span>          * @name getProtocol
+<span class='line'>198</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>199</span>          * @static
+<span class='line'>200</span>          * @param {String} url
+<span class='line'>201</span>          * @returns {String}
+<span class='line'>202</span>          */</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">        </span><span class="NAME">getProtocol</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">getSegment.curry</span><span class="PUNC">(</span><span class="NAME">SegmentsEnum.PROTOCOL</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>206</span>          * @name parseQueryString
+<span class='line'>207</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>208</span>          * @static
+<span class='line'>209</span>          * @param {String} queryString
+<span class='line'>210</span>          * @returns {Object}
+<span class='line'>211</span>          */</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">        </span><span class="NAME">parseQueryString</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">queryString</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">decodeURIComponent</span><span class="PUNC">(</span><span class="NAME">s.replace</span><span class="PUNC">(</span><span class="NAME">QS_SPACE</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">' '</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">e</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>214</span> 
+<span class='line'>215</span> </span><span class="WHIT">            </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">e</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">QS_PARTS.exec</span><span class="PUNC">(</span><span class="NAME">queryString</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">                </span><span class="NAME">p</span><span class="PUNC">[</span><span class="NAME">d</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>218</span> 
+<span class='line'>219</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">p</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>221</span> 
+<span class='line'>222</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>223</span>          * @name isXDomain
+<span class='line'>224</span>          * @methodOf blackbox.web.util.URLParser
+<span class='line'>225</span>          * @static
+<span class='line'>226</span>          * @param {String} url
+<span class='line'>227</span>          * @returns {Boolean}
+<span class='line'>228</span>          *
+<span class='line'>229</span>          * TODO: Add more sophisticated checks against protocol, port, domain, etc.
+<span class='line'>230</span>          */</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">        </span><span class="NAME">isXDomain</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">this.getProtocol</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>234</span> 
+<span class='line'>235</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>236</span> 
+<span class='line'>237</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

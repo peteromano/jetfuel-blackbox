@@ -29,7 +29,7 @@
     "src": "./src",
     "test": "./build/test",
     "doc": "./build/doc",
-    "lib": "./build/lib"
+    "lib": "./build/js"
   },
   "scripts": {
     "build": "npm up && jetfuel build",
