@@ -1,7 +1,6 @@
 # Project files #
 ###################
 .sass-cache
-.jetfuel
 build
 vendor
 node_modules
@@ -10,6 +9,7 @@ npm-debug.log
 # IDE generated files #
 ###################
 .idea
+.sublime
 
 # Compiled source #
 ###################

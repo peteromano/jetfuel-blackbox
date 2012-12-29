@@ -1,4 +1,4 @@
-jetfuel-boilerplate
-===================
+blackbox
+========
 
-Create a boilerplate JetFuel project.
+Create a boilerplate BlackBox project.

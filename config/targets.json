@@ -1,27 +1,28 @@
 {
 
-  "concat": "<json:config/concat.json>",
-
   "jshint": "<json:config/jshint.json>",
+
+  "concat": "<json:config/concat.json>",
 
   "copy": {
     "main": {
       "src": ["<%= meta.dirs.main.src %>/**/*.js"],
-      "dest": "<%= meta.dirs.main.dest %>"
+      "dest": "<%= meta.dirs.main['dest:dev'] %>"
     }
   },
 
   "autocat": {
     "main": {
-      "src": ["<%= meta.dirs.main.dest %>/**"],
-      "dest": "<%= meta.dirs.main.dest %>"
+      "src": ["<%= meta.dirs.main['dest:dev'] %>/**"],
+      "dest": "<%= meta.dirs.main['dest:dev'] %>"
     }
   },
 
   "automin": {
     "main": {
-      "src": ["<%= meta.dirs.main.dest %>/**/*.js"],
-      "dest": "<%= meta.dirs.main.dest %>"
+      "src": ["<%= meta.dirs.main['dest:dev'] %>/**/*.js"],
+      "dest": "<%= meta.dirs.main['dest:prod'] %>",
+      "extension": ".js"
     }
   },
 
@@ -35,14 +36,14 @@
 
   "jetrunner": {
     "local": [{
-      "tests": "<json:config/tests/site.json>",
-      "server": "<config:meta.jetrunner.server>"
+      "tests": "<json:config/tests/blackbox/web.json>",
+      "server": "<config:meta.jetrunner.web.server>"
     }],
     "remote": [{
       "remote": true,
-      "tests": "<json:config/tests/site.json>",
-      "server": "<config:meta.jetrunner.server>",
-      "saucelabs": "<config:meta.jetrunner.saucelabs>",
+      "tests": "<json:config/tests/blackbox/web.json>",
+      "server": "<config:meta.jetrunner.web.server>",
+      "saucelabs": "<config:meta.jetrunner.web.saucelabs>",
       "continueOnFail": true
     }]
   },
@@ -91,8 +92,11 @@
     "sass-cache": {
       "src": ["<%= meta.dirs.sass.cache %>", "<%= meta.dirs.sass.cache %>/**/*"]
     },
+    "resources": {
+      "src": ["<%= meta.dirs.resources.dest %>", "<%= meta.dirs.resources.dest %>/**/*"]
+    },
     "build": {
-      "src": ["<%= meta.dirs.build %>", "<%= meta.dirs.build %>/**/*"]
+      "src": ["build/<%= pkg.version %>", "build/<%= pkg.version %>/**/*", "build"]
     },
     "deploy": {
       "src": [
@@ -116,7 +120,17 @@
   },
 
   "lint": {
-    "all": ["<%= meta.dirs.main.src %>/**/*.js", "<%= meta.dirs.test %>/**/*.js"]
+    "all": [
+        "<%= meta.dirs.test %>/**/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/config/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/form/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/helper/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/model/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/util/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/view/**/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/view/*.js",
+        "<%= meta.dirs.main.src %>/blackbox/web/*.js"
+    ]
   }
 
 }

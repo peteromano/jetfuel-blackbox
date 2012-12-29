@@ -1,0 +1,5 @@
+define({
+
+    'hello': 'hola'
+
+});

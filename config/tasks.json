@@ -6,13 +6,13 @@
 
     "register": {
         "default":      "all",
-        "all":          "test deploy",
+        "all":          "clean test deploy",
+        "uglify":       "min",
         "ci":           "build jetrunner:remote deploy",
         "test":         "build jetrunner:local",
-        "build":        "lint clopycat automin clompass clocks",
-        "uglify":       "min",
-        "dev":          "lint clopycat clean:sass compass deploy",
-        "dev:main":     "lint clopycat deploy:main",
+        "build":        "lintycat automin clompass clocks",
+        "dev":          "lintycat clean:sass compass deploy",
+        "dev:main":     "lintycat deploy:main",
         "dev:sass":     "vendor clean:sass compass deploy:sass",
         "watch":        "observe:main observe:sass",
         "watch:main":   "observe:main",
@@ -30,7 +30,8 @@
         "clocks":       "clean:docs docs",
         "clopy":        "vendor clean:main copy:main",
         "clompass":     "clean:sass clean:sass-cache compass",
-        "clopycat":     "clopy autocat concat"
+        "clopycat":     "clopy autocat concat",
+        "lintycat":     "lint clopycat"
     }
 
 }

@@ -1,0 +1,5 @@
+{
+
+    "<%= meta.dirs.test %>/blackbox/web/core/ControllerTest.js": "<%= meta.dirs.main.dest %>/prod/blackbox/web/core/Controller.js"
+
+}
