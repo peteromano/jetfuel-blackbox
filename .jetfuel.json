@@ -7,7 +7,7 @@
     "tasks":        "<json:config/tasks.json>",
     "meta":         "<json:config/meta.json>",
     "targets":      "<json:config/targets.json>",
-    "tasksDir":     "config/grunt",
+    "tasksDir":     "config/grunt/tasks",
     "npmTasks":     []
   }
 
