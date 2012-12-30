@@ -40,8 +40,8 @@ define('config/require', function() {
 
         'shim': {
 
-            'plate': {
-                'exports': 'plate'
+            'Handlebars': {
+                'exports': 'Handlebars'
             },
 
             'Modernizr': {

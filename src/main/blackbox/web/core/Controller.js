@@ -45,8 +45,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
 
                 view
                     .on('load', bind(load, this, view))
-                    .on('load:fail', complete)
-                    .on('load:success', bind(render, this, view))
+                    .on('load:complete', bind(render, this, view))
                     .on('render:before', bind(prerender, this, view))
                     .load.apply(view, args);
 

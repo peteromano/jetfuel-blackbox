@@ -93,8 +93,7 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * @description
          * Subscriptions:
          * <code>load:before</code>,
-         * <code>load:fail</code>,
-         * <code>load:success</code>,
+         * <code>load:complete</code>,
          * <code>load</code>,
          * <code>render:before</code>,
          * <code>render</code>,
@@ -123,8 +122,7 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * @description
          * Publishes:
          * <code>load:before</code>,
-         * <code>load:fail</code>,
-         * <code>load:success</code>,
+         * <code>load:complete</code>,
          * <code>load</code>
          */
         load: function() {
@@ -133,15 +131,8 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
             trigger('load:before');
 
             require(getModules(), function(Handlebars, template, i18n) {
-                /*new plate.Template(template).render($.extend({ locale: i18n || {} }, config.data), function(error, content) {
-                    if(error) {
-                        trigger('load:fail');
-                        throw error;
-                    } else {
-                        setContent(content);
-                        trigger('load:success');
-                    }
-                });*/
+                setContent(Handlebars.compile(template)($.extend({ locale: i18n || {} }, config.data)));
+                trigger('load:complete');
             });
 
             return trigger('load');

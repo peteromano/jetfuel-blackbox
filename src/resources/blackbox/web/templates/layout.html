@@ -13,9 +13,7 @@
         <header>
             <nav></nav>
         </header>
-        <main role="main">
-            {% block content %}{% endblock %}
-        </main>
+        <main role="main">{{> content }}</main>
         <footer></footer>
     </div>
     <script type="text/javascript">ENV = '{{ env }}';</script>
