@@ -41,17 +41,17 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
         require([ROOT_VIEW_PATH + '/' + this], function(View) {
             var view = new View(), bind = _.bind;
 
-            if(currentView) {
+            if(isInitialPageLoad()) {
+
+                setCurrentView(view);
+
+            } else {
 
                 view
                     .on('load', bind(load, this, view))
                     .on('load:complete', bind(render, this, view))
                     .on('render:before', bind(prerender, this, view))
                     .load.apply(view, args);
-
-            } else {
-
-                setCurrentView(view);
                 
             }
         });
@@ -108,6 +108,16 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
      */
     function setCurrentView(view) {
         currentView = view;
+    }
+
+    /**
+     * @private
+     * @static
+     * @methodOf blackbox.web.core.Controller
+     * @returns {Boolean}
+     */
+    function isInitialPageLoad() {
+        return !currentView;
     }
 
     /**
