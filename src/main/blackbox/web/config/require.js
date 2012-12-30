@@ -2,9 +2,9 @@ define('config/require', function() {
     'use strict';
 
     var PathsEnum= {
-            VENDOR:     '/static/vendor/',
-            RESOURCES:  '/static/resources/blackbox/web/',
-            CSS:        '/static/css/blackbox/web/'
+            VENDOR:     '/vendor/',
+            RESOURCES:  '/resources/blackbox/web/',
+            CSS:        '/css/blackbox/web/'
         };
 
     function getBaseUrl(asset, path) {
@@ -21,8 +21,8 @@ define('config/require', function() {
             'underscore':               ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min', getVendorUrl('underscore/underscore')],
             'jQuery':                   [/*'//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min', */getVendorUrl('jquery/dist/jquery')],
             'Backbone':                 [/*'//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min', */getVendorUrl('backbone/backbone')],
+            'Handlebars':               ['//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min', getVendorUrl('handlebars/handlebars')],
             'mocha':                    getVendorUrl('mocha/mocha/mocha'),
-            'plate':                    getVendorUrl('plate/lib/plate.min'),
             'chai':                     getVendorUrl('chai/chai/chai'),
             'sinon':                    getVendorUrl('sinon/sinon'),
             'json':                     getVendorUrl('requirejs-plugins/json'),

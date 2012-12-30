@@ -57,7 +57,7 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
      */
     function getModules() {
         var templatePath = config.template,
-            modules = ['plugin/plate/loader', 'resource!templates/' + templatePath + '.html?text'],
+            modules = ['Handlebars', 'resource!templates/' + templatePath + '.html?text'],
             base = templatePath.split('/').shift();
 
         config.i18n && modules.push('resource!nls/' + base + '.js?i18n');
@@ -132,8 +132,8 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
 
             trigger('load:before');
 
-            require(getModules(), function(plate, template, i18n) {
-                new plate.Template(template).render($.extend({ locale: i18n || {} }, config.data), function(error, content) {
+            require(getModules(), function(Handlebars, template, i18n) {
+                /*new plate.Template(template).render($.extend({ locale: i18n || {} }, config.data), function(error, content) {
                     if(error) {
                         trigger('load:fail');
                         throw error;
@@ -141,7 +141,7 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
                         setContent(content);
                         trigger('load:success');
                     }
-                });
+                });*/
             });
 
             return trigger('load');

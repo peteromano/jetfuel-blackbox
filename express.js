@@ -4,14 +4,14 @@
  */
 var express = require('express')
   , http = require('http')
-  , path = require('path');
-
-var app = express();
+  , path = require('path')
+  , app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/src/resources/blackbox/web/templates');
-  app.set('view engine', 'plate');
+  app.set('view engine', 'html');
+  app.engine('html', require('hbs').__express);
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.compress());
