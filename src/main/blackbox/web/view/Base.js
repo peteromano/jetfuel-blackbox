@@ -1,4 +1,4 @@
-define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
+define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbone, Handlebars) {
     'use strict';
 
     var /**
@@ -12,14 +12,6 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
         DEFAULT_CONTENT = '';
 
     var /**
-         * @name self
-         * @private
-         * @type blackbox.web.view.Base
-         * @fieldOf blackbox.web.view.Base.prototype
-         */
-        self,
-
-        /**
          * @name content
          * @private
          * @type String
@@ -36,16 +28,13 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * <strong>{String} <code>template</code>:</strong> The default template to load for the view. <em>Defaults to </em><code>"error/404"</code><em>.</em><br />
          * <strong>{Boolean} <code>css</code>:</strong> Flag to decide whether to load the CSS for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
          * <strong>{Boolean} <code>i18n</code>:</strong> Flag to decide whether to load the i18n bundle for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
-         * <strong>{Object} <code>data</code>:</strong> The context data to render the view template.<br />
-         * <strong>{String} <code>data.layout</code>:</strong> The layout to extend for the template. <em>Defaults to </em><code>"ajax"</code><em>.</em>
+         * <strong>{Object} <code>data</code>:</strong> The context data to render the view template. <em>Defaults to </em><code>{}</code><em>.</em>
          */
         config = {
             template: 'error/404',
             css: false,
             i18n: false,
-            data: {
-                layout: 'ajax'
-            }
+            data: {}
         };
 
     /**
@@ -55,9 +44,9 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
      * @description
      * Decides which modules to load based on the current configuration.
      */
-    function getModules() {
+    function getConfiguredModules() {
         var templatePath = config.template,
-            modules = ['Handlebars', 'resource!templates/' + templatePath + '.html?text'],
+            modules = ['resource!templates/' + templatePath + '.html?text'],
             base = templatePath.split('/').shift();
 
         config.i18n && modules.push('resource!nls/' + base + '.js?i18n');
@@ -101,7 +90,6 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * <code>destroy</code>
          */
         initialize: function(cfg) {
-            self = this;
             this.config(cfg);
         },
 
@@ -126,12 +114,13 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * <code>load</code>
          */
         load: function() {
-            var trigger = _.bind(this.trigger, this);
+            var self = this, trigger = _.bind(this.trigger, this);
 
             trigger('load:before');
 
-            require(getModules(), function(Handlebars, template, i18n) {
-                setContent(Handlebars.compile(template)($.extend({ locale: i18n || {} }, config.data)));
+            require(getConfiguredModules(), function(template, i18n) {
+                self.config({ data: { locale: i18n || {} } });
+                setContent(template);
                 trigger('load:complete');
             });
 
@@ -147,14 +136,14 @@ define('view/Base', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * <br /><br />
          * Render a template to the view.
          * <br /><br />
-         * If <code>template</code> is <code>undefined</code>, then this method will
-         * try to use the stored <code>content</code> (which gets set on the <code>load:success</code> event),
+         * If <code>content</code> is <code>undefined</code>, then this method will
+         * use the stored template {@link blackbox.web.view.Base#content} (which gets set on <code>load:complete</code>),
          * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_CONTENT}
          */
         render: function(content) {
             this.trigger('render:before');
             content && setContent(content);
-            this.$el.html(this.getContent());
+            this.$el.html(Handlebars.compile(this.getContent())(config.data));
             return this.trigger('render');
         },
 

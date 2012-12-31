@@ -320,16 +320,6 @@ ul.inheritsList
 							</td>
 						</tr>
 					
-						<tr>
-							<td class="attributes">&lt;private&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/blackbox.web.view.Base.html#self">self</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					
 					</tbody>
 				</table>
 				
@@ -361,20 +351,20 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/blackbox.web.view.Base.html#getConfiguredModules">getConfiguredModules</a></b>()
+								</div>
+								<div class="description">Decides which modules to load based on the current configuration.</div>
+							</td>
+						</tr>
+					
+						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/blackbox.web.view.Base.html#getContent">getContent</a></b>()
 								</div>
 								<div class="description"></div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;private&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/blackbox.web.view.Base.html#getModules">getModules</a></b>()
-								</div>
-								<div class="description">Decides which modules to load based on the current configuration.</div>
 							</td>
 						</tr>
 					
@@ -491,8 +481,7 @@ Render a template to the view.</div>
 						<strong>{String} <code>template</code>:</strong> The default template to load for the view. <em>Defaults to </em><code>"error/404"</code><em>.</em><br />
 <strong>{Boolean} <code>css</code>:</strong> Flag to decide whether to load the CSS for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
 <strong>{Boolean} <code>i18n</code>:</strong> Flag to decide whether to load the i18n bundle for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
-<strong>{Object} <code>data</code>:</strong> The context data to render the view template.<br />
-<strong>{String} <code>data.layout</code>:</strong> The layout to extend for the template. <em>Defaults to </em><code>"ajax"</code><em>.</em>
+<strong>{Object} <code>data</code>:</strong> The context data to render the view template. <em>Defaults to </em><code>{}</code><em>.</em>
 						
 						
 					</div>
@@ -570,28 +559,6 @@ Render a template to the view.</div>
 						
 						
 
-					<hr />
-				
-					<a name="self"> </a>
-					<div class="fixedFont">&lt;private&gt; 
-					
-					<span class="light">{<a href="../symbols/blackbox.web.view.Base.html">blackbox.web.view.Base</a>}</span>
-					<b>self</b>
-					
-					</div>
-					<div class="description">
-						
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
 					
 				
 			
@@ -634,6 +601,38 @@ Render a template to the view.</div>
 
 					<hr />
 				
+					<a name="getConfiguredModules"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Array}</span>
+					<b>getConfiguredModules</b>()
+					
+					</div>
+					<div class="description">
+						Decides which modules to load based on the current configuration.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="getContent"> </a>
 					<div class="fixedFont">
 					
@@ -658,38 +657,6 @@ Render a template to the view.</div>
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{String}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getModules"> </a>
-					<div class="fixedFont">&lt;private&gt; 
-					
-					<span class="light">{Array}</span>
-					<b>getModules</b>()
-					
-					</div>
-					<div class="description">
-						Decides which modules to load based on the current configuration.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Array}</span> </dd>
 							
 							</dl>
 						
@@ -745,8 +712,8 @@ Render a template to the view.</div>
 <br /><br />
 Render a template to the view.
 <br /><br />
-If <code>template</code> is <code>undefined</code>, then this method will
-try to use the stored <code>content</code> (which gets set on the <code>load:success</code> event),
+If <code>content</code> is <code>undefined</code>, then this method will
+use the stored template <a href="../symbols/blackbox.web.view.Base.html#content">blackbox.web.view.Base#content</a> (which gets set on <code>load:complete</code>),
 otherwise it will fallback to <a href="../symbols/blackbox.web.view.Base.html#DEFAULT_CONTENT">blackbox.web.view.Base#DEFAULT_CONTENT</a>
 						
 						
@@ -837,7 +804,7 @@ otherwise it will fallback to <a href="../symbols/blackbox.web.view.Base.html#DE
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Dec 30 2012 14:12:28 GMT-0500 (EST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Dec 31 2012 10:42:10 GMT-0500 (EST)
 		</div>
 	</body>
 </html>
