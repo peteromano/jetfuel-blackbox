@@ -1,3 +1,3 @@
 #!/bin/bash
 
-npm install && jetfuel no-test && npm start
+npm install && ./bin/build-run.sh
