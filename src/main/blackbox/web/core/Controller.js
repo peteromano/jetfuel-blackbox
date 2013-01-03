@@ -49,8 +49,9 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
 
                 view
                     .on('load', bind(load, this, view))
-                    .on('load:complete', bind(render, this, view))
-                    .on('render:before', bind(prerender, this, view))
+                    .on('load:success', bind(view.render, view))
+                    .on('load:error', bind(complete, this, view))
+                    .on('render', bind(render, this, view))
                     .load.apply(view, args);
                 
             }
@@ -73,31 +74,22 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
      * @static
      * @methodOf blackbox.web.core.Controller
      * @param {blackbox.web.view.Base} view
+     */
+    function render(view) {
+        currentView && currentView.destroy();
+        setCurrentView(view);
+        complete();
+    }
+
+    /**
+     * @private
+     * @static
+     * @methodOf blackbox.web.core.Controller
+     * @param {blackbox.web.view.Base} view
      * TODO Finish whatever #load() did...
      */
     function complete() {
 
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     */
-    function prerender(view) {
-        currentView && currentView.destroy();
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     */
-    function render(view) {
-        setCurrentView(view.render());
-        complete();
     }
 
     /**

@@ -4,20 +4,20 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
     var /**
          * @private
          * @constant
-         * @name DEFAULT_CONTENT
+         * @name DEFAULT_TEMPLATE
          * @type String
          * @fieldOf blackbox.web.view.Base.prototype
          * @description Value: (empty string)
          */
-        DEFAULT_CONTENT = '';
+        DEFAULT_TEMPATE = '';
 
     var /**
-         * @name content
+         * @name template
          * @private
          * @type String
          * @fieldOf blackbox.web.view.Base.prototype
          */
-        content;
+        template;
 
     var /**
          * @private
@@ -57,11 +57,11 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
 
     /**
      * @private
-     * @param {String} content
+     * @param {String} template
      * @methodOf blackbox.web.view.Base.prototype
      */
-    function setContent(c) {
-        c && (content = c);
+    function setTemplate(tmpl) {
+        tmpl && (template = tmpl);
     }
 
     /**
@@ -82,8 +82,8 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          * @description
          * Subscriptions:
          * <code>load:before</code>,
+         * <code>load:success</code>,
          * <code>load:complete</code>,
-         * <code>load</code>,
          * <code>render:before</code>,
          * <code>render</code>,
          * <code>destroy:before</code>,
@@ -99,9 +99,9 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          */
         config: function(cfg) {
             if(typeof cfg == 'object') {
-                return _.clone(config = $.extend(true, config, cfg || {}));
+                return config = $.extend(true, config, cfg || {});
             } else {
-                return _.clone(config[cfg]);
+                return config[cfg];
             }
         },
 
@@ -110,25 +110,23 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          * @description
          * Publishes:
          * <code>load:before</code>,
-         * <code>load:complete</code>,
-         * <code>load</code>
+         * <code>load:success</code>,
+         * <code>load:complete</code>
          */
         load: function() {
-            var self = this, trigger = _.bind(this.trigger, this);
-
-            trigger('load:before');
+            var self = this.trigger('load:before');
 
             require(getConfiguredModules(), function(template, i18n) {
+                setTemplate(template);
                 self.config({ data: { locale: i18n || {} } });
-                setContent(template);
-                trigger('load:complete');
+                self.trigger('load:success').trigger('load:complete');
             });
 
-            return trigger('load');
+            return this;
         },
 
         /**
-         * @param {String} content
+         * @param {String} template
          * @returns {blackbox.web.view.Base}
          * @see blackbox.web.view.Base#load
          * @description
@@ -136,14 +134,14 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          * <br /><br />
          * Render a template to the view.
          * <br /><br />
-         * If <code>content</code> is <code>undefined</code>, then this method will
+         * If <code>template</code> is <code>undefined</code>, then this method will
          * use the stored template {@link blackbox.web.view.Base#content} (which gets set on <code>load:complete</code>),
-         * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_CONTENT}
+         * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_TEMPLAE}
          */
-        render: function(content) {
+        render: function(template) {
             this.trigger('render:before');
-            content && setContent(content);
-            this.$el.html(Handlebars.compile(this.getContent())(config.data));
+            content && setTemplate(template);
+            this.$el.html(Handlebars.compile(this.getTemplate())(this.config('data')));
             return this.trigger('render');
         },
 
@@ -161,8 +159,8 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
         /**
          * @returns {String}
          */
-        getContent: function() {
-            return content || DEFAULT_CONTENT;
+        getTemplate: function() {
+            return template || DEFAULT_TEMPLATE;
         }
 
     });

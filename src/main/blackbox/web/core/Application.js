@@ -45,12 +45,30 @@
             routing: {},
             settings: {
                 debug: false,
-                facebook: {},
+                facebook: {
+                    status: true,
+                    cookie: true,
+                    xfbml: true
+                },
                 google: {
                     analytics: {}
                 }
             }
-        };
+        },
+
+        /**
+         * @private
+         * @name services
+         * @type blackbox.web.core.Application
+         * @fieldOf blackbox.web.core.Application.prototype
+         */
+        services = [];
+
+    services.load = function() {
+        for(var i = 0; i < this.length; i++) {
+            this[i].load();
+        }
+    }
 
     /**
      * @private
@@ -94,8 +112,15 @@
         layout.destroy();
     }
 
-    define('core/Application', ['_', '$', 'Backbone', 'core/Controller', 'view/Layout'], function(_, $, Backbone, Controller, Layout) {
-        var Application = getApplicationClass(), clone = _.clone;
+    define('core/Application', [
+        '_',
+        '$',
+        'Backbone',
+        'core/Controller',
+        'view/Layout',
+        'util/GoogleAnalytics',
+        'util/FacebookApi'], function(_, $, Backbone, Controller, Layout, GoogleAnalytics, FacebookApi) {
+        var Application = getApplicationClass();
 
         if(!Application) {
             /**
@@ -130,6 +155,11 @@
                     $(_.bind(this.trigger, this, 'domready'));
                     // Trigger Application unload events on context onload event
                     $(config.context).on('unload', _.bind(this.trigger, this, 'unload'));
+                    // Set Google Analytics and Facebook API services
+                    services.push(GoogleAnalytics);
+                    services.push(FacebookApi);
+                    // Load services
+                    services.load();
                     // Return the Application API
                     return this;
                 },
@@ -140,9 +170,9 @@
                  */
                 config: function(cfg) {
                     if(typeof cfg == 'object') {
-                        return clone(config = $.extend(true, config, cfg || {}));
+                        return config = $.extend(true, config, cfg || {});
                     } else {
-                        return clone(config[cfg]);
+                        return config[cfg];
                     }
                 },
 
@@ -150,14 +180,14 @@
                  * @returns {Backbone.Router}
                  */
                 getRouter: function() {
-                    return clone(router);
+                    return _.clone(router);
                 },
 
                 /**
                  * @returns {blackbox.web.view.Layout}
                  */
                 getLayout: function() {
-                    return clone(layout);
+                    return _.clone(layout);
                 },
 
                 /**

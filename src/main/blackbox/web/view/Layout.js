@@ -1,24 +1,40 @@
-define('view/Layout', ['_', 'Backbone'], function(_, Backbone) {
+define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone, URLParser) {
     'use strict';
+
+    var /**
+         * @name DEFAULT_TARGET
+         * @private
+         * @type {String}
+         * @fieldOf manero.web.view.Layout.prototype
+         */
+        DEFAULT_TARGET = '_self';
 
     var /**
          * @name $
          * @private
          * @type jQuery
-         * @fieldOf blackbox.web.Layout.prototype
+         * @fieldOf manero.web.view.Layout.prototype
          */
         $,
 
         /**
-         * @name $controlsNavUl
+         * @name app
          * @private
-         * @type jQuery
-         * @fieldOf blackbox.web.Layout.prototype
+         * @type {manero.web.core.Application}
+         * @fieldOf manero.web.view.Layout.prototype
          */
-        $controlsNavUl;
+        app,
+
+        /**
+         * @name self
+         * @private
+         * @type {manero.web.view.Layout}
+         * @fieldOf manero.web.view.Layout.prototype
+         */
+        self;
 
     /**
-     * @lends blackbox.web.view.Layout.prototype
+     * @lends manero.web.view.Layout.prototype
      */
     return Backbone.View.extend({
 
@@ -34,14 +50,21 @@ define('view/Layout', ['_', 'Backbone'], function(_, Backbone) {
          * @augments Backbone.View
          * @description
          * Subscriptions:
+         * <code>destroy:before</code>,
          * <code>destroy</code>,
-         * <code>navigate:external:before({String} route)</code>,
-         * <code>navigate:external({String} route)</code>,
          * <code>navigate:before({String} route)</code>,
          * <code>navigate({String} route)</code>
          */
         initialize: function() {
+            self = this;
             $ = _.bind(this.$, this);
+
+            // For some reason, using Application as a module dependency doesn't work,
+            // so include it her in the constructor as a work around. The Application
+            // module should be cached in memory anyway.
+            require(['core/Application'], function(Application) {
+                app = Application.getInstance();
+            });
         },
 
         /**
@@ -49,50 +72,30 @@ define('view/Layout', ['_', 'Backbone'], function(_, Backbone) {
          * @returns {Boolean}
          * @description
          * Publishes:
-         * <code>navigate:external:before({String} route)</code>,
-         * <code>navigate:external({String} route)</code>,
          * <code>navigate:before({String} route)</code>,
          * <code>navigate({String} route)</code>
-         * <br/><br/>
-         * TODO Handle external links better (simulate default browser behavior)
          */
         navigate: function(e) {
             var $link = $(e.currentTarget),
                 route = $link.attr('href'),
-                target = $link.attr('target'),
-                trigger = _.bind(this.trigger, this);
+                target = $link.attr('target') || DEFAULT_TARGET;
 
-            e.preventDefault();
-            e.stopPropagation();
-
-            require(['core/Application', 'util/URLParser'], function(Application, URLParser) {
-                var app = Application.getInstance();
-
-                if(!URLParser.isXDomain(route)) {
-                    trigger('navigate:before', route);
-                    app.getRouter().navigate(route);
-                    trigger('navigate', route);
-                } else {
-                    trigger('navigate:external:before', route);
-
-                    /*if(target){
-                        
-                    } else {
-                        app.config('context').location.replace(route);
-                    }*/
-                    app.config('context').location.replace(route);
-
-                    trigger('navigate:external', route);
-                }
-            });
-
-            return false;
+            if(!URLParser.isXDomain(route) && target == DEFAULT_TARGET) {
+                e.preventDefault();
+                e.stopPropagation();
+                self.trigger('navigate:before', route);
+                app.getRouter().navigate(route);
+                self.trigger('navigate', route);
+                return false;
+            } else {
+                return true;
+            }
         },
 
         /**
-         * @returns {blackbox.web.view.Layout}
+         * @returns {manero.web.view.Layout}
          * @description
-         * Publishes: <code>destroy:before</code>, <code>destroy</code>
+         * Puyblishes: <code>destroy:before</code>, <code>destroy</code>
          */
         destroy: function() {
             this.trigger('destroy:before').undelegateEvents();
