@@ -1,1 +1,9 @@
-<section id="tpl-landing" class="tpl-home"></section>
+{^xhr}
+  {>layout/}
+{:else}
+  {+content/}
+{/xhr}
+
+{<content}
+  <section id="tpl-landing" class="tpl-home"></section>
+{/content}

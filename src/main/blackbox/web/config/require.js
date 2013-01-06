@@ -1,6 +1,8 @@
 define('config/require', function() {
     'use strict';
 
+    var SYNC = /\?sync/;
+
     var PathsEnum= {
             VENDOR:     '/vendor/',
             RESOURCES:  '/resources/blackbox/web/',
@@ -21,7 +23,7 @@ define('config/require', function() {
             'underscore':               ['//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min', getVendorPath('underscore/underscore')],
             'jQuery':                   [/*'//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min', */getVendorPath('jquery/dist/jquery')],
             'Backbone':                 [/*'//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min', */getVendorPath('backbone/backbone')],
-            'Handlebars':               ['//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min', getVendorPath('handlebars/handlebars')],
+            'dust':                     getVendorPath('dustjs-linkedin/dist/dust-core-1.1.1.min'),
             'mocha':                    getVendorPath('mocha/mocha/mocha'),
             'chai':                     getVendorPath('chai/chai/chai'),
             'sinon':                    getVendorPath('sinon/sinon'),
@@ -40,12 +42,12 @@ define('config/require', function() {
 
         'shim': {
 
-            'Handlebars': {
-                'exports': 'Handlebars'
-            },
-
             'Modernizr': {
                 'exports': 'Modernizr'
+            },
+
+            'dust': {
+                'exports': 'dust'
             },
 
             'underscore': {
@@ -93,11 +95,11 @@ define('config/require', function() {
         'config': {
 
             'text': {
-                'onXhr': function (xhr, Path) {
+                'onXhr': function (xhr, url) {
                     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-                    if(/\?sync/.test(Path)) {
-                        xhr.open('GET', Path, false);
+                    if(SYNC.test(url)) {
+                        xhr.open('GET', url.replace(SYNC, ''), false);
                     }
                 }
             },

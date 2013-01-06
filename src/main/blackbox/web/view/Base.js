@@ -1,4 +1,4 @@
-define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbone, Handlebars) {
+define('view/Base', ['$', '_', 'Backbone', 'dust'], function($, _, Backbone, dust) {
     'use strict';
 
     var /**
@@ -9,7 +9,7 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          * @fieldOf blackbox.web.view.Base.prototype
          * @description Value: (empty string)
          */
-        DEFAULT_TEMPATE = '';
+        DEFAULT_TEMPLATE = '';
 
     var /**
          * @name template
@@ -99,7 +99,7 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          */
         config: function(cfg) {
             if(typeof cfg == 'object') {
-                return config = $.extend(true, config, cfg || {});
+                return (config = $.extend(true, config, cfg || {}));
             } else {
                 return config[cfg];
             }
@@ -140,8 +140,8 @@ define('view/Base', ['$', '_', 'Backbone', 'Handlebars'], function($, _, Backbon
          */
         render: function(template) {
             this.trigger('render:before');
-            content && setTemplate(template);
-            this.$el.html(Handlebars.compile(this.getTemplate())(this.config('data')));
+            template && setTemplate(template);
+            //this.$el.html(Handlebars.compile(this.getTemplate())(this.config('data')));
             return this.trigger('render');
         },
 

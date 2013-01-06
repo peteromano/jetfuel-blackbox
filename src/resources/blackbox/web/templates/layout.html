@@ -2,10 +2,8 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>BlackBox</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="/css/blackbox/web/main.css">
+    <title>BlackBox | {+title}The Framework of the Future{/title}</title>
+    <link rel="stylesheet" href="/css/blackbox/web/layout.css">
     <script type="text/javascript" src="/vendor/modernizr/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -13,10 +11,10 @@
         <header>
             <nav></nav>
         </header>
-        <main role="main">{{> content }}</main>
+        <main role="main">{+content/}</main>
         <footer></footer>
     </div>
-    <script type="text/javascript">ENV = '{{ env }}';</script>
-    <script data-main="/js/{{ env }}/blackbox/web/main.bundled.js" src="/vendor/require.js"></script>
+    <script id="data-application" type="text/html">{"SETTINGS":"settings.{ENV}"}</script>
+    <script data-main="/js/{ENV}/blackbox/web/main.bundled.js" src="/vendor/require.js"></script>
 </body>
 </html>
