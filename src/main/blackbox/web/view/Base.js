@@ -31,7 +31,7 @@ define('view/Base', ['$', '_', 'Backbone', 'dust'], function($, _, Backbone, dus
          * <strong>{Object} <code>data</code>:</strong> The context data to render the view template. <em>Defaults to </em><code>{}</code><em>.</em>
          */
         config = {
-            template: 'error/404',
+            template: 'error/not-found',
             css: false,
             i18n: false,
             data: {}
