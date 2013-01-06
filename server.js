@@ -39,6 +39,7 @@ app.get('/', function(req, res){
     res.type('application/json');
     res.send(200, JSON.stringify(data));
   } else {
+    data.layout = true;
     data.ENV = 'dev';
     res.render('home/landing', data);
   }

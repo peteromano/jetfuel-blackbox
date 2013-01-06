@@ -5,7 +5,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
          * @constant
          * @private
          * @type String
-         * @fieldOf blackbox.web.core.Controller
+         * @fieldOf manero.web.core.Controller
          * @description Value: "view"
          */
         ROOT_VIEW_PATH = 'view';
@@ -13,33 +13,41 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
     var /**
          * @name currentView
          * @private
-         * @fieldOf blackbox.web.core.Controller
-         * @type blackbox.web.view.Base
-         * @description Field to keep track of the current page. A falsy value indicates the initial page load.
+         * @fieldOf manero.web.core.Controller
+         * @type manero.web.view.Base
+         * @description Field to keep track of the current page view.
          */
-        currentView;
+        currentView,
+
+        /**
+         * @name $content
+         * @private
+         * @fieldOf manero.web.core.Controller
+         * @type {jQuery}
+         */
+         $content;
 
     /**
      * @name dispatch
-     * @methodOf blackbox.web.core.Controller
+     * @methodOf manero.web.core.Controller
      * @private
      * @static
      * @param {mixed} ...
      * @description
-     * Dispatches a route pattern to a {@link blackbox.web.view.Base} class.
+     * Dispatches a route pattern to a {@link manero.web.view.Base} class.
      * <br /><br />
      * If <code>currentView</code> is unset (<code>undefined</code>), then we assume that this is the first dispatch event,
-     * indicating our initial page load. In this case, we <em>DO NOT</em> call the {@link blackbox.web.view.Base#load()} method - the only thing to do
+     * indicating our initial page load. In this case, we <em>DO NOT</em> call the {@link manero.web.view.Base#load()} method - the only thing to do
      * is to instantiate the view class.
      * <br /><br />
      * If, however, <code>currentView</code> has been set, then we can assume this is a subsequent page request, so
-     * we <em>DO</em> call {@link blackbox.web.view.Base#load()} to request whichever resources we need to render the Page.
+     * we <em>DO</em> call {@link manero.web.view.Base#load()} to request whichever resources we need to render the Page.
      */
     function dispatch() {
         var args = arguments;
 
         require([ROOT_VIEW_PATH + '/' + this], function(View) {
-            var view = new View(), bind = _.bind;
+            var view = new View(), bind = _.bind, done = bind(complete, this, view);
 
             if(isInitialPageLoad()) {
 
@@ -48,58 +56,15 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
             } else {
 
                 view
-                    .on('load', bind(load, this, view))
+                    .on('load:before', bind(load, this, view))
                     .on('load:success', bind(view.render, view))
-                    .on('load:error', bind(complete, this, view))
-                    .on('render', bind(render, this, view))
+                    .on('load:error', done)
+                    .on('render:success', bind(render, this, view))
+                    .on('render:complete', done)
                     .load.apply(view, args);
                 
             }
         });
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     * TODO Scroll to top of the page or whatever we gotta do...
-     */
-    function load(view) {
-
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     */
-    function render(view) {
-        currentView && currentView.destroy();
-        setCurrentView(view);
-        complete();
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     * TODO Finish whatever #load() did...
-     */
-    function complete() {
-
-    }
-
-    /**
-     * @private
-     * @static
-     * @methodOf blackbox.web.core.Controller
-     * @param {blackbox.web.view.Base} view
-     */
-    function setCurrentView(view) {
-        currentView = view;
     }
 
     /**
@@ -113,8 +78,49 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
     }
 
     /**
+     * @private
+     * @static
+     * @methodOf manero.web.core.Controller
+     * @param {manero.web.view.Base} view
+     */
+    function load(view) {
+        ($content = $content || $('main')).stop(true, true).fadeOut(500);
+    }
+
+    /**
+     * @private
+     * @static
+     * @methodOf manero.web.core.Controller
+     * @param {manero.web.view.Base} view
+     */
+    function render(view) {
+        currentView && currentView.destroy();
+        setCurrentView(view);
+    }
+
+    /**
+     * @private
+     * @static
+     * @methodOf manero.web.core.Controller
+     * @param {manero.web.view.Base} view
+     */
+    function complete(view) {
+        $content.stop(true, true).fadeIn(500);
+    }
+
+    /**
+     * @private
+     * @static
+     * @methodOf manero.web.core.Controller
+     * @param {manero.web.view.Base} view
+     */
+    function setCurrentView(view) {
+        currentView = view;
+    }
+
+    /**
      * @constructor
-     * @name blackbox.web.core.Controller
+     * @name manero.web.core.Controller
      * @version 2.0
      */
     function Controller() {}
@@ -122,7 +128,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
     return {
         /**
          * @name createRouter
-         * @methodOf blackbox.web.core.Controller
+         * @methodOf manero.web.core.Controller
          * @static
          * @param {Object} routes
          * @returns {Backbone.Router}
@@ -149,7 +155,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
 
         /**
          * @name startSession
-         * @methodOf blackbox.web.core.Controller
+         * @methodOf manero.web.core.Controller
          * @static
          * @description Wrapper utility for Backbone.History#start()
          * @param {Boolean} silent

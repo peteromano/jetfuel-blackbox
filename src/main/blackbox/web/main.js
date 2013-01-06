@@ -5,18 +5,18 @@
 
     try {
 
-        config = JSON.parse(context.document.getElementById('data-application').innerHTML);
+        config = JSON.parse(context.document.getElementById('application-conf').innerHTML);
 
     } catch(e) {
 
         config = {
-            SETTINGS: 'settings.prod'
+            ENV: 'prod'
         };
 
     }
 
     // Load configuration
-    require(['config/require', 'config/routing', 'config/' + config.SETTINGS], function(requireConfig, routingConfig, settingsConfig) {
+    require(['config/require', 'config/routing', 'config/settings.' + config.ENV], function(requireConfig, routingConfig, settingsConfig) {
         // Set RequireJS config and require the Application
         require.config(requireConfig).call(require, ['core/Application'], function(Application) {
             // Initialize the application

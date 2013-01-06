@@ -1,4 +1,4 @@
-define('view/Base', ['$', '_', 'Backbone', 'dust'], function($, _, Backbone, dust) {
+define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, Backbone, dust) {
     'use strict';
 
     var /**
@@ -32,9 +32,9 @@ define('view/Base', ['$', '_', 'Backbone', 'dust'], function($, _, Backbone, dus
          */
         config = {
             template: 'error/not-found',
+            data: {},
             css: false,
-            i18n: false,
-            data: {}
+            i18n: false
         };
 
     /**
@@ -130,19 +130,36 @@ define('view/Base', ['$', '_', 'Backbone', 'dust'], function($, _, Backbone, dus
          * @returns {blackbox.web.view.Base}
          * @see blackbox.web.view.Base#load
          * @description
-         * Publishes: <code>render:before</code>, <code>render</code>
+         * Publishes: <code>render:before</code>, <code>render:error</code>, <code>render:success</code>, <code>render:complete</code>
          * <br /><br />
          * Render a template to the view.
          * <br /><br />
          * If <code>template</code> is <code>undefined</code>, then this method will
          * use the stored template {@link blackbox.web.view.Base#content} (which gets set on <code>load:complete</code>),
-         * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_TEMPLAE}
+         * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_TEMPLATE}
          */
         render: function(template) {
-            this.trigger('render:before');
+            var name = this.config('template'),
+                self = this;
+
+            self.trigger('render:before');
+
             template && setTemplate(template);
-            //this.$el.html(Handlebars.compile(this.getTemplate())(this.config('data')));
-            return this.trigger('render');
+
+            dust.loadSource(dust.compile(this.getTemplate(), name));
+            dust.render(name, this.config('data'), function(error, content) {
+                if(error) {
+                    self
+                        .trigger('render:error', error)
+                        .trigger('render:complete');
+                } else {
+                    self.trigger('render:success');
+                    self.$el.html(content);
+                    self.trigger('render:complete');
+                }
+            });
+
+            return this;
         },
 
         /**
