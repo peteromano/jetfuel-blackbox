@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "title": "BlackBox Client-Side Application Framework",
   "description": "Currently, BlackBox is a boilerplate client-side application framework, built on top of the JetFuel build system and Grunt, Backbone, RequireJS, JetRunner unit test server (Mocha BDD/TDD test framework + PhantomJS + SauceLabs cloud integration), Dust (and Plate Django port) for templating (both client and server-side), Express dynamic web server, etc. BlackBox is the template used for JetFuel's basic `init` command.",
-  "homepage": "https://github.com/peteromano/blackbox/wiki",
+  "homepage": "https://github.com/peteromano/jetfuel-blackbox/wiki",
   "keywords": [
     "blackbox",
     "jetfuel"
@@ -11,7 +11,7 @@
   "author": {
     "name": "Pete Romano",
     "email": "pete.romano@yahoo.com",
-    "url": "http://www.peteromano.net"
+    "url": "http://peteromano.net"
   },
   "dependencies": {
     "express": "~3.0.3",
@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/peteromano/blackbox"
+    "url": "https://github.com/peteromano/jetfuel-blackbox"
   },
   "bugs": {
-    "url": "https://github.com/peteromano/blackbox/issues"
+    "url": "https://github.com/peteromano/jetfuel-blackbox/issues"
   },
   "directories": {
     "example": "./example",
