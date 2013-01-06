@@ -16,7 +16,7 @@ dust.setOptions({
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + 'src/resources/blackbox/web/templates');
+  app.set('views', __dirname + '/src/resources/blackbox/web/templates');
   app.engine('html', dust.dust);
   app.set('view engine', 'html');
   app.use(express.favicon());
