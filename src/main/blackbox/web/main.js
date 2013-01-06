@@ -21,9 +21,13 @@
         require.config(requireConfig).call(require, ['core/Application'], function(Application) {
             // Initialize the application
             Application.getInstance().initialize({
+                env: config.ENV,
                 context: context,
                 routing: routingConfig,
-                settings: settingsConfig
+                settings: settingsConfig,
+                templating: {
+                    engine: config.TEMPLATE_ENGINE
+                }
             });
         });
 

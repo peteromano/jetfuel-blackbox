@@ -57,7 +57,7 @@ define('util/FacebookApi', ['_', 'Backbone', 'util/GoogleAnalytics'], function(_
             require(['core/Application'], function(Application) {
                 var app = Application.getInstance(),
                     settings = app.config('settings'),
-                    config = settings.facebook;
+                    config = settings.services.facebook;
 
                 context = app.config('context');
 

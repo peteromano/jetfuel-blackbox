@@ -1,17 +1,20 @@
 define('config/settings.prod', function() {
     'use strict';
 
-
     return {
 
-        'facebook': {
-            'appId': ''
-        },
+        'services': {
 
-        'google': {
-            'analytics':{
-                'id': ''
+            'facebook': {
+                'appId': ''
+            },
+
+            'google': {
+                'analytics':{
+                    'id': ''
+                }
             }
+
         }
 
     };

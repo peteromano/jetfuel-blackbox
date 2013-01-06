@@ -1,6 +1,6 @@
 {
   "name": "jetfuel-blackbox",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "title": "BlackBox Client-Side Application Framework",
   "description": "Currently, BlackBox is a boilerplate client-side application framework, built on top of the JetFuel build system and Grunt, Backbone, RequireJS, Mocha BDD/TDD test framework, PhantomJS, Dust templating (both client and server-side), Express dynamic web server, etc. BlackBox is the template used for Jetfuel's basic `init` command.",
   "homepage": "https://github.com/peteromano/blackbox/wiki",
@@ -49,6 +49,7 @@
       "jquery": "~1.8.0",
       "backbone": "0.9.9",
       "dustjs-linkedin": "~1.1.1",
+      "plate": "~1.0.5",
       "sinon": "*",
       "requirejs-plugins": "*",
       "modernizr": "*"

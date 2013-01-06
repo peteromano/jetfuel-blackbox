@@ -1,19 +1,22 @@
 define('config/settings.dev', function() {
     'use strict';
 
-
     return {
 
         'debug': true,
 
-        'facebook': {
-            'appId': ''
-        },
+        'services': {
 
-        'google': {
-            'analytics':{
-                'id': ''
+            'facebook': {
+                'appId': ''
+            },
+
+            'google': {
+                'analytics':{
+                    'id': ''
+                }
             }
+
         }
 
     };

@@ -24,6 +24,7 @@ define('config/require', function() {
             'jQuery':                   [/*'//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min', */getVendorPath('jquery/dist/jquery')],
             'Backbone':                 [/*'//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min', */getVendorPath('backbone/backbone')],
             'dust':                     getVendorPath('dustjs-linkedin/dist/dust-full-1.1.1'),
+            'plate':                    getVendorPath('plate/lib/plate.min'),
             'mocha':                    getVendorPath('mocha/mocha/mocha'),
             'chai':                     getVendorPath('chai/chai/chai'),
             'sinon':                    getVendorPath('sinon/sinon'),
@@ -48,6 +49,10 @@ define('config/require', function() {
 
             'dust': {
                 'exports': 'dust'
+            },
+            
+            'plate': {
+                'exports': 'plate'
             },
 
             'underscore': {

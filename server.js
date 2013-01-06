@@ -41,6 +41,7 @@ app.get('/', function(req, res){
   } else {
     data.layout = true;
     data.ENV = 'dev';
+    data.TEMPLATE_ENGINE = 'dust';
     res.render('home/landing', data);
   }
 });

@@ -30,7 +30,7 @@ define('util/GoogleAnalytics', function() {
 
             require(['core/Application'], function(Application) {
                 var app = Application.getInstance(),
-                    config = app.config('settings').google.analytics;
+                    config = app.config('settings').services.google.analytics;
 
                 context = app.config('context');
 

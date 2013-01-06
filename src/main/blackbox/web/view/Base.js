@@ -1,4 +1,4 @@
-define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, Backbone, dust) {
+define('view/Base', ['$', '_', 'Backbone', 'core/Renderer'], function($, _, Backbone, Renderer) {
     'use strict';
 
     var /**
@@ -7,7 +7,7 @@ define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, B
          * @name DEFAULT_TEMPLATE
          * @type String
          * @fieldOf blackbox.web.view.Base.prototype
-         * @description Value: (empty string)
+         * @description Value: <code>(empty string)</code>
          */
         DEFAULT_TEMPLATE = '';
 
@@ -25,7 +25,7 @@ define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, B
          * @type Object
          * @fieldOf blackbox.web.view.Base.prototype
          * @description
-         * <strong>{String} <code>template</code>:</strong> The default template to load for the view. <em>Defaults to </em><code>"error/404"</code><em>.</em><br />
+         * <strong>{String} <code>template</code>:</strong> The default template to load for the view. <em>Defaults to </em><code>"error/not-found"</code><em>.</em><br />
          * <strong>{Boolean} <code>css</code>:</strong> Flag to decide whether to load the CSS for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
          * <strong>{Boolean} <code>i18n</code>:</strong> Flag to decide whether to load the i18n bundle for the view. <em>Defaults to </em><code>false</code><em>.</em><br />
          * <strong>{Object} <code>data</code>:</strong> The context data to render the view template. <em>Defaults to </em><code>{}</code><em>.</em>
@@ -101,7 +101,7 @@ define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, B
             if(typeof cfg == 'object') {
                 return (config = $.extend(true, config, cfg || {}));
             } else {
-                return config[cfg];
+                return cfg && config[cfg] || config;
             }
         },
 
@@ -139,15 +139,13 @@ define('view/Base', ['$', '_', 'Backbone', 'plugin/dust/load'], function($, _, B
          * otherwise it will fallback to {@link blackbox.web.view.Base#DEFAULT_TEMPLATE}
          */
         render: function(template) {
-            var name = this.config('template'),
-                self = this;
+            var self = this;
 
             self.trigger('render:before');
 
             template && setTemplate(template);
 
-            dust.loadSource(dust.compile(this.getTemplate(), name));
-            dust.render(name, this.config('data'), function(error, content) {
+            Renderer.render(this.getTemplate(), this.config(), function(error, content) {
                 if(error) {
                     self
                         .trigger('render:error', error)

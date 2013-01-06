@@ -6,6 +6,7 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
          * @private
          * @type {String}
          * @fieldOf manero.web.view.Layout.prototype
+         * @description Value: <code>"_self"</code>
          */
         DEFAULT_TARGET = '_self';
 

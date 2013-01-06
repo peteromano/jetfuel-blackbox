@@ -41,17 +41,23 @@
          * @fieldOf blackbox.web.core.Application.prototype
          */
         config = {
+            env: 'prod',
             context: window,
             routing: {},
+            templating: {
+                engine: 'dust'
+            },
             settings: {
                 debug: false,
-                facebook: {
-                    status: true,
-                    cookie: true,
-                    xfbml: true
-                },
-                google: {
-                    analytics: {}
+                services: {
+                    facebook: {
+                        status: true,
+                        cookie: true,
+                        xfbml: true
+                    },
+                    google: {
+                        analytics: {}
+                    }
                 }
             }
         },
@@ -172,7 +178,7 @@
                     if(typeof cfg == 'object') {
                         return config = $.extend(true, config, cfg || {});
                     } else {
-                        return config[cfg];
+                        return cfg && config[cfg] || config;
                     }
                 },
 
