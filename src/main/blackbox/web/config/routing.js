@@ -3,7 +3,12 @@ define('config/routing', function() {
 
     return {
 
-        '': 'home/Landing'
+        // Home
+        '': 'home/Landing',
+
+        // Todos
+        'todos':        'todos/List',
+        'todos/:id':    'todos/Detail'
 
     };
 

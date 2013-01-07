@@ -2,7 +2,7 @@ define({
 
     'root': {
 
-        'error': 'error'
+        'task': 'task'
 
     },
 

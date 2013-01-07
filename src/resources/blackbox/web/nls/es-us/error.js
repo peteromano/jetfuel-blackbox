@@ -1,5 +1,5 @@
 define({
 
-    'loading': 'cargando'
+    'error': 'error'
 
 });

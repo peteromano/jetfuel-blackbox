@@ -46,6 +46,34 @@ app.get('/', function(req, res){
   }
 });
 
+app.get('/todos', function(req, res){
+  var data = {};
+
+  if(req.xhr) {
+    res.type('application/json');
+    res.send(200, JSON.stringify(data));
+  } else {
+    data.layout = true;
+    data.ENV = 'dev';
+    data.TEMPLATE_ENGINE = 'dust';
+    res.render('todos/list', data);
+  }
+});
+
+app.get('/todos/:id', function(req, res){
+  var data = {};
+
+  if(req.xhr) {
+    res.type('application/json');
+    res.send(200, JSON.stringify(data));
+  } else {
+    data.layout = true;
+    data.ENV = 'dev';
+    data.TEMPLATE_ENGINE = 'dust';
+    res.render('todos/detail', data);
+  }
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
