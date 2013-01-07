@@ -9,5 +9,13 @@
 {<css}<link rel="stylesheet" href="/css/blackbox/web/todos.css">{/css}
 
 {<content}
-  <section id="todos-detail-page" class="todos page"></section>
+  <section id="todos-detail-page" class="todos page">
+  	{#data}
+  		<article>
+  			<h2>{task}</h2>
+  			<div class="status">Status: <strong>{#status}Complete!{:else}Incomplete{/status}</strong></div>
+  			<p>{description}</p>
+  		</article>
+  	{/data}
+  </section>
 {/content}

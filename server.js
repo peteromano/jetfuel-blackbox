@@ -8,6 +8,12 @@ var express = require('express')
   , path = require('path')
   , dust = require('klei-dust')
   , app = express();
+
+var tasks = [
+      { id: 0, task: 'Take Out Trash', status: true, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel odio massa, vel pulvinar nibh. Morbi mollis, lorem ac tempor pellentesque, erat est pharetra sapien, at egestas magna mi et.' },
+      { id: 1, task: 'Call Mom', status: false, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel odio massa, vel pulvinar nibh. Morbi mollis, lorem ac tempor pellentesque, erat est pharetra sapien, at egestas magna mi et.' },
+      { id: 2, task: 'Fix Bugs', status: false, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel odio massa, vel pulvinar nibh. Morbi mollis, lorem ac tempor pellentesque, erat est pharetra sapien, at egestas magna mi et.' }
+    ];
   
 dust.setOptions({
   relativeToFile: false,
@@ -51,11 +57,7 @@ app.get('/', function(req, res){
 app.get('/todos', function(req, res){
   var context = {
       errors: [],
-      data: [
-        { id: 0, task: 'Task 1', status: true },
-        { id: 1, task: 'Task 2', status: false },
-        { id: 2, task: 'Task 3', status: false }
-      ]
+      data: tasks
     };
 
   if(req.xhr) {
@@ -72,11 +74,7 @@ app.get('/todos', function(req, res){
 app.get('/todos/:id', function(req, res){
   var context = {
       errors: [],
-      data: {
-        id: 0,
-        task: 'Task 1',
-        status: true
-      }
+      data: tasks[req.param('id')]
     };
 
   if(req.xhr) {
