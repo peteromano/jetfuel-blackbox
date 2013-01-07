@@ -1,9 +1,10 @@
-define('view/todos/List', ['view/Base'], function(Base) {
+define('view/todos/List', ['view/Base', 'collection/Todos'], function(Base, Todos) {
     'use strict';
 
     var config = {
             template: 'todos/list',
-            i18n: true
+            i18n: true,
+            css: true
         };
 
     /**
@@ -17,6 +18,20 @@ define('view/todos/List', ['view/Base'], function(Base) {
          */
         initialize: function() {
             return Base.prototype.initialize.call(this, config);
+        },
+
+        load: function(id) {
+            var self = this;
+
+            new Todos().fetch({
+                success: function(todos) {
+                    console.log(todos);
+                    self.config({ data: { data: todos.toJSON() } });
+                    Base.prototype.load.call(self);
+                }
+            });
+
+            return this;
         }
 
     });

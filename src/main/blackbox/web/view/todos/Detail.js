@@ -3,7 +3,8 @@ define('view/todos/Detail', ['view/Base', 'model/Todo'], function(Base, Todo) {
 
     var config = {
             template: 'todos/detail',
-            i18n: true
+            i18n: true,
+            css: true
         };
 
     /**
@@ -24,7 +25,7 @@ define('view/todos/Detail', ['view/Base', 'model/Todo'], function(Base, Todo) {
 
             new Todo({ id: id }).fetch({
                 success: function(todo) {
-                    self.config({ data: todo.toJSON() });
+                    self.config({ data: { data: todo.toJSON() } });
                     Base.prototype.load.call(self);
                 }
             });

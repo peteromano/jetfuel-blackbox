@@ -84,7 +84,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
      * @param {manero.web.view.Base} view
      */
     function load(view) {
-        ($content = $content || $('main')).stop(true, true).fadeOut(500);
+        ($content = $content || $('main')).stop(true, true).fadeOut(250);
     }
 
     /**
@@ -105,7 +105,7 @@ define('core/Controller', ['$', '_', 'Backbone'], function($, _, Backbone) {
      * @param {manero.web.view.Base} view
      */
     function complete(view) {
-        $content.stop(true, true).fadeIn(500);
+        $content.stop(true, true).fadeIn(250);
     }
 
     /**

@@ -121,7 +121,7 @@
     define('core/Application', [
         '_',
         '$',
-        'Backbone',
+        'plugin/backbone/sync',
         'core/Controller',
         'view/Layout',
         'util/GoogleAnalytics',

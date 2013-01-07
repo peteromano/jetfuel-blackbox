@@ -18,9 +18,9 @@ ul, li
 	padding: 0
 
 li
+	display: block
 	list-style-type: none
 	list-style-position: inside
-	display: inline
 
 header, main
 	border-bottom: solid 1px #777
@@ -30,12 +30,13 @@ main
 	display: block
 
 footer
+	padding: 10px
 	a
 		font-size: 12px
-	padding: 10px
 	ul
 		text-align: center
 	li
+		display: inline
 		padding: 0 5px
 
 h1, h2
@@ -45,6 +46,7 @@ h1, h2
 	padding: 10px 0
 
 h1
+	color: #333
 	font-size: 24px
 
 h2
@@ -59,11 +61,10 @@ h2
 	width: 320px
 	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(60%, transparent), to(rgba(255,255,255,0.2)))
 
-#home-landing-page
-	a
-		display: block
-		h2:after
-			content: " >"
-		&:hover h2
-			background: #999
-			color: #666
+.page a
+	display: block
+	h2:after
+		content: " >"
+	&:hover h2
+		background: #999
+		color: #333

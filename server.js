@@ -33,44 +33,60 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res){
-  var data = {};
+  var context = {
+      errors: []
+    };
 
   if(req.xhr) {
     res.type('application/json');
-    res.send(200, JSON.stringify(data));
+    res.send(200, JSON.stringify(context));
   } else {
-    data.layout = true;
-    data.ENV = 'dev';
-    data.TEMPLATE_ENGINE = 'dust';
-    res.render('home/landing', data);
+    context.layout = true;
+    context.ENV = 'dev';
+    context.TEMPLATE_ENGINE = 'dust';
+    res.render('home/landing', context);
   }
 });
 
 app.get('/todos', function(req, res){
-  var data = {};
+  var context = {
+      errors: [],
+      data: [
+        { id: 0, task: 'Task 1', status: true },
+        { id: 1, task: 'Task 2', status: false },
+        { id: 2, task: 'Task 3', status: false }
+      ]
+    };
 
   if(req.xhr) {
     res.type('application/json');
-    res.send(200, JSON.stringify(data));
+    res.send(200, JSON.stringify(context));
   } else {
-    data.layout = true;
-    data.ENV = 'dev';
-    data.TEMPLATE_ENGINE = 'dust';
-    res.render('todos/list', data);
+    context.layout = true;
+    context.ENV = 'dev';
+    context.TEMPLATE_ENGINE = 'dust';
+    res.render('todos/list', context);
   }
 });
 
 app.get('/todos/:id', function(req, res){
-  var data = {};
+  var context = {
+      errors: [],
+      data: {
+        id: 0,
+        task: 'Task 1',
+        status: true
+      }
+    };
 
   if(req.xhr) {
     res.type('application/json');
-    res.send(200, JSON.stringify(data));
+    res.send(200, JSON.stringify(context));
   } else {
-    data.layout = true;
-    data.ENV = 'dev';
-    data.TEMPLATE_ENGINE = 'dust';
-    res.render('todos/detail', data);
+    context.layout = true;
+    context.ENV = 'dev';
+    context.TEMPLATE_ENGINE = 'dust';
+    res.render('todos/detail', context);
   }
 });
 

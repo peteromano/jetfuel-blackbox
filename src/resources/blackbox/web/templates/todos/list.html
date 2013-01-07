@@ -4,6 +4,23 @@
   {+content/}
 {/layout}
 
+{<title}Todos{/title}
+
+{<css}<link rel="stylesheet" href="/css/blackbox/web/todos.css">{/css}
+
 {<content}
-  <section id="todos-list-page" class="todos page"></section>
+  <section id="todos-list-page" class="todos page">
+  	<ul>
+	  {#data}
+		<li>
+		  <a class="task" href="/todos/{id}">
+		  	<div class="status{#status} complete{/status}">
+		  		{#status}Complete!{:else}Incomplete{/status}
+		  	</div>
+		  	<h2>{task}</h2>
+		  </a>
+		</li>
+	  {/data}
+  	</ul>
+  </section>
 {/content}
