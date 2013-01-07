@@ -2,17 +2,22 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>BlackBox | {+title}The Framework of the Future{/title}</title>
+    <title>BlackBox | {+title}Client-Side Application Framework{/title}</title>
     <link rel="stylesheet" href="/css/blackbox/web/layout.css">
     <script type="text/javascript" src="/vendor/modernizr/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
         <header>
-            <nav></nav>
+            <h1>BlackBox</h1>
         </header>
         <main role="main">{+content/}</main>
-        <footer></footer>
+        <footer>
+            <ul>
+                <li><a href="https://github.com/peteromano/jetfuel-blackbox" target="_blank">Code</a></li>
+                <li><a href="https://twitter.com/peteromano" target="_blank">Twitter</a></li>
+            </ul>
+        </footer>
     </div>
     <script id="application-conf" type="text/html">{"TEMPLATE_ENGINE":"{TEMPLATE_ENGINE}","ENV":"{ENV}"}</script>
     <script data-main="/js/{ENV}/blackbox/web/main.bundled.js" src="/vendor/require.js"></script>

@@ -1,36 +1,69 @@
 body
 	font-family: Arial
+	font-size: 14px
+	color: #555
 	background: #eee
+	text-shadow: 0px 1px 1px #ccc
 	padding: 0
 	margin: 0
 
-h1, h2
+a
 	color: #555
-	text-shadow: 0px 1px 1px #ccc
+	text-decoration: none
+	&:hover
+		color: #333
+
+ul, li
+	margin: 0
+	padding: 0
+
+li
+	list-style-type: none
+	list-style-position: inside
+	display: inline
+
+header, main
+	border-bottom: solid 1px #777
+	box-shadow: 0px 1px 1px #999
+
+main
+	display: block
+
+footer
+	a
+		font-size: 12px
+	padding: 10px
+	ul
+		text-align: center
+	li
+		padding: 0 5px
+
+h1, h2
 	font-weight: bold
 	text-align: center
 	margin: 0
 	padding: 10px 0
 
 h1
-	border-bottom: solid 1px #777
-	box-shadow: 0px 1px 1px #999
 	font-size: 24px
 
 h2
 	font-size: 18px
 
-.page
+#wrapper
 	border-radius: 5px
-	border: solid 2px #777
+	border: solid 1px #777
 	box-shadow: 1px 1px 7px #777
 	background: #888
 	margin: 50px auto 0
 	width: 320px
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)))
 
 #home-landing-page
 	a
-		text-decoration: none
+		display: block
+		h2:after
+			content: " >"
 		&:hover h2
 			background: #999
 			color: #666
