@@ -2,15 +2,16 @@ define('util/GoogleAnalytics', function() {
     'use strict';
 
     var /**
-         * @fieldOf manero.web.util.GoogleAnalytics
-         * @type {Window}
+         * @name context
+         * @fieldOf blackbox.web.util.GoogleAnalytics
+         * @type Window
          * @private
          * @static
          */
         context;
 
     /**
-     * @name manero.web.util.GoogleAnalytics
+     * @name blackbox.web.util.GoogleAnalytics
      * @version 2.0
      * @constructor
      */
@@ -19,16 +20,16 @@ define('util/GoogleAnalytics', function() {
     return {
         /**
          * @name load
-         * @methodOf manero.web.util.GoogleAnalytics
+         * @methodOf blackbox.web.util.GoogleAnalytics
          * @static
-         * @returns {manero.web.util.GoogleAnalytics}
+         * @returns {blackbox.web.util.GoogleAnalytics}
          */
         load: function(){
             if(context && context._gaq) {
                 return this;
             }
 
-            require(['core/Application'], function(Application) {
+            require(['model/Application'], function(Application) {
                 var app = Application.getInstance(),
                     config = app.config('settings').services.google.analytics;
 
@@ -54,9 +55,9 @@ define('util/GoogleAnalytics', function() {
 
         /**
          * @name trackEvent
-         * @methodOf manero.web.util.manero.web.util.GoogleAnalytics
+         * @methodOf blackbox.web.util.blackbox.web.util.GoogleAnalytics
          * @static
-         * @returns {manero.web.util.GoogleAnalytics}
+         * @returns {blackbox.web.util.GoogleAnalytics}
          * @description Wrapper for the <code>_gaq</code> queue for event tracking.
          */
         trackEvent: function() {

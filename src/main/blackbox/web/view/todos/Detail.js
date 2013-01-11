@@ -20,6 +20,11 @@ define('view/todos/Detail', ['view/Base', 'model/Todo'], function(Base, Todo) {
             return Base.prototype.initialize.call(this, config);
         },
 
+        /**
+         * @overridden
+         * @param {String} id
+         * @returns {manero.web.view.todos.Detail}
+         */
         load: function(id) {
             var self = this;
 

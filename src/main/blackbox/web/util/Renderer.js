@@ -1,10 +1,5 @@
-define('core/Renderer', function() {
+define('util/Renderer', function() {
     'use strict';
-
-    var engines = {
-            dust: Dust,
-            plate: Plate
-        };
 
     function Dust(template, config, callback) {
         var name = config.template;
@@ -20,9 +15,14 @@ define('core/Renderer', function() {
         }]);
     }
 
+    var engines = {
+            dust: Dust,
+            plate: Plate
+        };
+
     /**
      * @constructor
-     * @name manero.web.core.Renderer
+     * @name blackbox.web.util.Renderer
      * @version 2.1
      */
     function Renderer() {}
@@ -30,7 +30,7 @@ define('core/Renderer', function() {
     return {
         /**
          * @name render
-         * @methodOf manero.web.core.Renderer
+         * @methodOf blackbox.web.util.Renderer
          * @static
          * @param {String} template
          * @param {Object} context
@@ -38,8 +38,8 @@ define('core/Renderer', function() {
          * @returns {blackbox.web.core.Renderer}
          */
         render: function(template, config, callback) {
-            require(['core/Application'], function(Application) {
-                new engines[Application.getInstance().config('templating').engine](template, config, callback);
+            require(['model/Application'], function(Application) {
+                engines[Application.getInstance().config('templating').engine](template, config, callback);
             });
 
             return this;

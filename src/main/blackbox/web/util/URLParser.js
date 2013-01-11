@@ -8,33 +8,33 @@ define('util/URLParser', function() {
     var /**
          * @constant
          * @private
-         * @type {RegExp}
+         * @type RegExp
          * @fieldOf blackbox.web.util.URLParser
-         * @description Value: /^((\w+)\:)?\/\/([^\/\\]+)/
+         * @description /^((\w+)\:)?\/\/([^\/\\]+)/
          */
         X_DOMAIN = /^((\w+)\:)?\/\/([^\/\\]+)/,
         /**
          * @constant
          * @private
-         * @type {RegExp}
+         * @type RegExp
          * @fieldOf blackbox.web.util.URLParser
-         * @description Value: /^(?:([A-Za-z]+:))?(?:\/{2})?([0-9.\-A-Za-z]*)(?::(\d+))?(?:(\/[^?#]*))?(?:\?([^#]*))?(?:#!?(.*))?$/
+         * @description /^(?:([A-Za-z]+:))?(?:\/{2})?([0-9.\-A-Za-z]*)(?::(\d+))?(?:(\/[^?#]*))?(?:\?([^#]*))?(?:#!?(.*))?$/
          */
         SEGMENTS = /^(?:([A-Za-z]+:))?(?:\/{2})?([0-9.\-A-Za-z]*)(?::(\d+))?(?:(\/[^?#]*))?(?:\?([^#]*))?(?:#!?(.*))?$/,
         /**
          * @constant
          * @private
-         * @type {RegExp}
+         * @type RegExp
          * @fieldOf blackbox.web.util.URLParser
-         * @description Value: /([^&=]+)=?([^&]*)/g
+         * @description /([^&=]+)=?([^&]*)/g
          */
         QS_PARTS = /([^&=]+)=?([^&]*)/g,
         /**
          * @constant
          * @private
-         * @type {RegExp}
+         * @type RegExp
          * @fieldOf blackbox.web.util.URLParser
-         * @description Value: /\+/g
+         * @description /\+/g
          */
         QS_SPACE = /\+/g,
         /**
@@ -46,43 +46,43 @@ define('util/URLParser', function() {
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.PROTOCOL
              * @constant
-             * @type {int}
-             * @description Value: 1
+             * @type Number
+             * @description 1
              */
             PROTOCOL:		1,
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.DOMAIN
              * @constant
-             * @type {int}
-             * @description Value: 2
+             * @type Number
+             * @description 2
              */
             DOMAIN:			2,
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.PORT
              * @constant
-             * @type {int}
-             * @description Value: 3
+             * @type Number
+             * @description 3
              */
             PORT:			3,
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.PATH
              * @constant
-             * @type {int}
-             * @description Value: 4
+             * @type Number
+             * @description 4
              */
             PATH:			4,
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.QUERY_STRING
              * @constant
-             * @type {int}
-             * @description Value: 5
+             * @type Number
+             * @description 5
              */
             QUERY_STRING:	5,
             /**
              * @name blackbox.web.util.URLParser.SegmentsEnum.HASH
              * @constant
-             * @type {int}
-             * @description Value: 6
+             * @type Number
+             * @description 6
              */
             HASH:			6
         };
@@ -92,7 +92,7 @@ define('util/URLParser', function() {
      * @private
      * @static
      * @param {String} url
-     * @param {int} segment
+     * @param Number segment
      * @returns {String}
      */
     function getSegment(url, segment) {

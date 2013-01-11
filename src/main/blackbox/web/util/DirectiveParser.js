@@ -8,9 +8,9 @@ define('util/DirectiveParser', function() {
     var /**
          * @constant
          * @private
-         * @type {RegExp}
+         * @type RegExp
          * @fieldOf blackbox.web.util.DirectiveParser
-         * @description Value: /<(.*)>/
+         * @description /<(.*)>/
          */
         DIRECTIVE = /<(.*)>/;
 

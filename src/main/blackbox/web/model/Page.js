@@ -1,15 +1,15 @@
-define('model/Todo', ['Backbone'], function(Backbone) {
+define('model/Page', ['Backbone'], function(Backbone) {
     'use strict';
 
     /**
-     * @lends blackbox.web.model.Todo.prototype
+     * @lends blackbox.web.model.Page.prototype
      */
     return Backbone.Model.extend({
         /**
          * @type String
-         * @description "/todos"
+         * @description "/pages"
          */
-        urlRoot: '/todos',
+        urlRoot: '/pages',
 
         /**
          * @constructs
@@ -17,7 +17,7 @@ define('model/Todo', ['Backbone'], function(Backbone) {
          * @augments Backbone.Model
          */
         initialize: function() {
-            
+            return Backbone.Model.prototype.initialize.call(this);
         }
 
     });

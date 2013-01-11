@@ -1,7 +1,7 @@
-require(['Backbone', 'core/Controller'], function(Backbone, Controller) {
+require(['Backbone', 'model/Controller'], function(Backbone, Controller) {
     'use strict';
 
-    describe('blackbox.web.core.Controller', function(){
+    describe('blackbox.web.model.Controller', function(){
 
         describe('#createRouter()', function(){
             it('should create a new Backbone.Router instance', function(){

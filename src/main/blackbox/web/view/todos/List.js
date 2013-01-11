@@ -20,12 +20,15 @@ define('view/todos/List', ['view/Base', 'collection/Todos'], function(Base, Todo
             return Base.prototype.initialize.call(this, config);
         },
 
-        load: function(id) {
+        /**
+         * @overridden
+         * @returns {manero.web.view.todos.List}
+         */
+        load: function() {
             var self = this;
 
             new Todos().fetch({
                 success: function(todos) {
-                    console.log(todos);
                     self.config({ data: { data: todos.toJSON() } });
                     Base.prototype.load.call(self);
                 }

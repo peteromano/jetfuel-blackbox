@@ -2,8 +2,9 @@ define('util/FacebookApi', ['_', 'Backbone', 'util/GoogleAnalytics'], function(_
     'use strict';
 
     var /**
-         * @fieldOf manero.web.util.FacebookApi
-         * @type {enum}
+         * @name context
+         * @fieldOf blackbox.web.util.FacebookApi
+         * @type enum
          * @private
          * @static
          * @constant
@@ -25,15 +26,15 @@ define('util/FacebookApi', ['_', 'Backbone', 'util/GoogleAnalytics'], function(_
         };
 
     var /**
-         * @fieldOf manero.web.util.FacebookApi
-         * @type {Window}
+         * @fieldOf blackbox.web.util.FacebookApi
+         * @type Window
          * @private
          * @static
          */
         context;
 
     /**
-     * @name manero.web.util.FacebookApi
+     * @name blackbox.web.util.FacebookApi
      * @version 2.0
      * @constructor
      */
@@ -42,9 +43,9 @@ define('util/FacebookApi', ['_', 'Backbone', 'util/GoogleAnalytics'], function(_
     return _.extend({
         /**
          * @name load
-         * @methodOf manero.web.util.FacebookApi
+         * @methodOf blackbox.web.util.FacebookApi
          * @static
-         * @returns {manero.web.util.FacebookApi}
+         * @returns {blackbox.web.util.FacebookApi}
          */
         load: function () {
             var self = this;
@@ -54,7 +55,7 @@ define('util/FacebookApi', ['_', 'Backbone', 'util/GoogleAnalytics'], function(_
                 return this;
             }
 
-            require(['core/Application'], function(Application) {
+            require(['model/Application'], function(Application) {
                 var app = Application.getInstance(),
                     settings = app.config('settings'),
                     config = settings.services.facebook;

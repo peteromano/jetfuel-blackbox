@@ -1,5 +1,5 @@
 {
 
-    "<%= meta.dirs.test %>/blackbox/web/core/ControllerTest.js": "<%= meta.dirs.main.dest %>/prod/blackbox/web/core/Controller.js"
+    "<%= meta.dirs.test %>/blackbox/web/model/ControllerTest.js": "<%= meta.dirs.main.dest %>/prod/blackbox/web/model/Controller.js"
 
 }

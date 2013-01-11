@@ -5,9 +5,16 @@ define('collection/Todos', ['Backbone', 'model/Todo'], function(Backbone, Todo) 
      * @lends blackbox.web.collection.Todos.prototype
      */
     return Backbone.Collection.extend({
-
+        /**
+         * @type Function
+         * @see blackbox.web.model.Todo
+         */
         model: Todo,
 
+        /**
+         * @type String
+         * @description "/todos"
+         */
         url: '/todos',
 
         /**

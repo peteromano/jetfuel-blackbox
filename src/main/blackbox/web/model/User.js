@@ -1,15 +1,19 @@
-define('model/Todo', ['Backbone'], function(Backbone) {
+define('model/User', ['$', 'Backbone'], function($, Backbone) {
     'use strict';
 
     /**
-     * @lends blackbox.web.model.Todo.prototype
+     * @lends blackbox.web.model.User.prototype
      */
     return Backbone.Model.extend({
         /**
          * @type String
-         * @description "/todos"
+         * @description "/user"
          */
-        urlRoot: '/todos',
+        urlRoot: '/user',
+
+        defaults: {
+            loggedIn: false
+        },
 
         /**
          * @constructs

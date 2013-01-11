@@ -8,7 +8,14 @@ define('config/routing', function() {
 
         // Todos
         'todos':        'todos/List',
-        'todos/:id':    'todos/Detail'
+        'todos/:id':    'todos/Detail',
+
+        // Errors
+        'error':            'error/Generic',
+        'error/not-found':  'error/NotFound',
+
+        // CMS Pages
+        '*path': 'cms/Page'
 
     };
 

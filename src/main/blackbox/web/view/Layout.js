@@ -4,9 +4,9 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
     var /**
          * @name DEFAULT_TARGET
          * @private
-         * @type {String}
-         * @fieldOf manero.web.view.Layout.prototype
-         * @description Value: <code>"_self"</code>
+         * @type String
+         * @fieldOf blackbox.web.view.Layout.prototype
+         * @description <code>"_self"</code>
          */
         DEFAULT_TARGET = '_self';
 
@@ -14,28 +14,28 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
          * @name $
          * @private
          * @type jQuery
-         * @fieldOf manero.web.view.Layout.prototype
+         * @fieldOf blackbox.web.view.Layout.prototype
          */
         $,
 
         /**
          * @name app
          * @private
-         * @type {manero.web.core.Application}
-         * @fieldOf manero.web.view.Layout.prototype
+         * @type blackbox.web.core.Application
+         * @fieldOf blackbox.web.view.Layout.prototype
          */
         app,
 
         /**
          * @name self
          * @private
-         * @type {manero.web.view.Layout}
-         * @fieldOf manero.web.view.Layout.prototype
+         * @type blackbox.web.view.Layout
+         * @fieldOf blackbox.web.view.Layout.prototype
          */
         self;
 
     /**
-     * @lends manero.web.view.Layout.prototype
+     * @lends blackbox.web.view.Layout.prototype
      */
     return Backbone.View.extend({
 
@@ -63,7 +63,7 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
             // For some reason, using Application as a module dependency doesn't work,
             // so include it her in the constructor as a work around. The Application
             // module should be cached in memory anyway.
-            require(['core/Application'], function(Application) {
+            require(['model/Application'], function(Application) {
                 app = Application.getInstance();
             });
         },
@@ -85,7 +85,7 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
                 e.preventDefault();
                 e.stopPropagation();
                 self.trigger('navigate:before', route);
-                app.getRouter().navigate(route);
+                app.get('router').navigate(route);
                 self.trigger('navigate', route);
                 return false;
             } else {
@@ -94,9 +94,9 @@ define('view/Layout', ['_', 'Backbone', 'util/URLParser'], function(_, Backbone,
         },
 
         /**
-         * @returns {manero.web.view.Layout}
+         * @returns {blackbox.web.view.Layout}
          * @description
-         * Puyblishes: <code>destroy:before</code>, <code>destroy</code>
+         * Publishes: <code>destroy:before</code>, <code>destroy</code>
          */
         destroy: function() {
             this.trigger('destroy:before').undelegateEvents();

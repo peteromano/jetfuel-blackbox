@@ -1,4 +1,4 @@
-define('view/Base', ['$', '_', 'Backbone', 'core/Renderer'], function($, _, Backbone, Renderer) {
+define('view/Base', ['$', '_', 'Backbone', 'util/Renderer'], function($, _, Backbone, Renderer) {
     'use strict';
 
     var /**
@@ -7,7 +7,7 @@ define('view/Base', ['$', '_', 'Backbone', 'core/Renderer'], function($, _, Back
          * @name DEFAULT_TEMPLATE
          * @type String
          * @fieldOf blackbox.web.view.Base.prototype
-         * @description Value: <code>(empty string)</code>
+         * @description <code>(empty string)</code>
          */
         DEFAULT_TEMPLATE = '';
 
