@@ -19,9 +19,13 @@ You can, of course, use BlackBox as a standalone boilerplate front-end applicati
 `$ jetfuel init myproject`  
 `$ cd myproject`  
 `$ npm install` (installs Express and Dust server dependencies)  
-`$ jetfuel`  
+`$ jetfuel` (performs a full build* of the project)  
+`$ npm start` (starts the Express web server at the default port `3000`)
 
-Check out `myproject/config/tasks.js` for a list of all JetFuel ready tasks.
+\* A "full build" includes linting (jshint) source code, installing/upgrading third-party vendor libraries (Jam), auto-minifying, auto-concatenating directories, unit testing (JetRunner), compiling Sass files, and deploying. Check out `myproject/config/tasks.js` for a list of all JetFuel ready tasks.
 
 ### Notes
 * As of version 2.2.x, if the JetRunner unit test server hangs, simply run `jetfuel no-test` to bypass JetRunner unit testing (I'm working on this.)
+* Utility scripts reside under the `bin` folder as shortcuts for building the project and running the server.
+* Third-party library dependencies are defined in `myproject/config/vendor.json`, and are managed by the Jam (http://jamjs.org/) package manager.
+* Browse around the `myproject/config` directory and `myproject/.jetfuel.json` to learn how to further tweak the build system.
