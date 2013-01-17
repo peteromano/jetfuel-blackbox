@@ -8,6 +8,7 @@ BlackBox is the template used for JetFuel's basic `init` command.
 You can, of course, use BlackBox as a standalone boilerplate front-end application, but it's meant to be used with the JetFuel build engine...
 
 ### System Requirements
+* Node/NPM
 * JetFuel (https://github.com/peteromano/jetfuel)
 * PhantomJS (http://phantomjs.org/)
 * Compass (http://compass-style.org/)
@@ -22,7 +23,7 @@ You can, of course, use BlackBox as a standalone boilerplate front-end applicati
 `$ jetfuel` (performs a full build* of the project)  
 `$ npm start` (starts the Express web server at the default port `3000`)
 
-\* A "full build" includes linting (jshint) source code, installing/upgrading third-party vendor libraries (Jam), documentation of source code (JSDoc), auto-minifying production code, auto-concatenating directories, unit testing (JetRunner), compiling Sass files, and deploying. Check out `myproject/config/tasks.js` for a list of all JetFuel ready tasks.
+\* A "full build" includes linting (jshint) source code, installing/upgrading third-party vendor libraries (Jam), documentation of source code (JSDoc), auto-minifying production code, auto-concatenating directories, unit testing (JetRunner), compiling Sass files, and deploying (rsync). Check out `myproject/config/tasks.js` for a list of all JetFuel ready tasks.
 
 ### Notes
 * As of version 2.2.x, if the JetRunner unit test server hangs, simply run `jetfuel no-test` to bypass JetRunner unit testing (I'm working on this).
