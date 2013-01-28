@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="BlackBox : The client-side application framework for JetFuel" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>BlackBox</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/peteromano/jetfuel-blackbox">View on GitHub</a>
+
+          <h1 id="project_title">BlackBox</h1>
+          <h2 id="project_tagline">The client-side application framework for JetFuel</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/peteromano/jetfuel-blackbox/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/peteromano/jetfuel-blackbox/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Currently, BlackBox is a boilerplate client-side application framework, built on top of the JetFuel build system and Grunt, Backbone, RequireJS, JetRunner unit test server (Mocha BDD/TDD test framework + PhantomJS + SauceLabs cloud integration), Dust (and Plate Django port) for templating (both client and server-side), Sass, Express dynamic web server, etc.</p>
+
+<p>BlackBox is the template used for JetFuel's basic <code>init</code> command.</p>
+
+<p>You can, of course, use BlackBox as a standalone boilerplate front-end application, but it's meant to be used with the JetFuel build engine...</p>
+
+<h3>System Requirements</h3>
+
+<ul>
+<li>Node/NPM</li>
+<li>JetFuel (<a href="https://github.com/peteromano/jetfuel">https://github.com/peteromano/jetfuel</a>)</li>
+<li>PhantomJS (<a href="http://phantomjs.org/">http://phantomjs.org/</a>)</li>
+<li>Compass (<a href="http://compass-style.org/">http://compass-style.org/</a>)</li>
+</ul><h3>Installing JetFuel</h3>
+
+<p><code>$ sudo npm install -g jetfuel</code> (as with all things Unix, if you're "root" user, you should disregard the <code>sudo</code> part)</p>
+
+<h3>Running the BlackBox Application</h3>
+
+<p><code>$ jetfuel init myproject</code><br><code>$ cd myproject</code><br><code>$ npm install</code> (installs Express and Dust server dependencies)<br><code>$ jetfuel</code> (performs a full build* of the project)<br><code>$ npm start</code> (starts the Express web server at the default port <code>3000</code>)</p>
+
+<p>* A "full build" includes linting (jshint) source code, installing/upgrading third-party vendor libraries (Jam), documentation of source code (JSDoc), auto-minifying production code, auto-concatenating directories, unit testing (JetRunner), compiling Sass files, and deploying (rsync). Check out <code>myproject/config/tasks.json</code> for a list of all JetFuel ready tasks.</p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>As of version 2.2.x, if the JetRunner unit test server hangs, simply run <code>jetfuel no-test</code> to bypass JetRunner unit testing (I'm working on this).</li>
+<li>Utility scripts reside under the <code>bin</code> folder as shortcuts for building the project and running the server.</li>
+<li>Third-party library dependencies are defined in <code>myproject/config/vendor.json</code>, and are managed by the Jam (<a href="http://jamjs.org/">http://jamjs.org/</a>) package manager.</li>
+<li>Code documentation provided by JSDoc 2.x (<a href="http://code.google.com/p/jsdoc-toolkit/">http://code.google.com/p/jsdoc-toolkit/</a>).</li>
+<li>Browse around the <code>myproject/config</code> directory and <code>myproject/.jetfuel.json</code> to learn how to further tweak the build system.</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">BlackBox maintained by <a href="https://github.com/peteromano">peteromano</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
